@@ -16,6 +16,7 @@ import { AdminComponent } from './admin/admin.component';
 
 import { InPlaceEditorModule } from '@syncfusion/ej2-angular-inplace-editor';
 import { TextBoxModule } from '@syncfusion/ej2-angular-inputs';
+import { EditContactInfoComponent } from './admin/edit-info/edit-contact-info/edit-contact-info.component';
 
 @NgModule({
 	declarations: [
@@ -24,6 +25,7 @@ import { TextBoxModule } from '@syncfusion/ej2-angular-inputs';
 		CustomerListComponent,
 		CreateCustomerComponent,
 		AdminComponent,
+		EditContactInfoComponent,
 	],
 	imports: [
 		BrowserModule,
