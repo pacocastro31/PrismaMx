@@ -1,10 +1,8 @@
-<p>admin works!</p>
-<ejs-inplaceeditor></ejs-inplaceeditor>
-<div class="multiline">
-    <ejs-textbox
-      #default
-      [multiline]="true"
-      floatLabelType="Auto"
-      placeholder="Enter your address"
-    ></ejs-textbox>
-  </div>
+<h2>Editor de Contenido</h2>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <a class="navbar-brand" [routerLink]="['/admin']">ADMIN</a>
+  <a class="nav-link" routerLink="editContact" role="button" routerLinkActive="active">Información General</a>
+  <a class="nav-link" routerLink="editContact" role="button" routerLinkActive="active">Home Banner Slider</a>
+</nav>
+
+<router-outlet></router-outlet>
