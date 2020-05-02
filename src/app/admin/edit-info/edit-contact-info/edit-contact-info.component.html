@@ -1,5 +1,5 @@
 <h2>Información General</h2>
-<div [hidden]="submitted" *ngFor="let info of info">
+<div [hidden]="submitted">
   <form (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="col-lg-4 offset-lg-0">
@@ -9,16 +9,16 @@
         </div>
         <div class="form-group">
           <label for="name">Nombre de la empresa</label><br>
-          <input type="text" class="form-control" required [(ngModel)]="contactInfo.name" name="name">
+          <input type="text" class="form-control" required [(ngModel)]="contactInfo.name" name="name" id="name">
         </div>
         <div class="form-group">
           <label for="phone">Telefono</label><br>
           <input type="text" class="form-control" required [(ngModel)]="contactInfo.phoneNumber" name="phone">
         </div>
-        <button type="submit" class="btn btn-success">Actualizar</button>
+        <button type="submit" class="btn btn-success">Guardar</button>
       </div>
     </div>
-    <div class="row" style="margin-top: -300px;">
+    <div style="margin-top: -300px;">
       <div class="col-sm-4 offset-sm-4">
         <div class="form-group">
           <label for="mail">Correo</label><br>
@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div class="row" style="margin-top: -260px;">
+    <div style="margin-top: -260px;">
       <div class="col-sm-4 offset-sm-8">
         <div class="form-group">
           <label for="address">Dirección</label><br>
@@ -46,5 +46,5 @@
 </div>
 <div [hidden]="!submitted">
   <h4>Se guardo la información</h4>
-  <button class="btn btn-success" (click)="availForm()">Editar</button>
+  <button class="btn btn-success" [routerLink]="['/admin']">Regresar</button>
 </div>
