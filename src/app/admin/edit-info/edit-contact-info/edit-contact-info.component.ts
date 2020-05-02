@@ -49,6 +49,16 @@ export class EditContactInfoComponent implements OnInit {
         )
     ).subscribe(Cinfo => {
       this.info = Cinfo;
+      this.setInfo()
     });
+  }
+
+  setInfo(){
+    this.contactInfo.name = this.info[0].name
+    this.contactInfo.address = this.info[0].address
+    this.contactInfo.email = this.info[0].email
+    this.contactInfo.facebook = this.info[0].facebook
+    this.contactInfo.instagram = this.info[0].instagram
+    this.contactInfo.phoneNumber = this.info[0].phoneNumber
   }
 }
