@@ -17,6 +17,7 @@ import { AdminComponent } from './admin/admin.component';
 import { InPlaceEditorModule } from '@syncfusion/ej2-angular-inplace-editor';
 import { TextBoxModule } from '@syncfusion/ej2-angular-inputs';
 import { EditContactInfoComponent } from './admin/edit-info/edit-contact-info/edit-contact-info.component';
+import { HomeBannerSliderComponent } from './admin/home-slider/home-banner-slider/home-banner-slider.component';
 
 @NgModule({
 	declarations: [
@@ -26,6 +27,7 @@ import { EditContactInfoComponent } from './admin/edit-info/edit-contact-info/ed
 		CreateCustomerComponent,
 		AdminComponent,
 		EditContactInfoComponent,
+		HomeBannerSliderComponent,
 	],
 	imports: [
 		BrowserModule,

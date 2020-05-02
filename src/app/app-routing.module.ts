@@ -4,7 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { CreateCustomerComponent } from './customers/create-customer/create-customer.component';
 import { CustomerListComponent } from './customers/customer-list/customer-list.component';
 import { AdminComponent } from './admin/admin.component'; 
-import { EditContactInfoComponent } from './admin/edit-info/edit-contact-info/edit-contact-info.component'
+import { EditContactInfoComponent } from './admin/edit-info/edit-contact-info/edit-contact-info.component';
+import { HomeBannerSliderComponent } from './admin/home-slider/home-banner-slider/home-banner-slider.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'add', component: CreateCustomerComponent },
   { path: 'admin', component: AdminComponent},
   { path: 'admin/editContact', component: EditContactInfoComponent},
+  { path: 'admin/homeSlider', component: HomeBannerSliderComponent}
 ];
 
 @NgModule({
