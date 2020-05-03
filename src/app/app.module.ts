@@ -13,6 +13,8 @@ import { CustomerListComponent } from "./customers/customer-list/customer-list.c
 import { CreateCustomerComponent } from "./customers/create-customer/create-customer.component";
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
+import { RouterModule } from '@angular/router';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 
 import { InPlaceEditorModule } from '@syncfusion/ej2-angular-inplace-editor';
 import { TextBoxModule } from '@syncfusion/ej2-angular-inputs';
@@ -28,6 +30,7 @@ import { HomeBannerSliderComponent } from './admin/home-slider/home-banner-slide
 		AdminComponent,
 		EditContactInfoComponent,
 		HomeBannerSliderComponent,
+		DashboardComponent,
 	],
 	imports: [
 		BrowserModule,
