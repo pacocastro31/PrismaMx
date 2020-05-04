@@ -1,14 +1,16 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div style="color: blue;">
     <h1>{{title}}</h1>
   </div>
- 
-  <nav class="navbar navbar-expand-md bg-light navbar-light">
-    <a class="navbar-brand" [routerLink]="['/admin']">Prisma MX</a>
-    <a routerLink="customers" class="nav-link" role="button" routerLinkActive="active">Customers</a><br>
-    <a routerLink="add" class="nav-link" role="button" routerLinkActive="active">Add</a><br>
-    <a routerLink="admin"class="nav-link" role="button" routerLinkActive="active">Admin</a>
+
+  <nav>
+    <a routerLink="customers" class="btn btn-primary active" role="button" routerLinkActive="active">Customers</a>
+    <a routerLink="add" class="btn btn-primary active" role="button" routerLinkActive="active">Add</a>
   </nav>
 
+  <router-outlet></router-outlet>
+</div> -->
+
+<div class="page">
   <router-outlet></router-outlet>
 </div>
