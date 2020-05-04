@@ -11,7 +11,13 @@ import { AppComponent } from "./app.component";
 import { CustomerDetailsComponent } from "./customers/customer-details/customer-details.component";
 import { CustomerListComponent } from "./customers/customer-list/customer-list.component";
 import { CreateCustomerComponent } from "./customers/create-customer/create-customer.component";
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
+
+import { InPlaceEditorModule } from '@syncfusion/ej2-angular-inplace-editor';
+import { TextBoxModule } from '@syncfusion/ej2-angular-inputs';
+import { EditContactInfoComponent } from './admin/edit-info/edit-contact-info/edit-contact-info.component';
+import { HomeBannerSliderComponent } from './admin/home-slider/home-banner-slider/home-banner-slider.component';
 
 @NgModule({
 	declarations: [
@@ -19,6 +25,9 @@ import { RouterModule } from '@angular/router';
 		CustomerDetailsComponent,
 		CustomerListComponent,
 		CreateCustomerComponent,
+		AdminComponent,
+		EditContactInfoComponent,
+		HomeBannerSliderComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -26,7 +35,9 @@ import { RouterModule } from '@angular/router';
 		AppRoutingModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFireDatabaseModule,
-		RouterModule.forRoot([])
+		RouterModule.forRoot([]),
+		InPlaceEditorModule,
+		TextBoxModule
 	],
 	providers: [],
 	bootstrap: [AppComponent],
