@@ -11,7 +11,6 @@ import { AppComponent } from "./app.component";
 import { CustomerDetailsComponent } from "./customers/customer-details/customer-details.component";
 import { CustomerListComponent } from "./customers/customer-list/customer-list.component";
 import { CreateCustomerComponent } from "./customers/create-customer/create-customer.component";
-import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
