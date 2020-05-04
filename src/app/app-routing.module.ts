@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'add', component: CreateCustomerComponent },
   { path: 'admin', component: AdminComponent},
   { path: 'admin/editContact', component: EditContactInfoComponent},
-  { path: 'admin/homeSlider', component: HomeBannerSliderComponent}
+  { path: 'admin/homeSlider', component: HomeBannerSliderComponent},
   { path: 'dashboard', component: DashboardComponent}
 ];
 
