@@ -12,6 +12,12 @@ import { CustomerDetailsComponent } from "./customers/customer-details/customer-
 import { CustomerListComponent } from "./customers/customer-list/customer-list.component";
 import { CreateCustomerComponent } from "./customers/create-customer/create-customer.component";
 import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { TopbarComponent } from './topbar/topbar.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { FooterComponent } from './footer/footer.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
 	declarations: [
@@ -19,6 +25,12 @@ import { RouterModule } from '@angular/router';
 		CustomerDetailsComponent,
 		CustomerListComponent,
 		CreateCustomerComponent,
+		HomeComponent,
+		TopbarComponent,
+		NavbarComponent,
+		ContactUsComponent,
+		FooterComponent,
+		DashboardComponent,
 	],
 	imports: [
 		BrowserModule,
