@@ -28,6 +28,30 @@ export class EditContactInfoComponent implements OnInit {
   }
 
   updateInfo(){
+    if(this.info[0].name != this.contactInfo.name){
+      this.submitted = true;
+      this.editContactInfoService.updateContactInfo(this.info[0].key, {name: this.contactInfo.name}).catch(err => console.log(err));
+    }
+    if(this.info[0].phoneNumber != this.contactInfo.phoneNumber){
+      this.submitted = true;
+      this.editContactInfoService.updateContactInfo(this.info[0].key, {phoneNumber: this.contactInfo.phoneNumber}).catch(err => console.log(err));
+    }
+    if(this.info[0].email != this.contactInfo.email){
+      this.submitted = true;
+      this.editContactInfoService.updateContactInfo(this.info[0].key, {email: this.contactInfo.email}).catch(err => console.log(err));
+    }
+    if(this.info[0].facebook != this.contactInfo.facebook){
+      this.submitted = true;
+      this.editContactInfoService.updateContactInfo(this.info[0].key, {facebook: this.contactInfo.facebook}).catch(err => console.log(err));
+    }
+    if(this.info[0].instagram != this.contactInfo.instagram){
+      this.submitted = true;
+      this.editContactInfoService.updateContactInfo(this.info[0].key, {instagram: this.contactInfo.instagram}).catch(err => console.log(err));
+    }
+    if(this.info[0].address != this.contactInfo.address){
+      this.submitted = true;
+      this.editContactInfoService.updateContactInfo(this.info[0].key, {address: this.contactInfo.address}).catch(err => console.log(err));
+    }
   }
 
   availForm(){
@@ -38,6 +62,7 @@ export class EditContactInfoComponent implements OnInit {
     if(this.info == null){
       this.save()
     }
+    this.updateInfo()
   }
 
   getContactInfo(){
