@@ -8,11 +8,13 @@ import { EditContactInfoComponent } from './admin/edit-info/edit-contact-info/ed
 import { HomeBannerSliderComponent } from './admin/home-slider/home-banner-slider/home-banner-slider.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { VerPedidosComponent } from './ver-pedidos/ver-pedidos.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/customers', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'customers', component: CustomerListComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'add', component: CreateCustomerComponent },
   { path: 'admin', component: AdminComponent},
   { path: 'admin/editContact', component: EditContactInfoComponent},

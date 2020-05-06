@@ -14,6 +14,11 @@ import { CreateCustomerComponent } from "./customers/create-customer/create-cust
 import { AdminComponent } from './admin/admin.component';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { HomeComponent } from './home/home.component';
+import { TopbarComponent } from './topbar/topbar.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { FooterComponent } from './footer/footer.component';
 
 import { InPlaceEditorModule } from '@syncfusion/ej2-angular-inplace-editor';
 import { TextBoxModule } from '@syncfusion/ej2-angular-inputs';
@@ -27,6 +32,12 @@ import { VerPedidosComponent } from './ver-pedidos/ver-pedidos.component';
 		CustomerDetailsComponent,
 		CustomerListComponent,
 		CreateCustomerComponent,
+		HomeComponent,
+		TopbarComponent,
+		NavbarComponent,
+		ContactUsComponent,
+		FooterComponent,
+		DashboardComponent,
 		AdminComponent,
 		EditContactInfoComponent,
 		HomeBannerSliderComponent,
