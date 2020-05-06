@@ -7,6 +7,7 @@ import { AdminComponent } from './admin/admin.component';
 import { EditContactInfoComponent } from './admin/edit-info/edit-contact-info/edit-contact-info.component';
 import { HomeBannerSliderComponent } from './admin/home-slider/home-banner-slider/home-banner-slider.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { CotizacionComponent } from './cotizacion/cotizacion/cotizacion.component';
 import { HomeComponent } from './home/home.component';
 
 
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent},
   { path: 'admin/editContact', component: EditContactInfoComponent},
   { path: 'admin/homeSlider', component: HomeBannerSliderComponent},
-  { path: 'dashboard', component: DashboardComponent}
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'cotizacion', component: CotizacionComponent }
 ];
 
 @NgModule({
