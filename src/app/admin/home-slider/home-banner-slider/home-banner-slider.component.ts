@@ -18,7 +18,6 @@ export class HomeBannerSliderComponent implements OnInit {
   constructor(private sliderService: SliderService) { }
 
   ngOnInit(): void {
-    this.contArr.push(this.cont)
   }
 
   clickAgregar(){
@@ -27,6 +26,7 @@ export class HomeBannerSliderComponent implements OnInit {
 
   onSubmit() {
     this.save();
+    this.clear();
   }
 
   save(){
@@ -34,4 +34,9 @@ export class HomeBannerSliderComponent implements OnInit {
     this.sliderService.createBanner(this.banner)
   }
 
+  clear(){
+    this.banner.title = ""
+    this.banner.subtitle = ""
+    this.banner.cta = ""
+  }
 }

@@ -1,5 +1,6 @@
 <h2><a [routerLink]="['/admin']" style="font-size:24px" class="fa">&#xf104;</a> Home Banner Slider</h2>
-<form  [hidden]="submitted">
+<hr>
+<form>
   <div>
     <div class="row">
         <div class="col-lg-4 offset-lg-2">
@@ -28,16 +29,9 @@
     <hr>
   </div>
   <div class="row">
-    <div class="col-lg-1 offset-lg-2">
-      <button type="submit" class="btn btn-success" (click)="clickAgregar()">Agregar</button>
-    </div>
     <div class="col-lg-0 offset-lg-1">
       <button type="submit" class="btn btn-success" (click)="onSubmit()">Guardar</button>
     </div>
   </div>
 </form>
-
-<div [hidden]="!submitted">
-  <h4>Se guardo la información</h4>
-  <button class="btn btn-success" [routerLink]="['/admin']">Regresar</button>
-</div>
+<app-home-slider-list></app-home-slider-list>
