@@ -18,5 +18,13 @@ export class SliderService {
   createBanner(info: BannerInfo): void {
     this.bannerInfoRef.push(info);
     console.log("Se guardo")
+  }
+  
+  getSliderInfo(): AngularFireList<BannerInfo> {
+		return this.bannerInfoRef;
+  }
+
+  deleteSlider(key: string): Promise<void> {
+		return this.bannerInfoRef.remove(key);
 	}
 }
