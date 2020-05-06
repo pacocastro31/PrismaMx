@@ -23,9 +23,7 @@
     "@syncfusion/ej2": "^18.1.46",
     "@syncfusion/ej2-angular-inplace-editor": "^18.1.42",
     "@syncfusion/ej2-angular-inputs": "^18.1.45",
-    "bootstrap": "^4.4.1",
     "firebase": "^7.14.2",
-    "jquery": "^3.5.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
