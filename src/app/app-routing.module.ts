@@ -17,8 +17,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'add', component: CreateCustomerComponent },
   { path: 'admin', component: AdminComponent},
-  { path: 'admin/editContact', component: EditContactInfoComponent},
-  { path: 'admin/homeSlider', component: HomeBannerSliderComponent},
   { path: 'dashboard', component: DashboardComponent},
   { path: 'mis-pedidos', component: VerPedidosComponent}
 ];
