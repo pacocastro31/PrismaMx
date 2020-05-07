@@ -47,6 +47,6 @@
   </div>
   <div [hidden]="!submitted">
     <h4>Se guardo la información</h4>
-    <button class="btn btn-success" [routerLink]="['/admin']">Regresar</button>
+    <button class="btn btn-success" (click)="availForm()">Regresar</button>
   </div>
 </div>
