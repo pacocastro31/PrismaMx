@@ -7,7 +7,7 @@
         <div class="col-12">
           <nav class="site-navigation text-right ml-auto " role="navigation">
             <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-            <li><a href="#home-section" class="nav-link">Inicio</a></li>
+            <li><a href="#home-section"  routerLink="home" class="nav-link">Inicio</a></li>
             <li><a href="#services-section" class="nav-link">Servicios</a></li>
             <li class="has-children">
               <a href="#about-section" class="nav-link">Sobre Nosotros</a>
@@ -17,8 +17,10 @@
               </ul>
             </li>
             <li><a href="#contact-section" class="nav-link">Contacto</a></li>
-            <li><a href="#press-section" class="nav-link">Cotizar</a></li>
+            <li><a routerLink="/cotizacion" class="nav-link">Cotizar</a></li>
             <li><a routerLink="/mis-pedidos" class="nav-link">Mis Pedidos</a></li>
+            <li><a routerLink="/admin" class="nav-link">Contenido</a></li>
+            <li><a routerLink="/dashboard" class="nav-link">Admin</a></li>
             <li><a routerLink="/admin" class="nav-link">Log In</a></li>
           </ul>
           </nav>
