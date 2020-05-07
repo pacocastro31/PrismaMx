@@ -24,6 +24,8 @@ import { InPlaceEditorModule } from '@syncfusion/ej2-angular-inplace-editor';
 import { TextBoxModule } from '@syncfusion/ej2-angular-inputs';
 import { EditContactInfoComponent } from './admin/edit-info/edit-contact-info/edit-contact-info.component';
 import { HomeBannerSliderComponent } from './admin/home-slider/home-banner-slider/home-banner-slider.component';
+import { HomeSliderListComponent } from './admin/home-slider/home-slider-list/home-slider-list.component';
+import { HomeSliderDetailComponent } from './admin/home-slider/home-slider-detail/home-slider-detail.component';
 
 @NgModule({
 	declarations: [
@@ -40,6 +42,8 @@ import { HomeBannerSliderComponent } from './admin/home-slider/home-banner-slide
 		AdminComponent,
 		EditContactInfoComponent,
 		HomeBannerSliderComponent,
+		HomeSliderListComponent,
+		HomeSliderDetailComponent,
 		DashboardComponent,
 	],
 	imports: [
