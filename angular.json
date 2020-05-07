@@ -26,8 +26,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -120,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "prismamx"
+    }
+  },
+  "defaultProject": "prismamx",
+  "cli": {
+    "analytics": "257997f8-108f-4b59-a243-a0cee952a382"
+  }
 }
