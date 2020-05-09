@@ -6,7 +6,7 @@
         <div class="col-lg-4 offset-lg-0">
           <div class="form-group">
             <label for="logo">Logo</label><br>
-            <input type="button" class="form-control" name="logo" value="Subir Imagen">
+            <input type="file" class="form-control" name="logo" accept=".png,.jpg" (change)="saveImage($event)">
           </div>
           <div class="form-group">
             <label for="name">Nombre de la empresa</label><br>
