@@ -10,18 +10,13 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./home-banner-slider.component.css']
 })
 export class HomeBannerSliderComponent implements OnInit {
-  contArr = []
-  cont = 1
+  
   banner: BannerInfo = new BannerInfo();
   submitted = false;
 
   constructor(private sliderService: SliderService) { }
 
   ngOnInit(): void {
-  }
-
-  clickAgregar(){
-    this.contArr.push(this.cont + 1)
   }
 
   onSubmit() {
