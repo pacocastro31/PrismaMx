@@ -15,7 +15,8 @@ export class ServiciosParte1Service {
     this.serviciosParte1Ref = db.list(this.dbPath);
   }
 
-  createServicio1(info: ServicioParte1): void {
+  createServicio1(info: ServicioParte1, img: string): void {
+    info.imagen = img
     this.serviciosParte1Ref.push(info);
     console.log("Se guardo")
   }

@@ -7,7 +7,7 @@
             <div class="col-lg-4 offset-lg-2">
               <div class="form-group">
                 <label for="fondo">Imagen</label><br>
-                <input type="button" class="form-control" name="fondo" value="Subir Imagen">
+                <input type="file" class="form-control" name="fondo" value="Subir Imagen" (change)="saveImage($event)">
               </div>
               <div class="form-group">
                 <label for="titulo">Titulo</label><br>
