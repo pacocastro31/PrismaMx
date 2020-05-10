@@ -58,9 +58,7 @@ export class ServiciosParte1Component implements OnInit {
             if (url) {
               this.fb = url;
             }
-            console.log("+++++++++++++")
             console.log(this.fb);
-            console.log("+++++++++++++")
           });
         })
       )
