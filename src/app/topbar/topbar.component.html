@@ -7,17 +7,17 @@
   <div class="site-mobile-menu-body"></div>
 </div>
 
-<div class="top-bar">
+<div class="top-bar" *ngFor="let infoGral of info">
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <a href="#" class="text-white"><span class="mr-2 text-white icon-envelope-open-o"></span> <span class="d-none d-md-inline-block">prismai3d@gmail.com</span></a>
+        <a href="mailto:{{infoGral.email}}" class="text-white"><span class="mr-2 text-white icon-envelope-open-o"></span> <span class="d-none d-md-inline-block">{{infoGral.email}}</span></a>
         <span class="mx-md-2 d-inline-block"></span>
-        <a href="#" class="text-white"><span class="mr-2 text-white icon-phone"></span> <span class="d-none d-md-inline-block">1+ (234) 5678 9101</span></a>
+        <a href="callto:{{infoGral.phoneNumber}}" class="text-white"><span class="mr-2 text-white icon-phone"></span> <span class="d-none d-md-inline-block">{{infoGral.phoneNumber}}</span></a>
         <div class="float-right">
-        <a href="#" class="text-white"><span class="mr-2 text-white icon-facebook"></span> <span class="d-none d-md-inline-block">Facebook</span></a>
+        <a href={{infoGral.facebook}} class="text-white" target="_blank"><span class="mr-2 text-white icon-facebook"></span> <span class="d-none d-md-inline-block">Facebook</span></a>
         <span class="mx-md-2 d-inline-block"></span>
-        <a href="#" class="text-white"><span class="mr-2 text-white icon-instagram"></span> <span class="d-none d-md-inline-block">Instagram</span></a>
+        <a href={{infoGral.instagram}} class="text-white" target="_blank"><span class="mr-2 text-white icon-instagram"></span> <span class="d-none d-md-inline-block">Instagram</span></a>
         </div>
       </div>
     </div>
