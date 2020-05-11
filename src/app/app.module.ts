@@ -26,6 +26,8 @@ import { EditContactInfoComponent } from './admin/edit-info/edit-contact-info/ed
 import { HomeBannerSliderComponent } from './admin/home-slider/home-banner-slider/home-banner-slider.component';
 import { CotizacionComponent } from './cotizacion/cotizacion/cotizacion.component';
 
+
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -52,7 +54,12 @@ import { CotizacionComponent } from './cotizacion/cotizacion/cotizacion.componen
 		AngularFireDatabaseModule,
 		RouterModule.forRoot([]),
 		InPlaceEditorModule,
-		TextBoxModule
+		TextBoxModule,
+
+
+
+	
+
 	],
 	providers: [],
 	bootstrap: [AppComponent],
