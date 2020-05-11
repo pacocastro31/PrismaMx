@@ -28,6 +28,7 @@ import { VerPedidosComponent } from './ver-pedidos/ver-pedidos.component';
 import { HomeSliderListComponent } from './admin/home-slider/home-slider-list/home-slider-list.component';
 import { HomeSliderDetailComponent } from './admin/home-slider/home-slider-detail/home-slider-detail.component';
 import { CotizacionComponent } from './cotizacion/cotizacion/cotizacion.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
 	declarations: [
@@ -49,6 +50,7 @@ import { CotizacionComponent } from './cotizacion/cotizacion/cotizacion.componen
 		DashboardComponent,
 		VerPedidosComponent,
 		CotizacionComponent,
+		LoginComponent,
 	],
 	imports: [
 		BrowserModule,

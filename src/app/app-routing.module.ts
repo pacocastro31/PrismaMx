@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { CotizacionComponent } from './cotizacion/cotizacion/cotizacion.component';
 import { VerPedidosComponent } from './ver-pedidos/ver-pedidos.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'mis-pedidos', component: VerPedidosComponent },
-  { path: 'cotizacion', component: CotizacionComponent }
+  { path: 'cotizacion', component: CotizacionComponent },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
