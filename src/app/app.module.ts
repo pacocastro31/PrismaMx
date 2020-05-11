@@ -33,6 +33,7 @@ import { ServiciosParte1Component } from './admin/serviciosParte1/servicios-part
 import { ServiciosParte1ListComponent } from './admin/serviciosParte1/servicios-parte1-list/servicios-parte1-list.component';
 import { ServiciosParte1DetailComponent } from './admin/serviciosParte1/servicios-parte1-detail/servicios-parte1-detail.component';
 import { PedidoComponent } from './dashboard/pedido/pedido.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -56,6 +57,7 @@ import { PedidoComponent } from './dashboard/pedido/pedido.component';
 		DashboardComponent,
 		VerPedidosComponent,
 		CotizacionComponent,
+		LoginComponent,
 		//AlertModalComponent,
 		ServiciosParte1Component,
 		ServiciosParte1ListComponent,
