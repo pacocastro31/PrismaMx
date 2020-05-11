@@ -29,6 +29,8 @@ import { HomeSliderListComponent } from './admin/home-slider/home-slider-list/ho
 import { HomeSliderDetailComponent } from './admin/home-slider/home-slider-detail/home-slider-detail.component';
 import { CotizacionComponent } from './cotizacion/cotizacion/cotizacion.component';
 
+
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -58,7 +60,12 @@ import { CotizacionComponent } from './cotizacion/cotizacion/cotizacion.componen
 		AngularFireDatabaseModule,
 		RouterModule.forRoot([]),
 		InPlaceEditorModule,
-		TextBoxModule
+		TextBoxModule,
+
+
+
+	
+
 	],
 	providers: [],
 	bootstrap: [AppComponent],
