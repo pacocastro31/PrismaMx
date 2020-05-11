@@ -41,6 +41,7 @@ export class ServiciosParte1Component implements OnInit {
     this.servicioParte1.title = ""
     this.servicioParte1.description = ""
     this.servicioParte1.list = ""
+    this.servicioParte1.imagen = null
   }
 
   saveImage(event: any){
