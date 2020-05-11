@@ -42,6 +42,7 @@ export class HomeBannerSliderComponent implements OnInit {
     this.banner.title = ""
     this.banner.subtitle = ""
     this.banner.cta = ""
+    this.banner.imagen = null
   }
 
   saveImage(event: any){
