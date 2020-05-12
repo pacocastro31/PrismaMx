@@ -4,17 +4,16 @@
   <ul class="list-group">
     <li *ngFor="let pedido of pedidos">
         <div class="card-body text-center">
-            <br>
               <div class="list-group" >
                     <ul class="list-group list-group-horizontal justify-content-center">
         
                         <li class="list-group-item background-gray col-md-2">
                             <h6>Pedido</h6>
-                            <h5>{{pedido.key}}</h5>
+                            <h5>{{pedido.id}}</h5>
                         </li>
                         <li class="list-group-item background-gray col-md-2">
                             <h6>Fecha</h6>
-                            <h5>20-04-2020</h5>
+                            <h5>{{pedido.fecha}}</h5>
                         </li>
                         <li class="list-group-item background-gray col-md-2">
                             <h6>Cliente</h6>
@@ -26,17 +25,24 @@
                         </li>
                         <li class="list-group-item background-gray col-md-2">
                             <h6>Precio Real</h6>
-                            <h5>$6200 MXN</h5>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Precio Real">
                         </li>
                         <li class="list-group-item background-gray col-md-2">
                             <h6>Estado</h6>
-                            <select ng-model="selectedStatus" ng-options="x for x in status">
-                            </select>
+                            <div class="input-group input-group-md">
+                                <select class="custom-select" id="inputGroupSelect04"  value="{{pedido.status}}">
+                                  <option value = "pendiente"> pendiente</option>
+                                  <option value = "one">One</option>
+                                  <option value = "two">Two</option>
+                                  <option value = "three">Three</option>
+                                </select>
+                              </div>
                         </li>
                     </ul>
                 
-              </div>
-              <br>       
+              </div>      
           </div>
     </li>
   </ul>
+
+ 
