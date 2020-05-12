@@ -15,7 +15,8 @@ export class SliderService {
 		this.bannerInfoRef = db.list(this.dbPath);
   }
 
-  createBanner(info: BannerInfo): void {
+  createBanner(info: BannerInfo, img: string): void {
+    info.imagen = img
     this.bannerInfoRef.push(info);
     console.log("Se guardo")
   }
