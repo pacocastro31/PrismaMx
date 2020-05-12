@@ -28,7 +28,7 @@
 
   <div class="site-section" id="services-section">
     <div *ngFor="let servicio of servicios; let i = index">
-      <div *ngIf="i == 0">
+      <div *ngIf="((i+1)%2) != 0">
         <div class="block__73694 mb-2">
           <div class="container">
             <div class="row d-flex no-gutters align-items-stretch">
@@ -48,7 +48,7 @@
           </div>
         </div>
       </div>
-      <div *ngIf="i == 1">
+      <div *ngIf="((i+1)%2) == 0">
         <div class="block__73694">
           <div class="container">
             <div class="row d-flex no-gutters align-items-stretch">
