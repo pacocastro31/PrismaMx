@@ -9,7 +9,11 @@ export class DashboardComponent implements OnInit {
 
   constructor() { }
 
+  Pedidos: any;
+
   ngOnInit(): void {
   }
+
+  
 
 }

@@ -7,6 +7,7 @@
     id="file"
     #userPhoto
     (change)="onFileSelected($event)"
+    (change)="upLoadInfo($event)"
     name="image"
     autocomplete="off"
     />
@@ -14,15 +15,52 @@
 
 <br><br><br><br>
 
+<input type= "text"  id="name"  placeholder="nombre.." name="name" (change)= "getValues($event)" 
+required [(ngModel)]="cotizacion.nombre"
+/>
+
+<br><br>
+
+<input type= "text"  id="secondName"  placeholder="apellido.." name="secondName" (change)= "getValuesSecondName($event)"
+required [(ngModel)]="cotizacion.apellido"/>
+<br><br>
+
+
+<input type= "text"  id="mail" placeholder="mail.." name="mail" (change)= "getValueMail($event)"
+required [(ngModel)]="cotizacion.mail"/>
+
+<br><br>
+
+<select id="material"  name= "material"(change)="selectChangeHandler($event)" required [(ngModel)]="cotizacion.material" >
+  <option  value="Material1">Material1</option>
+  <option  value="Material2">Material2</option>
+  <option  value="Material3">Material3</option>
+</select>
+
+<p><span>You selected: </span><b>{{selectedMaterial}}</b></p>
+
+<br>
+
+<select id="color"  name= "color" (change)="selectColorHandler($event)" required [(ngModel)]="cotizacion.color">
+  <option  value="Rojo">Rojo</option>
+  <option  value="Verde">Verde</option>
+  <option  value="Morado">Morado</option>
+</select>
+
+<p><span>You selected: </span><b>{{selectedColor}}</b></p>
+
+<br><br>
+
+<!---
    <div class="dropdown show">
     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Material
     </a>
   
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
+      <a class="dropdown-item" href="#">Material 1</a>
+      <a class="dropdown-item" href="#">Material 2</a>
+      <a class="dropdown-item" href="#">Material 3</a>
     </div>
   </div>
 <br>
@@ -33,22 +71,21 @@
     </a>
   
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
+      <a class="dropdown-item" href="#">Blanco</a>
+      <a class="dropdown-item" href="#">Verde</a>
+      <a class="dropdown-item" href="#">Rojo</a>
     </div>
   </div>
 <br>
 
 <div class="dropdown show">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <a class="btn btn-secondary dropdown-toggle" role="button" id="calidad" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onchange="setCalidad()">
       Calidad
     </a>
-  
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-menu" aria-labelledby="calidad">
+      <a class="dropdown-item" >Calidad 1</a>
+      <a class="dropdown-item" >Calidad 2</a>
+      <a class="dropdown-item" >Calidad 3</a>
     </div>
   </div>
 
@@ -60,13 +97,76 @@
       <input class="form-control" type="number" value="1" id="example-number-input">
     </div>
   </div>
+-->
+
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Precio aproximado</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Nombre: {{userName}}  </p>
+        <p>Apellido:{{userSecondName}}</p>
+        <p>Material: {{selectedMaterial}}</p>
+        <p>Color: : {{selectedColor}}</p>
+        <p>Mail: {{userMail}}</p>
+      </div>
+      <div>
+        <h3>El precio estimado es de 500 <span id= "priceFile" ></span> </h3>   
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2"
+        (click)="saveValues()">Cotizar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 <br><br><br><br>
-<h3>El precio estimado es de  <span id= "priceFile" ></span> </h3>   
-   <router-outlet> </router-outlet>
+
+
+<router-outlet> </router-outlet>
+  
+<!-- Modal -->
+<div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Gracias por confiar en nosotros</p>
+        <p>Id de seguimiento: {{id}}  </p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
 
 <style>
    #priceFile{
       color:darkred 
    } 
 </style>
+

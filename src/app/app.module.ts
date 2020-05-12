@@ -28,7 +28,14 @@ import { VerPedidosComponent } from './ver-pedidos/ver-pedidos.component';
 import { HomeSliderListComponent } from './admin/home-slider/home-slider-list/home-slider-list.component';
 import { HomeSliderDetailComponent } from './admin/home-slider/home-slider-detail/home-slider-detail.component';
 import { CotizacionComponent } from './cotizacion/cotizacion/cotizacion.component';
+//import { AlertModalComponent } from './alert-modal/alert-modal.component';
+import { ServiciosParte1Component } from './admin/serviciosParte1/servicios-parte1/servicios-parte1.component';
+import { ServiciosParte1ListComponent } from './admin/serviciosParte1/servicios-parte1-list/servicios-parte1-list.component';
+import { ServiciosParte1DetailComponent } from './admin/serviciosParte1/servicios-parte1-detail/servicios-parte1-detail.component';
+import { PedidoComponent } from './dashboard/pedido/pedido.component';
 import { LoginComponent } from './login/login.component';
+
+
 
 @NgModule({
 	declarations: [
@@ -51,6 +58,11 @@ import { LoginComponent } from './login/login.component';
 		VerPedidosComponent,
 		CotizacionComponent,
 		LoginComponent,
+		//AlertModalComponent,
+		ServiciosParte1Component,
+		ServiciosParte1ListComponent,
+		ServiciosParte1DetailComponent,
+		PedidoComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -60,7 +72,12 @@ import { LoginComponent } from './login/login.component';
 		AngularFireDatabaseModule,
 		RouterModule.forRoot([]),
 		InPlaceEditorModule,
-		TextBoxModule
+		TextBoxModule,
+
+
+
+	
+
 	],
 	providers: [],
 	bootstrap: [AppComponent],

@@ -3,6 +3,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ContactInfo } from '../contact-info'
 import { EditContactInfoService } from '../edit-contact-info.service'
 import { map } from 'rxjs/operators';
+import { AngularFireStorage } from "@angular/fire/storage";
+import { finalize } from 'rxjs/operators';
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-edit-contact-info',
@@ -15,8 +18,12 @@ export class EditContactInfoComponent implements OnInit {
   contactInfo: ContactInfo = new ContactInfo();
   submitted = false;
   info: any
+  selectedImage: any
+  downloadURL: Observable<string>;
+  fb: any;
+  dwUrl: any;
 
-  constructor(private editContactInfoService: EditContactInfoService) { }
+  constructor(private editContactInfoService: EditContactInfoService, private storage: AngularFireStorage) { }
 
   ngOnInit(): void {
     this.getContactInfo();
@@ -24,7 +31,7 @@ export class EditContactInfoComponent implements OnInit {
 
   save() {
     this.submitted = true;
-    this.editContactInfoService.createContactInfo(this.contactInfo)
+    this.editContactInfoService.createContactInfo(this.contactInfo);
   }
 
   updateInfo(){
@@ -86,4 +93,32 @@ export class EditContactInfoComponent implements OnInit {
     this.contactInfo.instagram = this.info[0].instagram
     this.contactInfo.phoneNumber = this.info[0].phoneNumber
   }
+
+  saveImage(event: any){
+    var n = Date.now();
+    const file = event.target.files[0];
+    const filePath = `logo/${n}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(`logo/${n}`, file);
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe(url => {
+            if (url) {
+              this.fb = url;
+            }
+            console.log(this.fb);
+          });
+        })
+      )
+      .subscribe(url => {
+        if (url) {
+          console.log(url);
+          this.dwUrl = url;
+        }
+      });
+  }
+  
 }
