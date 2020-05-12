@@ -1,8 +1,16 @@
-<h2>Editor de Contenido</h2>
+<br><h2>Editor de Contenido</h2>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <a class="navbar-brand" [routerLink]="['/admin']">ADMIN</a>
-  <a class="nav-link" routerLink="editContact" role="button" routerLinkActive="active">Información General</a>
-  <a class="nav-link" routerLink="homeSlider" role="button" routerLinkActive="active">Home Banner Slider</a>
+  <a class="nav-link" role="button">Información General</a>
+  <a class="nav-link" role="button">Home Banner Slider</a>
+  <a class="nav-link" role="button">Servicios Parte 1</a>
 </nav>
 
-<router-outlet></router-outlet>
+<app-edit-contact-info name="infoGeneral"></app-edit-contact-info>
+
+<div class="navbar navbar-expand-md bg-dark navbar-dark"></div>
+
+<div id="hbs">
+  <app-home-banner-slider></app-home-banner-slider>
+</div>
+<div class="navbar navbar-expand-md bg-dark navbar-dark"></div>

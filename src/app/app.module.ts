@@ -24,6 +24,9 @@ import { InPlaceEditorModule } from '@syncfusion/ej2-angular-inplace-editor';
 import { TextBoxModule } from '@syncfusion/ej2-angular-inputs';
 import { EditContactInfoComponent } from './admin/edit-info/edit-contact-info/edit-contact-info.component';
 import { HomeBannerSliderComponent } from './admin/home-slider/home-banner-slider/home-banner-slider.component';
+import { VerPedidosComponent } from './ver-pedidos/ver-pedidos.component';
+import { HomeSliderListComponent } from './admin/home-slider/home-slider-list/home-slider-list.component';
+import { HomeSliderDetailComponent } from './admin/home-slider/home-slider-detail/home-slider-detail.component';
 import { CotizacionComponent } from './cotizacion/cotizacion/cotizacion.component';
 
 
@@ -43,7 +46,10 @@ import { CotizacionComponent } from './cotizacion/cotizacion/cotizacion.componen
 		AdminComponent,
 		EditContactInfoComponent,
 		HomeBannerSliderComponent,
+		HomeSliderListComponent,
+		HomeSliderDetailComponent,
 		DashboardComponent,
+		VerPedidosComponent,
 		CotizacionComponent,
 	],
 	imports: [
