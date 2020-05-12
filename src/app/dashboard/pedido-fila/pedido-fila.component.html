@@ -1,0 +1,41 @@
+<div class="card-body text-center">
+    <div class="list-group" >
+          <ul class="list-group list-group-horizontal justify-content-center">
+
+              <li class="list-group-item background-gray col-md-2">
+                  <h6>Pedido</h6>
+                  <h5>{{pedido.id}}</h5>
+              </li>
+              <li class="list-group-item background-gray col-md-2">
+                  <h6>Fecha</h6>
+                  <h5>{{pedido.fecha}}</h5>
+              </li>
+              <li class="list-group-item background-gray col-md-2">
+                  <h6>Cliente</h6>
+                  <h5> {{pedido.nombre}} {{pedido.apellido}}</h5>
+              </li>
+              <li class="list-group-item background-gray col-md-2">
+                  <h6>Precio Estimado</h6>
+                  <h5>${{pedido.precio}} MXN</h5>
+              </li>
+              <li class="list-group-item background-gray col-md-2">
+                  <h6>Precio Real</h6>
+                  <input [(ngModel)] = "valorReal" type="email" (change)="changeRealValue()" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="0">
+              </li>
+              <li class="list-group-item background-gray col-md-2">
+                  <h6>Estado</h6>
+                  <div class="input-group input-group-md">
+                      <select id="material" [(ngModel)]= "status" (change)="changeStatus()">
+                          <option value = "pendiente"> Cotizando</option>
+                          <option value = "espera">A espera de pago</option>
+                          <option value = "revision">En revisión</option>
+                          <option value = "produccion">En producción</option>
+                          <option value = "listo">Listo</option>
+                          <option value = "entregado">Entregado</option>
+                      </select>
+                    </div>
+              </li>
+          </ul>
+      
+    </div>      
+</div>

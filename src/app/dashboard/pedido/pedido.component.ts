@@ -1,6 +1,7 @@
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { CotizacionService } from '../../cotizacion/cotizacion.service';
+import { cotizacion } from '../../cotizacion/cotizacion'
 
 @Component({
   selector: 'app-pedido',
@@ -8,18 +9,13 @@ import { CotizacionService } from '../../cotizacion/cotizacion.service';
   styleUrls: ['./pedido.component.css']
 })
 export class PedidoComponent implements OnInit {
-  
-  pedidos: any
-  status = ['Pendiente', 'En proceso', 'Terminado']
-
 
   constructor(private cotizacionService: CotizacionService) { }
 
+  pedidos: any;
+
   ngOnInit(): void {
     this.getCustomersList();
-  }
-
-  ngOnChanges(changes: SimpleChanges){
   }
 
   getCustomersList(){

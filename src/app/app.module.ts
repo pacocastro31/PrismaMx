@@ -34,6 +34,7 @@ import { ServiciosParte1ListComponent } from './admin/serviciosParte1/servicios-
 import { ServiciosParte1DetailComponent } from './admin/serviciosParte1/servicios-parte1-detail/servicios-parte1-detail.component';
 import { PedidoComponent } from './dashboard/pedido/pedido.component';
 import { LoginComponent } from './login/login.component';
+import { PedidoFilaComponent } from './dashboard/pedido-fila/pedido-fila.component';
 
 
 
@@ -63,6 +64,7 @@ import { LoginComponent } from './login/login.component';
 		ServiciosParte1ListComponent,
 		ServiciosParte1DetailComponent,
 		PedidoComponent,
+		PedidoFilaComponent,
 	],
 	imports: [
 		BrowserModule,
