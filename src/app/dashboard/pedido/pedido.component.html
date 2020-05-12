@@ -1,0 +1,48 @@
+
+
+
+  <ul class="list-group">
+    <li *ngFor="let pedido of pedidos">
+        <div class="card-body text-center">
+              <div class="list-group" >
+                    <ul class="list-group list-group-horizontal justify-content-center">
+        
+                        <li class="list-group-item background-gray col-md-2">
+                            <h6>Pedido</h6>
+                            <h5>{{pedido.id}}</h5>
+                        </li>
+                        <li class="list-group-item background-gray col-md-2">
+                            <h6>Fecha</h6>
+                            <h5>{{pedido.fecha}}</h5>
+                        </li>
+                        <li class="list-group-item background-gray col-md-2">
+                            <h6>Cliente</h6>
+                            <h5> {{pedido.nombre}} {{pedido.apellido}}</h5>
+                        </li>
+                        <li class="list-group-item background-gray col-md-2">
+                            <h6>Precio Estimado</h6>
+                            <h5>${{pedido.precio}} MXN</h5>
+                        </li>
+                        <li class="list-group-item background-gray col-md-2">
+                            <h6>Precio Real</h6>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Precio Real">
+                        </li>
+                        <li class="list-group-item background-gray col-md-2">
+                            <h6>Estado</h6>
+                            <div class="input-group input-group-md">
+                                <select class="custom-select" id="inputGroupSelect04"  value="{{pedido.status}}">
+                                  <option value = "pendiente"> pendiente</option>
+                                  <option value = "one">One</option>
+                                  <option value = "two">Two</option>
+                                  <option value = "three">Three</option>
+                                </select>
+                              </div>
+                        </li>
+                    </ul>
+                
+              </div>      
+          </div>
+    </li>
+  </ul>
+
+ 
