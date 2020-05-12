@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from "@angular/fire/database";
-import{cotizacion} from "./cotizacion"
+import { cotizacion }  from "./cotizacion"
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +22,13 @@ export class CotizacionService {
     info.precioReal = "0";
     this.cotizacionesInfoRef.push(info);
     console.log("Se guardo")
-	}
+  }
+  
+  getPedidos(): AngularFireList<cotizacion> {
+    return this.cotizacionesInfoRef;
+  }
+
+  updatePedido(key: string, value: any): Promise<void> {
+		return this.cotizacionesInfoRef.update(key, value);
+  }
 }
