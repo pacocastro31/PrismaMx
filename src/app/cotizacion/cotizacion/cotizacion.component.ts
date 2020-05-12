@@ -18,6 +18,7 @@ export class CotizacionComponent implements OnInit {
   userName: string = "";
   userSecondName: string = "";
   userMail: string = "";
+  fecha: string = "";
   id : string = "";
   cotizacion: cotizacion = new cotizacion();
 
@@ -27,20 +28,31 @@ export class CotizacionComponent implements OnInit {
 
   saveValues(){
     this.generateId();
-    this.cotizacionService.createCotizacion(this.cotizacion, this.id);
+    this.generateDate();
+    this.cotizacionService.createCotizacion(this.cotizacion, this.id,this.fecha);
 
   }
   generateId(){
     var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&=';
     var charactersLength = characters.length;
-    for ( var i = 0; i < 40; i++ ) {
+    for ( var i = 0; i < 10; i++ ) {
        result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     console.log(result);
     this.id = result;
   }
 
+  generateDate(){
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var dateTime = date+' '+time;
+    console.log(dateTime);
+    this.fecha = dateTime;
+  
+
+  }
   getValuesSecondName(event:any){
     this.userSecondName = event.target.value;
     

@@ -8,4 +8,6 @@ export class cotizacion {
     precio: string;
     status:string;
     id:string;
+    precioReal:string;
+    fecha:string;
 }

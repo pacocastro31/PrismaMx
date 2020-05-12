@@ -14,10 +14,12 @@ export class CotizacionService {
 		this.cotizacionesInfoRef = db.list(this.dbPath);
   }
 
-  createCotizacion(info: cotizacion, id: string): void {
+  createCotizacion(info: cotizacion, id: string,fecha:string): void {
     info.id = id;
-    info.status = "pendiendte";
+    info.fecha = fecha;
+    info.status = "pendiente";
     info.precio = "500";
+    info.precioReal = "0";
     this.cotizacionesInfoRef.push(info);
     console.log("Se guardo")
 	}
