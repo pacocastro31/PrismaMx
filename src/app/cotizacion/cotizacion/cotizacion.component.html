@@ -1,62 +1,171 @@
-<br>
-<h1>Cotizador</h1>
-<br>
-<h5>Selecciona un archivo</h5>
-<div class="form-group col-12">
-    <input type="file"
-    id="file"
-    #userPhoto
-    (change)="onFileSelected($event)"
-    (change)="upLoadInfo($event)"
-    name="image"
-    autocomplete="off"
-    />
-   </div>
+<div class="container">
 
-<br><br><br><br>
+  <div class="row mt-5 mb-3">
+    <div class="col-12">
+      <h1>Cotizador</h1>
+    </div>
+  </div>
 
-<input type= "text"  id="name"  placeholder="nombre.." name="name" (change)= "getValues($event)" 
-required [(ngModel)]="cotizacion.nombre"
-/>
+  <div class="row">
 
-<br><br>
+    <div class="col-6 pr-5">
+      <div class="row">
+        <div class="visualizador col-12 bg-secondary mb-4" style="height: 600px;">
+          <div class="form-group">
+            <input type="file"
+              id="file"
+              #userPhoto
+              (change)="onFileSelected($event)"
+              (change)="upLoadInfo($event)"
+              name="image"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+        <!-- <div class="col-12">
+          <div class="form-group">
+            <input type="file"
+              id="file"
+              #userPhoto
+              (change)="onFileSelected($event)"
+              (change)="upLoadInfo($event)"
+              name="image"
+              autocomplete="off"
+            />
+          </div>
+        </div> -->
+        <div class="col-12">
+          <div class="row">
+            <div class="col-4">
+              <div class="row">
+                <div class="col-3">
+                  <span>x</span>
+                </div>
+                <div class="col-9">
+                  <div class="form-group">
+                    <input class="form-control" type="number" placeholder="0" readonly>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="row">
+                <div class="col-3">
+                  <span>y</span>
+                </div>
+                <div class="col-9">
+                  <div class="form-group">
+                    <input class="form-control" type="number" placeholder="0" readonly>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="row">
+                <div class="col-3">
+                  <span>z</span>
+                </div>
+                <div class="col-9">
+                  <div class="form-group">
+                    <input class="form-control" type="number" placeholder="0" readonly>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<input type= "text"  id="secondName"  placeholder="apellido.." name="secondName" (change)= "getValuesSecondName($event)"
-required [(ngModel)]="cotizacion.apellido"/>
-<br><br>
+    <div class="col-6 pr-4 pl-4 pt-5 pb-5" style="border: 3px solid #6c757d;">
+      <div class="row">
+        <div class="col-12">
+          <div class="form-group">
+            <label for="material">Material</label>
+            <select id="material" name= "material" class="form-control" (change)="selectChangeHandler($event)" required [(ngModel)]="cotizacion.material" >
+              <option  value="PLA">PLA</option>
+              <option  value="ABS">ABS</option>
+              <option  value="PetG">PetG</option>
+              <option  value="PLA Wood">PLA Wood</option>
+              <option  value="PLA Flexible">PLA Flexible</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="color">Color</label>
+            <select id="color" name= "color" class="form-control" (change)="selectColorHandler($event)" required [(ngModel)]="cotizacion.color">
+              <option  value="Rojo">Rojo</option>
+              <option  value="Verde">Verde</option>
+              <option  value="Morado">Morado</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="calidad">Calidad (Altura de Capa)</label>
+            <select class="form-control">
+              <option  value="Baja">Baja (0.3)</option>
+              <option  value="Normal">Normal (0.2)</option>
+              <option  value="Alta">Alta (0.15)</option>
+              <option  value="Ultra">Ultra (0.05)</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="relleno">Porcentaje de Relleno</label>
+            <input class="form-control" type="text" placeholder="20% (Recomendado)">
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="cantidad">Cantidad</label>
+            <input class="form-control" type="number" placeholder="1">
+          </div>
+        </div>
+        <div class="col-12">
+          <!-- Trigger the modal with a button -->
+          <button type="button" class="btn btn-primary btn-lg" style="width: 100%" data-toggle="modal" data-target="#myModal">Precio aproximado</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <br><br><br><br>
+
+  <input type= "text"  id="name"  placeholder="nombre.." name="name" (change)= "getValues($event)"
+  required [(ngModel)]="cotizacion.nombre"
+  />
+
+  <br><br>
+
+  <input type= "text"  id="secondName"  placeholder="apellido.." name="secondName" (change)= "getValuesSecondName($event)"
+  required [(ngModel)]="cotizacion.apellido"/>
+  <br><br>
 
 
-<input type= "text"  id="mail" placeholder="mail.." name="mail" (change)= "getValueMail($event)"
-required [(ngModel)]="cotizacion.mail"/>
+  <input type= "text"  id="mail" placeholder="mail.." name="mail" (change)= "getValueMail($event)"
+  required [(ngModel)]="cotizacion.mail"/>
 
-<br><br>
+  <br><br>
 
-<select id="material"  name= "material"(change)="selectChangeHandler($event)" required [(ngModel)]="cotizacion.material" >
-  <option  value="Material1">Material1</option>
-  <option  value="Material2">Material2</option>
-  <option  value="Material3">Material3</option>
-</select>
+  <!-- <p><span>You selected: </span><b>{{selectedMaterial}}</b></p>
+  <br>
 
-<p><span>You selected: </span><b>{{selectedMaterial}}</b></p>
+  <p><span>You selected: </span><b>{{selectedColor}}</b></p>
+  <br><br> -->
+</div>
 
-<br>
 
-<select id="color"  name= "color" (change)="selectColorHandler($event)" required [(ngModel)]="cotizacion.color">
-  <option  value="Rojo">Rojo</option>
-  <option  value="Verde">Verde</option>
-  <option  value="Morado">Morado</option>
-</select>
-
-<p><span>You selected: </span><b>{{selectedColor}}</b></p>
-
-<br><br>
 
 <!---
    <div class="dropdown show">
     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Material
     </a>
-  
+
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
       <a class="dropdown-item" href="#">Material 1</a>
       <a class="dropdown-item" href="#">Material 2</a>
@@ -69,7 +178,7 @@ required [(ngModel)]="cotizacion.mail"/>
     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Color
     </a>
-  
+
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
       <a class="dropdown-item" href="#">Blanco</a>
       <a class="dropdown-item" href="#">Verde</a>
@@ -99,8 +208,6 @@ required [(ngModel)]="cotizacion.mail"/>
   </div>
 -->
 
-<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Precio aproximado</button>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -119,7 +226,7 @@ required [(ngModel)]="cotizacion.mail"/>
         <p>Mail: {{userMail}}</p>
       </div>
       <div>
-        <h3>El precio estimado es de 500 <span id= "priceFile" ></span> </h3>   
+        <h3>El precio estimado es de 500 <span id= "priceFile" ></span> </h3>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -136,7 +243,7 @@ required [(ngModel)]="cotizacion.mail"/>
 
 
 <router-outlet> </router-outlet>
-  
+
 <!-- Modal -->
 <div id="myModal2" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -148,7 +255,7 @@ required [(ngModel)]="cotizacion.mail"/>
       </div>
       <div class="modal-body">
         <p>Gracias por confiar en nosotros</p>
-        <p>Id de seguimiento: {{id}}  </p>
+        <p>Id de seguimiento: {{id}}</p>
       </div>
 
       <div class="modal-footer">
@@ -166,7 +273,6 @@ required [(ngModel)]="cotizacion.mail"/>
 
 <style>
    #priceFile{
-      color:darkred 
-   } 
+      color:darkred
+   }
 </style>
-
