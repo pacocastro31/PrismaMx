@@ -1,7 +1,5 @@
-  <ul class="list-group">
-    <li *ngFor="let pedido of pedidos">
+  <div class="card-body">
+    <div class="card mb-4" *ngFor="let pedido of pedidos">
         <app-pedido-fila [pedido] = "pedido"></app-pedido-fila>
-    </li>
-  </ul>
-
- 
+    </div>
+  </div>

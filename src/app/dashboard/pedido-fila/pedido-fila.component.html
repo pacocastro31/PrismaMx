@@ -1,41 +1,100 @@
-<div class="card-body text-center">
-    <div class="list-group" >
-          <ul class="list-group list-group-horizontal justify-content-center">
+<div class="card-header bg-secondary">
+  <div class="row text-white p-2 header-pedido align-items-center">
+    <div class="col-11">
+      <div class="row">
+        <div class=col-2>
+          <h6>Pedido:</h6>
+          <span>{{pedido.id}}</span>
+        </div>
+        <div class=col-2>
+          <h6>Fecha:</h6>
+          <span>{{pedido.fecha}}</span>
+        </div>
+        <div class=col-2>
+          <h6>Cliente:</h6>
+          <span>{{pedido.nombre}} {{pedido.apellido}}</span>
+        </div>
+        <div class=col-2>
+          <h6>Precio Estimado:</h6>
+          <span>${{pedido.precio}} MXN</span>
+        </div>
+        <div class=col-2>
+          <h6>Precio Real:</h6>
+          <input [(ngModel)] = "valorReal" type="email" (change)="changeRealValue()" class="form-control input-pedidos" id="exampleInputEmail1" aria-describedby="emailHelp" value="0">
+        </div>
+        <div class="col-2">
+          <h6>Estado:</h6>
+          <div class="input-group input-group-md input-pedidos">
+            <select id="material" [(ngModel)]= "status" (change)="changeStatus()">
+              <option value = "pendiente">Cotizando</option>
+              <option value = "espera">A espera de pago</option>
+              <option value = "revision">En revisión</option>
+              <option value = "produccion">En producción</option>
+              <option value = "listo">Listo</option>
+              <option value = "entregado">Entregado</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-1 text-center">
+      <button type="button" class="btn btn-default text-white"><i class="fas fa-angle-up"></i></button>
+    </div>
+  </div>
+</div>
 
-              <li class="list-group-item background-gray col-md-2">
-                  <h6>Pedido</h6>
-                  <h5>{{pedido.id}}</h5>
-              </li>
-              <li class="list-group-item background-gray col-md-2">
-                  <h6>Fecha</h6>
-                  <h5>{{pedido.fecha}}</h5>
-              </li>
-              <li class="list-group-item background-gray col-md-2">
-                  <h6>Cliente</h6>
-                  <h5> {{pedido.nombre}} {{pedido.apellido}}</h5>
-              </li>
-              <li class="list-group-item background-gray col-md-2">
-                  <h6>Precio Estimado</h6>
-                  <h5>${{pedido.precio}} MXN</h5>
-              </li>
-              <li class="list-group-item background-gray col-md-2">
-                  <h6>Precio Real</h6>
-                  <input [(ngModel)] = "valorReal" type="email" (change)="changeRealValue()" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="0">
-              </li>
-              <li class="list-group-item background-gray col-md-2">
-                  <h6>Estado</h6>
-                  <div class="input-group input-group-md">
-                      <select id="material" [(ngModel)]= "status" (change)="changeStatus()">
-                          <option value = "pendiente"> Cotizando</option>
-                          <option value = "espera">A espera de pago</option>
-                          <option value = "revision">En revisión</option>
-                          <option value = "produccion">En producción</option>
-                          <option value = "listo">Listo</option>
-                          <option value = "entregado">Entregado</option>
-                      </select>
-                    </div>
-              </li>
-          </ul>
-      
-    </div>      
+<div class="card-body">
+  <div class="row">
+    <div class="col-4">
+      <div class="form-group bg-secondary imagen-modelo" style="background-image:'';">
+        <!-- Aquí debe aparecer la imagen del modelo una vez que se suba en el inputFile de abajo -->
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFile">Subir Imagen de Modelo</label>
+        <input type="file" id="exampleInputFile">
+      </div>
+      <div class="form-group">
+        <label for="dimensiones">Dimensiones</label>
+        <input class="form-control" type="number" placeholder="Dimensiones especificadas" readonly>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <label for="archivo">Archivo</label>
+        <input class="form-control" type="number" placeholder="Nombre de archivo" readonly>
+      </div>
+      <div class="form-group">
+        <label for="material">Material</label>
+        <input class="form-control" type="number" placeholder="Material seleccionado" readonly>
+      </div>
+      <div class="form-group">
+        <label for="calidad">Calidad</label>
+        <input class="form-control" type="number" placeholder="Calidad seleccionada" readonly>
+      </div>
+      <button type="button" class="btn btn-info mt-2 descarga">Descargar Modelo</button>
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <label for="color">Color</label>
+        <input class="form-control" type="number" placeholder="Color seleccionado" readonly>
+      </div>
+      <div class="form-group">
+        <label for="relleno">Porcentaje de Relleno</label>
+        <input class="form-control" type="number" placeholder="Relleno especificado" readonly>
+      </div>
+      <div class="form-group">
+        <label for="cantidad">Cantidad</label>
+        <input class="form-control" type="number" placeholder="Cantidad seleccionada" readonly>
+      </div>
+      <button type="button" class="btn btn-info descarga mt-2">Descargar Recibo de Pago</button>
+    </div>
+  </div>
+</div>
+
+<div class="card-footer">
+  <div class="row justify-content-end">
+    <div class="col-4">
+      <button type="button" class="btn btn-primary">Actualizar</button>
+    </div>
+  </div>
 </div>

@@ -1,14 +1,19 @@
-<br><h2>Editor de Contenido</h2>
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <a class="navbar-brand" [routerLink]="['/admin']">ADMIN</a>
-  <a class="nav-link" role="button">Información General</a>
-  <a class="nav-link" role="button">Home Banner Slider</a>
-  <a class="nav-link" role="button">Servicios Parte 1</a>
-</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>Editor de Contenido</h1>
+    </div>
+  </div>
 
-<app-edit-contact-info name="infoGeneral"></app-edit-contact-info>
-<div class="navbar navbar-expand-md bg-dark navbar-dark"></div>
-<app-home-banner-slider></app-home-banner-slider>
-<div class="navbar navbar-expand-md bg-dark navbar-dark"></div>
-<app-servicios-parte1></app-servicios-parte1>
-<div class="navbar navbar-expand-md bg-dark navbar-dark"></div>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark mt-4">
+    <a class="navbar-brand" [routerLink]="['/admin']">ADMIN</a>
+    <a href="/admin#infoGeneral" class="nav-link" role="button">Información General</a>
+    <a href="/admin#homeBanners" class="nav-link" role="button">Home Banner Slider</a>
+    <a href="/admin#homeServicios" class="nav-link" role="button">Servicios</a>
+  </nav>
+
+
+  <app-edit-contact-info id="infoGeneral"></app-edit-contact-info>
+  <app-home-banner-slider id="homeBanners"></app-home-banner-slider>
+  <app-servicios-parte1 id="homeServicios"></app-servicios-parte1>
+</div>

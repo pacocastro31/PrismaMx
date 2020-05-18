@@ -1,47 +1,69 @@
-<br>
-<br>
-<div class="card text-center">
-    <div class="card-header">
-      Datos Generales
+<div class="container">
+
+  <div class="row mb-4">
+    <div class="col-12">
+      <h1>Dashboard de Resumen</h1>
     </div>
+  </div>
+
+  <div class="card mb-5">
+    <div class="card-header">
+      <h3>Datos Generales</h3>
+    </div>
+
     <div class="card-body">
-      <h5 class="card-title text-left">Datos de la Semana</h5>
-      <div class="dropdown text-left">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          4 Mayo 20
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">27 Abril 20</a>
-          <a class="dropdown-item" href="#">20 Abril 20</a>
-          <a class="dropdown-item" href="#">13 Abril 20</a>
+      <div class="row">
+        <div class="col-2">
+          <p class="card-title text-left">Datos de</p>
+        </div>
+        <div class="col-2">
+          <div class="form-group">
+            <select class="form-control filtro">
+              <option value="Semana">Semana</option>
+              <option value="Mes">Mes</option>
+              <option value="Anio">Año</option>
+            </select>
+          </div>
         </div>
       </div>
-      <br>
-
-        <div class="list-group">
-            <ul class="list-group list-group-horizontal ">
-                <li class="list-group-item col-md-4 background-orange">
-                    <h5>Pedidos Realizados</h5>
-                    <h3>123</h3>
-                </li>
-                <li class="list-group-item col-md-4 background-blue">
-                    <h5>Pedidos Pagados</h5>
-                    <h3>123</h3>
-                </li>
-                <li class="list-group-item col-md-4 background-green">
-                    <h5>Ingresos</h5>
-                    <h3>123</h3>
-                </li>
-            </ul>
+      <div class="row text-center">
+        <div class="col-4">
+          <div class="card background-orange">
+            <div class="card-body">
+              <h5>Pedidos Realizados</h5>
+              <h3>123</h3>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
+        <div class="col-4">
+          <div class="card background-blue">
+            <div class="card-body">
+              <h5>Pedidos Pagados</h5>
+              <h3>123</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card background-green">
+            <div class="card-body">
+              <h5>Ingresos</h5>
+              <h3>123</h3>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<br>
-<div class="card text-center">
+    </div>
+  </div>
+
+  <div class="card mb-5">
     <div class="card-header">
-       Pedidos Activos
+     <h3>Pedidos Activos</h3>
     </div>
     <app-pedido></app-pedido>
+  </div>
+
 </div>
-<br> 
+
+
+<br>

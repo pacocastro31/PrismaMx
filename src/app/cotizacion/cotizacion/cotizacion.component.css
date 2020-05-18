@@ -1,0 +1,25 @@
+.eje {
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+.btn.btn-primary {
+  height: 55px !important;
+  width: 100% !important;
+  font-weight: bold;
+}
+
+.aprox {
+  font-weight: bold;
+}
+
+#priceFile {
+  background-color: green;
+  color: white;
+  font-weight: bold;
+}
+
+.btn.btn-info {
+  height: 55px !important;
+  width: 100% !important;
+}
