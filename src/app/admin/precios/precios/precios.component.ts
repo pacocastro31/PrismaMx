@@ -41,7 +41,6 @@ export class PreciosComponent implements OnInit {
         )
     ).subscribe(Cinfo => {
       this.info = Cinfo;
-      console.log(this.info)
       this.setInfo()
     });
   }
