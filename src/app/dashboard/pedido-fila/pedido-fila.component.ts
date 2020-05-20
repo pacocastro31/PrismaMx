@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { cotizacion } from 'src/app/cotizacion/cotizacion';
-import { CotizacionService } from '../../cotizacion/cotizacion.service'
+import { CotizacionService } from '../../cotizacion/cotizacion.service';
 
 @Component({
   selector: 'app-pedido-fila',
@@ -11,7 +11,8 @@ export class PedidoFilaComponent implements OnInit {
 
   constructor(private cotizacionService: CotizacionService) { }
 
-  @Input() pedido: cotizacion
+  @Input() pedido: cotizacion;
+  @Input() index: any;
   
   status: any;
   valorReal: any;
@@ -19,6 +20,7 @@ export class PedidoFilaComponent implements OnInit {
   ngOnInit(): void {
     this.status = this.pedido.status;
     this.valorReal = this.pedido.precioReal
+    console.log(this.pedido)
   }
 
   changeRealValue(){

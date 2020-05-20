@@ -38,12 +38,13 @@
       </div>
     </div>
     <div class="col-1 text-center">
-      <button type="button" class="btn btn-default text-white"><i class="fas fa-angle-up"></i></button>
-      <button type="button" class="btn btn-default text-white" style="display: none;"><i class="fas fa-angle-down"></i></button>
+      <button #buttonCollapse type="button" class="btn btn-default text-white" data-toggle="collapse" [attr.data-target]="'#a' + index" ><i class="fas fa-angle-up"></i></button>
+      <button #buttonCollapse1 type="button" class="btn btn-default text-white" data-toggle="collapse" [attr.data-target]="'#a' + index" style="display: none;"><i class="fas fa-angle-down"></i></button>
     </div>
   </div>
 </div>
 
+<div class="collapse" [attr.id]="'a' + index">
 <div class="card-body">
   <div class="row">
     <div class="col-4">
@@ -66,7 +67,7 @@
       </div>
       <div class="form-group">
         <label for="material">Material</label>
-        <input class="form-control" type="number" placeholder="Material seleccionado" readonly>
+        <input class="form-control" type="text"  readonly required [(ngModel)]="pedido.material">
       </div>
       <div class="form-group">
         <label for="calidad">Calidad</label>
@@ -77,7 +78,7 @@
     <div class="col-4">
       <div class="form-group">
         <label for="color">Color</label>
-        <input class="form-control" type="number" placeholder="Color seleccionado" readonly>
+        <input class="form-control" type="text"  readonly required [(ngModel)]="pedido.color">
       </div>
       <div class="form-group">
         <label for="relleno">Porcentaje de Relleno</label>
@@ -98,4 +99,5 @@
       <button type="button" class="btn btn-primary">Actualizar</button>
     </div>
   </div>
+</div>
 </div>
