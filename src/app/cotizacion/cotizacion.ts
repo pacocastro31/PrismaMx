@@ -1,7 +1,6 @@
 export class cotizacion {
     key: string;   
 	nombre: string;
-    apellido: string;
     color: string;
     material: string;
     mail: string;
