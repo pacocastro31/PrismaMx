@@ -7,7 +7,7 @@
 }
 
 .imagen-modelo {
-  height: 195px;
+  max-height: auto;
 }
 
 .btn {
