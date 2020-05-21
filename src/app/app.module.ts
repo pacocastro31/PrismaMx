@@ -5,6 +5,7 @@ import { FormsModule } from "@angular/forms";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { environment } from "../environments/environment";
+import { OwlModule } from 'ngx-owl-carousel';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -75,10 +76,10 @@ import { PedidoFilaComponent } from './dashboard/pedido-fila/pedido-fila.compone
 		RouterModule.forRoot([]),
 		InPlaceEditorModule,
 		TextBoxModule,
+ 		OwlModule
 
 
 
-	
 
 	],
 	providers: [],
