@@ -35,6 +35,7 @@ import { ServiciosParte1DetailComponent } from './admin/serviciosParte1/servicio
 import { PedidoComponent } from './dashboard/pedido/pedido.component';
 import { LoginComponent } from './login/login.component';
 import { PedidoFilaComponent } from './dashboard/pedido-fila/pedido-fila.component';
+import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
 
 
 
@@ -65,6 +66,7 @@ import { PedidoFilaComponent } from './dashboard/pedido-fila/pedido-fila.compone
 		ServiciosParte1DetailComponent,
 		PedidoComponent,
 		PedidoFilaComponent,
+		NavbarAdminComponent,
 	],
 	imports: [
 		BrowserModule,
