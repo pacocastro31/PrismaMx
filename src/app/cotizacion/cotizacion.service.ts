@@ -23,7 +23,11 @@ export class CotizacionService {
     this.cotizacionesInfoRef.push(info);
     console.log("Se guardo")
   }
-  
+
+  //getPedido(id: string) {
+    //return this.cotizacionesInfoRef.doc(id).snapshotChanges();
+  //}
+
   getPedidos(): AngularFireList<cotizacion> {
     return this.cotizacionesInfoRef;
   }
