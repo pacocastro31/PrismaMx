@@ -6,6 +6,9 @@ import { SliderService } from '../admin/home-slider/slider.service';
 import { ServicioParte1 } from '../admin/serviciosParte1/serviciosParte1';
 import { ServiciosParte1Service } from '../admin/serviciosParte1/servicios-parte1.service';
 
+import { Prices } from '../admin/precios/precios';
+import { PreciosService } from '../admin/precios/precios.service';
+
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -45,14 +48,16 @@ export class HomeComponent implements OnInit {
     navText: ['<span class="icon-keyboard_arrow_left">', '<span class="icon-keyboard_arrow_right">']
   };
 
+  info: any;
   sliders: any
   servicios: any
 
-  constructor(private sliderService: SliderService, private servicio1Service: ServiciosParte1Service) { }
+  constructor(private sliderService: SliderService, private servicio1Service: ServiciosParte1Service, private priceServices: PreciosService) { }
 
   ngOnInit(): void {
     this.getInfoSliders();
     this.getInfoServicios();
+    this.getInfoPrices();
   }
 
   getInfoSliders(){
@@ -76,6 +81,18 @@ export class HomeComponent implements OnInit {
         )
     ).subscribe(Cinfo => {
       this.servicios = Cinfo;
+    });
+  }
+
+  getInfoPrices(){
+    this.priceServices.getPrices().snapshotChanges().pipe(
+      map(changes=>
+        changes.map(c =>
+            ({key: c.payload.key, ...c.payload.val() })
+          )
+        )
+    ).subscribe(Cinfo => {
+      this.info = Cinfo;
     });
   }
 
