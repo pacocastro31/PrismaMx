@@ -81,6 +81,10 @@
     </form>
   </div>
 
+  <div [hidden]="!submitted">
+    <h4>Se guardo la información</h4>
+    <button class="btn btn-primary" (click)="availForm()">Regresar</button>
+  </div>
 </div>
 
 <div [hidden]="!submitted">
