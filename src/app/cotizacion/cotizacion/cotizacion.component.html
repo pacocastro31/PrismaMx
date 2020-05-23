@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <div class="container">
 
   <div class="row mt-5 mb-3">
@@ -10,17 +12,7 @@
 
     <div class="col-6 pr-5">
       <div class="row">
-        <div class="visualizador col-12 bg-secondary mb-4" style="height: 550px;">
-          <div class="form-group">
-            <input type="file"
-              id="file"
-              #userPhoto
-              (change)="onFileSelected($event)"
-              (change)="upLoadInfo($event)"
-              name="image"
-              autocomplete="off"
-            />
-          </div>
+        <div class="visualizador col-12 bg-secondary mb-3" style="height: 470px;">
         </div>
         <!-- <div class="col-12">
           <div class="form-group">
@@ -34,6 +26,18 @@
             />
           </div>
         </div> -->
+        <div class="col-12 mb-3">
+          <div class="form-group">
+            <input type="file"
+              id="file"
+              #userPhoto
+              (change)="onFileSelected($event)"
+              (change)="upLoadInfo($event)"
+              name="image"
+              autocomplete="off"
+            />
+          </div>
+        </div>
         <div class="col-12 mb-2">
           <h4>Medidas por Eje (cm)</h4>
         </div>
@@ -80,56 +84,63 @@
       </div>
     </div>
 
-    <div class="col-6 pr-4 pl-4 pt-5 pb-5" style="border: 3px solid #6c757d;">
-      <div class="row">
-        <div class="col-12">
-          <div class="form-group">
-            <label for="material">Material</label>
-            <select id="material" name= "material" class="form-control" (change)="selectChangeHandler($event)" required [(ngModel)]="cotizacion.material" >
-              <option  value="PLA">PLA</option>
-              <option  value="ABS">ABS</option>
-              <option  value="PetG">PetG</option>
-              <option  value="PLA Wood">PLA Wood</option>
-              <option  value="PLA Flexible">PLA Flexible</option>
-            </select>
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <label for="material">Material</label>
+                <select id="material" name= "material" class="form-control" (change)="selectChangeHandler($event)" required [(ngModel)]="cotizacion.material" >
+                  <option  value="PLA">PLA</option>
+                  <option  value="ABS">ABS</option>
+                  <option  value="PetG">PetG</option>
+                  <option  value="PLA Wood">PLA Wood</option>
+                  <option  value="PLA Flexible">PLA Flexible</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label for="color">Color</label>
+                <select id="color" name= "color" class="form-control" (change)="selectColorHandler($event)" required [(ngModel)]="cotizacion.color">
+                  <option  value="Rojo">Rojo</option>
+                  <option  value="Verde">Verde</option>
+                  <option  value="Morado">Morado</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label for="calidad">Calidad (Altura de Capa)</label>
+                <select class="form-control">
+                  <option  value="Baja">Baja (0.3)</option>
+                  <option  value="Normal">Normal (0.2)</option>
+                  <option  value="Alta">Alta (0.15)</option>
+                  <option  value="Ultra">Ultra (0.05)</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label for="relleno">Porcentaje de Relleno</label>
+                <input class="form-control" type="number" placeholder="20 (Recomendado)">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label for="cantidad">Cantidad</label>
+                <input class="form-control" type="number" placeholder="1">
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-12">
-          <div class="form-group">
-            <label for="color">Color</label>
-            <select id="color" name= "color" class="form-control" (change)="selectColorHandler($event)" required [(ngModel)]="cotizacion.color">
-              <option  value="Rojo">Rojo</option>
-              <option  value="Verde">Verde</option>
-              <option  value="Morado">Morado</option>
-            </select>
+
+        <div class="card-footer">
+          <div class="col-12">
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Precio aproximado</button>
           </div>
-        </div>
-        <div class="col-12">
-          <div class="form-group">
-            <label for="calidad">Calidad (Altura de Capa)</label>
-            <select class="form-control">
-              <option  value="Baja">Baja (0.3)</option>
-              <option  value="Normal">Normal (0.2)</option>
-              <option  value="Alta">Alta (0.15)</option>
-              <option  value="Ultra">Ultra (0.05)</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="form-group">
-            <label for="relleno">Porcentaje de Relleno</label>
-            <input class="form-control" type="number" placeholder="20% (Recomendado)">
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="form-group">
-            <label for="cantidad">Cantidad</label>
-            <input class="form-control" type="number" placeholder="1">
-          </div>
-        </div>
-        <div class="col-12 mt-3">
-          <!-- Trigger the modal with a button -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Precio aproximado</button>
         </div>
       </div>
     </div>
@@ -138,6 +149,7 @@
 
   <br><br><br><br>
 
+  <!---
   <input type= "text"  id="name"  placeholder="nombre.." name="name" (change)= "getValues($event)"
   required [(ngModel)]="cotizacion.nombre"
   />
@@ -151,7 +163,7 @@
 
   <input type= "text"  id="mail" placeholder="mail.." name="mail" (change)= "getValueMail($event)"
   required [(ngModel)]="cotizacion.mail"/>
-
+  -->
   <br><br>
 
   <!-- <p><span>You selected: </span><b>{{selectedMaterial}}</b></p>
@@ -271,13 +283,14 @@
           <div class="col-6">
             <div class="form-group">
               <label for="nombre">Nombre Completo</label>
-              <input class="form-control" type="text" placeholder="{{userName}} {{userSecondName}}" readonly>
+              <input class="form-control" id="name" name="name" type="text" placeholder="{{userName}}" required [(ngModel)]="cotizacion.nombre">              
+              />
             </div>
           </div>
           <div class="col-6">
             <div class="form-group">
               <label for="nombre">Correo Electrónico</label>
-              <input class="form-control" type="text" placeholder="{{userMail}}" readonly>
+              <input class="form-control" id="mail" type="text" placeholder="{{userMail}}" required [(ngModel)]="cotizacion.mail">
             </div>
           </div>
         </div>
@@ -288,8 +301,8 @@
             <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
           </div>
           <div class="col-6">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2"
-            (click)="saveValues()">Cotizar</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal"  data-dismiss="modal"
+            (click)="saveValues()">Cotizar </button>
           </div>
         </div>
       </div>

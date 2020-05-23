@@ -1,7 +1,6 @@
 export class cotizacion {
     key: string;   
 	nombre: string;
-    apellido: string;
     color: string;
     material: string;
     mail: string;
@@ -10,4 +9,6 @@ export class cotizacion {
     id:string;
     precioReal:string;
     fecha:string;
+    tieneImagen: boolean;
+    urlImagenPedido: string;
 }

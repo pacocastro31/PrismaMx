@@ -1,52 +1,53 @@
-<div class="row mt-5 mb-3">
-  <div class="col-12">
+<div class="home-servicios card mb-5">
+
+  <div class="card-header">
     <h3>Servicios Parte 1</h3>
   </div>
-</div>
 
-<div class="home-servicios">
-
-  <form>
-    <div class="row bg-secondary no-gutters pt-4 pr-5 pb-4 pl-5">
-      <div class="col-lg-5">
-        <div class="row pr-4">
-          <div class="col-lg-12">
-            <div class="form-group">
-              <label for="fondo">Imagen</label>
-              <input type="file" class="form-control" name="fondo" value="Subir Imagen" (change)="saveImage($event)">
+  <div class="card-header bg-secondary">
+    <form>
+      <div class="row text-white p-2">
+        <div class="col-lg-5">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label for="fondo">Imagen</label>
+                <input type="file" class="form-control" name="fondo" value="Subir Imagen" (change)="saveImage($event)">
+              </div>
             </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="form-group">
-              <label for="titulo">Título</label>
-              <input type="text" class="form-control" name="titulo" required [(ngModel)]="servicioParte1.title">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label for="titulo">Título</label>
+                <input type="text" class="form-control" name="titulo" required [(ngModel)]="servicioParte1.title">
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-5">
-        <div class="row pr-4">
-          <div class="col-lg-12">
-            <div class="form-group">
-              <label for="desc">Descripción</label>
-              <input type="text" class="form-control" name="desc" required [(ngModel)]="servicioParte1.description">
+        <div class="col-lg-5">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label for="desc">Descripción</label>
+                <input type="text" class="form-control" name="desc" required [(ngModel)]="servicioParte1.description">
+              </div>
             </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="form-group">
-              <label for="lista">Lista</label>
-              <input type="text" class="form-control" name="lista" required [(ngModel)]="servicioParte1.list">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label for="lista">Lista</label>
+                <input type="text" class="form-control" name="lista" required [(ngModel)]="servicioParte1.list">
+              </div>
             </div>
           </div>
         </div>
+        <div class="col-lg-2 add-service">
+          <button type="submit" class="btn btn-primary" (click)="onSubmit()">Agregar</button>
+        </div>
       </div>
-      <div class="col-lg-2 add-service">
-        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Agregar</button>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 
-  <div class="p-5" style="border: 3px solid #6c757d;">
+  <div class="card-body">
     <app-servicios-parte1-list></app-servicios-parte1-list>
   </div>
+
 </div>

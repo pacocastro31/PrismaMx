@@ -12,7 +12,7 @@
         </div>
         <div class=col-2>
           <h6>Cliente:</h6>
-          <span>{{pedido.nombre}} {{pedido.apellido}}</span>
+          <span>{{pedido.nombre}}</span>
         </div>
         <div class=col-2>
           <h6>Precio Estimado:</h6>
@@ -20,12 +20,12 @@
         </div>
         <div class=col-2>
           <h6>Precio Real:</h6>
-          <input [(ngModel)] = "valorReal" type="email" (change)="changeRealValue()" class="form-control input-pedidos" id="exampleInputEmail1" aria-describedby="emailHelp" value="0">
+          <input [(ngModel)] = "valorReal" type="email"  class="form-control input-pedidos" id="exampleInputEmail1" aria-describedby="emailHelp" value="0">
         </div>
         <div class="col-2">
           <h6>Estado:</h6>
           <div class="input-group input-group-md input-pedidos">
-            <select id="material" [(ngModel)]= "status" (change)="changeStatus()">
+            <select id="material" [(ngModel)]= "status" >
               <option value = "pendiente">Cotizando</option>
               <option value = "espera">A espera de pago</option>
               <option value = "revision">En revisión</option>
@@ -38,20 +38,27 @@
       </div>
     </div>
     <div class="col-1 text-center">
-      <button type="button" class="btn btn-default text-white"><i class="fas fa-angle-up"></i></button>
+      <button #buttonCollapse type="button" class="btn btn-default text-white" data-toggle="collapse" [attr.data-target]="'#a' + index" ><i class="fas fa-angle-up"></i></button>
+      <button #buttonCollapse1 type="button" class="btn btn-default text-white" data-toggle="collapse" [attr.data-target]="'#a' + index" style="display: none;"><i class="fas fa-angle-down"></i></button>
     </div>
   </div>
 </div>
 
+<div class="collapse" [attr.id]="'a' + index">
 <div class="card-body">
   <div class="row">
     <div class="col-4">
-      <div class="form-group bg-secondary imagen-modelo" style="background-image:'';">
-        <!-- Aquí debe aparecer la imagen del modelo una vez que se suba en el inputFile de abajo -->
+      <div class="form-group bg-secondary imagen-modelo"  alt="Responsive image" style="background-image:'';">
+        <div *ngIf="tieneImagen">
+          <span><img class="img-fluid" [src]='img'></span>
+        </div>
       </div>
       <div class="form-group">
         <label for="exampleInputFile">Subir Imagen de Modelo</label>
-        <input type="file" id="exampleInputFile">
+        <input type="file" #modelPhoto 
+        (change)="changeFile($event)"
+        name="image"
+        autocomplete="off">
       </div>
       <div class="form-group">
         <label for="dimensiones">Dimensiones</label>
@@ -65,7 +72,7 @@
       </div>
       <div class="form-group">
         <label for="material">Material</label>
-        <input class="form-control" type="number" placeholder="Material seleccionado" readonly>
+        <input class="form-control" type="text"  readonly required [(ngModel)]="pedido.material">
       </div>
       <div class="form-group">
         <label for="calidad">Calidad</label>
@@ -76,7 +83,7 @@
     <div class="col-4">
       <div class="form-group">
         <label for="color">Color</label>
-        <input class="form-control" type="number" placeholder="Color seleccionado" readonly>
+        <input class="form-control" type="text"  readonly required [(ngModel)]="pedido.color">
       </div>
       <div class="form-group">
         <label for="relleno">Porcentaje de Relleno</label>
@@ -94,7 +101,8 @@
 <div class="card-footer">
   <div class="row justify-content-end">
     <div class="col-4">
-      <button type="button" class="btn btn-primary">Actualizar</button>
+      <button (click)="updateInfo()" class="btn btn-primary">Actualizar</button>
     </div>
   </div>
+</div>
 </div>

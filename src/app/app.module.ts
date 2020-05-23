@@ -5,6 +5,7 @@ import { FormsModule } from "@angular/forms";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { environment } from "../environments/environment";
+import { OwlModule } from 'ngx-owl-carousel';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -34,6 +35,7 @@ import { ServiciosParte1DetailComponent } from './admin/serviciosParte1/servicio
 import { PedidoComponent } from './dashboard/pedido/pedido.component';
 import { LoginComponent } from './login/login.component';
 import { PedidoFilaComponent } from './dashboard/pedido-fila/pedido-fila.component';
+import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
 import { PreciosComponent } from './admin/precios/precios/precios.component';
 import { FaqsComponent } from './admin/faqs/faqs/faqs.component';
 import { FaqsDetailComponent } from './admin/faqs/faqs-detail/faqs-detail.component';
@@ -67,6 +69,7 @@ import { FaqsListComponent } from './admin/faqs/faqs-list/faqs-list.component';
 		ServiciosParte1DetailComponent,
 		PedidoComponent,
 		PedidoFilaComponent,
+		NavbarAdminComponent,
 		PreciosComponent,
 		FaqsComponent,
 		FaqsDetailComponent,
@@ -81,10 +84,10 @@ import { FaqsListComponent } from './admin/faqs/faqs-list/faqs-list.component';
 		RouterModule.forRoot([]),
 		InPlaceEditorModule,
 		TextBoxModule,
+ 		OwlModule
 
 
 
-	
 
 	],
 	providers: [],
