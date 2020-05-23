@@ -5,6 +5,7 @@ import { FormsModule } from "@angular/forms";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { environment } from "../environments/environment";
+import { OwlModule } from 'ngx-owl-carousel';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -83,10 +84,10 @@ import { FaqsListComponent } from './admin/faqs/faqs-list/faqs-list.component';
 		RouterModule.forRoot([]),
 		InPlaceEditorModule,
 		TextBoxModule,
+ 		OwlModule
 
 
 
-	
 
 	],
 	providers: [],
