@@ -5,7 +5,9 @@ import { map, finalize } from "rxjs/operators";
 import { Observable } from "rxjs";
 import{cotizacion} from "../cotizacion";
 import{CotizacionService} from "../cotizacion.service";
+import { element } from 'protractor';
 
+declare var $: any;
 @Component({
   selector: 'app-cotizacion',
   templateUrl: './cotizacion.component.html',
@@ -16,20 +18,30 @@ export class CotizacionComponent implements OnInit {
   selectedMaterial: string = "";
   selectedColor: string = "";
   userName: string = "";
-  userSecondName: string = "";
   userMail: string = "";
   fecha: string = "";
   id : string = "";
+  
   cotizacion: cotizacion = new cotizacion();
+
 
   getValues(event: any){
     this.userName = event.target.value;
   }
 
   saveValues(){
-    this.generateId();
-    this.generateDate();
-    this.cotizacionService.createCotizacion(this.cotizacion, this.id,this.fecha);
+    var name = (<HTMLInputElement>document.getElementById("name")).value;
+    var mail = (<HTMLInputElement>document.getElementById("mail")).value;
+
+    if(name != "" && mail != "") {
+      this.generateId();
+      this.generateDate();
+      this.cotizacionService.createCotizacion(this.cotizacion, this.id,this.fecha);
+      $("#myModal2").modal('show');      
+    }
+    else{
+      alert("Favor de llenar los campos de nombre y/o mail");
+    }
 
   }
   generateId(){
@@ -46,26 +58,20 @@ export class CotizacionComponent implements OnInit {
   generateDate(){
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var dateTime = date+' '+time;
+    var dateTime = date;
     console.log(dateTime);
     this.fecha = dateTime;
   
 
-  }
-  getValuesSecondName(event:any){
-    this.userSecondName = event.target.value;
-    
   }
 
   getValueMail(event:any){
     this.userMail = event.target.value;
   }
 
-  getConsoleValue(event:any){
-    console.log(this.userName , this.userSecondName)
+  getUserName(event : any){
+    this.userName = event.target.value;
   }
-
 
   selectChangeHandler (event: any){
     this.selectedMaterial = event.target.value;

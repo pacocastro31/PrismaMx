@@ -15,6 +15,36 @@ import { map } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
 
+  title = 'owl-carousel';
+
+  mySlideOptions = {
+    center: false,
+    items: 1,
+    loop: true,
+    stagePadding: 0,
+    margin: 0,
+    smartSpeed: 1500,
+    autoplay: true,
+    pauseOnHover: false,
+    dots: true,
+    nav: true,
+    navText: ['<span class="icon-keyboard_arrow_left">', '<span class="icon-keyboard_arrow_right">']
+  };
+
+  myCarouselOptions = {
+    center: false,
+    items: 1,
+    loop: true,
+    stagePadding: 0,
+    margin: 0,
+    smartSpeed: 1500,
+    autoplay: true,
+    pauseOnHover: false,
+    dots: true,
+    nav: true,
+    navText: ['<span class="icon-keyboard_arrow_left">', '<span class="icon-keyboard_arrow_right">']
+  };
+
   sliders: any
   servicios: any
 

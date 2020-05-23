@@ -1,29 +1,31 @@
 <div *ngIf="servicio1">
-  <div class="row">
-    <div class="col">
-      <div class="form-group">
-        <label for="fondo">Imagen</label><br>
-        <a href="{{servicio1.imagen}}" target="_blank"><img src="{{servicio1.imagen}}" class="imagen"></a>
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="fondo">Imagen</label><br>
+          <a href="{{servicio1.imagen}}" target="_blank"><img src="{{servicio1.imagen}}" class="imagen"></a>
+        </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="form-group">
-        <label for="titulo">Título</label>
-        <input class="form-control" type="text" placeholder="{{ servicio1.title }}" readonly>
+      <div class="col">
+        <div class="form-group">
+          <label for="titulo">Título</label>
+          <input class="form-control" type="text" placeholder="{{ servicio1.title }}" readonly>
+        </div>
+        <div class="form-group">
+          <label for="subtitulo">Descripción</label>
+          <input class="form-control" type="text" placeholder="{{ servicio1.description }}" readonly>
+        </div>
+        <div class="form-group">
+          <label for="cta">Lista</label>
+          <input class="form-control" type="text" placeholder="{{ servicio1.list }}" readonly>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="subtitulo">Descripción</label>
-        <input class="form-control" type="text" placeholder="{{ servicio1.description }}" readonly>
+      <div class="col-lg-1">
+        <button type="button" class="close" aria-label="Close" (click)='deleteServicio1()'>
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <div class="form-group">
-        <label for="cta">Lista</label>
-        <input class="form-control" type="text" placeholder="{{ servicio1.list }}" readonly>
-      </div>
-    </div>
-    <div class="col-lg-1">
-      <button type="button" class="close" aria-label="Close" (click)='deleteServicio1()'>
-        <span aria-hidden="true">&times;</span>
-      </button>
     </div>
   </div>
 </div>
