@@ -9,4 +9,6 @@ export class cotizacion {
     id:string;
     precioReal:string;
     fecha:string;
+    tieneImagen: boolean;
+    urlImagenPedido: string;
 }
