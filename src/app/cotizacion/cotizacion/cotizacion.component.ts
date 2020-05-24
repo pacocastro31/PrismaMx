@@ -17,10 +17,14 @@ export class CotizacionComponent implements OnInit {
 
   selectedMaterial: string = "";
   selectedColor: string = "";
+  selectedFill : string = "";
+  selectedQuality: string = "";
+  selectedQuantity: string = "";
   userName: string = "";
   userMail: string = "";
   fecha: string = "";
   id : string = "";
+
   
   cotizacion: cotizacion = new cotizacion();
 
@@ -31,17 +35,22 @@ export class CotizacionComponent implements OnInit {
 
   saveValues(){
     var name = (<HTMLInputElement>document.getElementById("name")).value;
-    var mail = (<HTMLInputElement>document.getElementById("mail")).value;
+    var mail = (<HTMLInputElement>document.getElementById("mail")).value; 
+   
+
 
     if(name != "" && mail != "") {
       this.generateId();
       this.generateDate();
       this.cotizacionService.createCotizacion(this.cotizacion, this.id,this.fecha);
+
       $("#myModal2").modal('show');      
     }
     else{
       alert("Favor de llenar los campos de nombre y/o mail");
     }
+
+
 
   }
   generateId(){
@@ -74,12 +83,46 @@ export class CotizacionComponent implements OnInit {
   }
 
   selectChangeHandler (event: any){
-    this.selectedMaterial = event.target.value;
+    var material = (<HTMLSelectElement>document.getElementById("materialLb")).value; 
+    if(material != ""){
+      this.selectedMaterial = event.target.value;
+    }
+    console.log(material);
+
   }
 
   selectColorHandler (event: any){
-    this.selectedColor = event.target.value;
+    var color = (<HTMLSelectElement>document.getElementById("colorLb")).value; 
+    if(color != ""){
+      this.selectedColor = event.target.value;
+    }
+    console.log(color);
   }
+
+  selectQualityHandler (event: any){
+    var calidad = (<HTMLSelectElement>document.getElementById("calidadLb")).value; 
+    if(calidad != ""){
+      this.selectedQuality = event.target.value;
+    }
+    console.log(calidad)
+  }
+
+  selectFillHandler(event: any){
+    var relleno = (<HTMLSelectElement>document.getElementById("rellenoLB")).value; 
+    if(relleno != ""){
+      this.selectedFill = event.target.value;
+    }
+    console.log(relleno);
+  }
+
+  selectQuantityHandler(event: any){
+    var cantidad = (<HTMLSelectElement>document.getElementById("cantidadLB")).value; 
+    if(cantidad != ""){
+      this.selectedQuantity = event.target.value;
+    }
+    console.log(cantidad);
+  }
+
 
   title = "cloudsSorage";
   selectedFile: File = null;
