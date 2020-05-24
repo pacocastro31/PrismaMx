@@ -38,8 +38,8 @@
       </div>
     </div>
     <div class="col-1 text-center">
-      <button #buttonCollapse type="button" class="btn btn-default text-white" data-toggle="collapse" [attr.data-target]="'#a' + index" ><i class="fas fa-angle-up"></i></button>
-      <button #buttonCollapse1 type="button" class="btn btn-default text-white" data-toggle="collapse" [attr.data-target]="'#a' + index" style="display: none;"><i class="fas fa-angle-down"></i></button>
+      <button [attr.id]="'btn-up' + index" #buttonCollapse type="button" class="btn btn-default text-white" data-toggle="collapse" [attr.data-target]="'#a' + index" style="display: none;" (click)="changeDown(index)"><i class="fas fa-angle-up"></i></button>
+      <button [attr.id]="'btn-down' + index" #buttonCollapse1 type="button" class="btn btn-default text-white" data-toggle="collapse" [attr.data-target]="'#a' + index" (click)="changeUp(index)"><i class="fas fa-angle-down"></i></button>
     </div>
   </div>
 </div>
@@ -55,7 +55,7 @@
       </div>
       <div class="form-group">
         <label for="exampleInputFile">Subir Imagen de Modelo</label>
-        <input type="file" #modelPhoto 
+        <input type="file" #modelPhoto
         (change)="changeFile($event)"
         name="image"
         autocomplete="off">
