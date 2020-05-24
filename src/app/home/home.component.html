@@ -66,62 +66,18 @@
     </div>
   </div>
 
-  <div class="site-section bg-dark">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="">
+  <div class="bg-dark" id="aboutus-section">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-12" data-aos="fade-right" data-aos-delay="">
+        <img class="aboutus-img" src="../assets/images/img_1.jpg" />
+      </div>
+      <div class="col-lg-6 col-md-6 col-12" data-aos="fade-up" data-aos-delay="">
+        <div class="p-5 text-white">
           <div class="block__35630">
-            <div class="icon mb-3">
-              <span class="flaticon-mining"></span>
-            </div>
-            <h3 class="mb-3">Surface Mining</h3>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolores voluptas obcaecati quo consequuntur mollitia facilis.
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="block__35630">
-            <div class="icon mb-3">
-              <span class="flaticon-gold-ingots"></span>
-            </div>
-            <h3 class="mb-3">Gold Nuggets</h3>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolores voluptas obcaecati quo consequuntur mollitia facilis.
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="block__35630">
-            <div class="icon mb-3">
-              <span class="flaticon-wagon"></span>
-            </div>
-            <h3 class="mb-3">Soil Carrier</h3>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolores voluptas obcaecati quo consequuntur mollitia facilis.
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="">
-          <div class="block__35630">
-            <div class="icon mb-3">
-              <span class="flaticon-refinery"></span>
-            </div>
-            <h3 class="mb-3">Gold Refinery</h3>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolores voluptas obcaecati quo consequuntur mollitia facilis.
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="block__35630">
-            <div class="icon mb-3">
-              <span class="flaticon-blacksmith"></span>
-            </div>
-            <h3 class="mb-3">Anvil Blacksmith</h3>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolores voluptas obcaecati quo consequuntur mollitia facilis.
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="block__35630">
-            <div class="icon mb-3">
-              <span class="flaticon-crucible"></span>
-            </div>
-            <h3 class="mb-3">Gold Melt Crucible</h3>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolores voluptas obcaecati quo consequuntur mollitia facilis.
+            <h2 class="mb-3">Surface Mining</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolores voluptas obcaecati quo consequuntur mollitia facilis.
+            </p>
           </div>
         </div>
       </div>
@@ -194,46 +150,19 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="container">
       <div class="row site-section" id="faq-section">
         <div class="col-12 text-center" data-aos="fade">
           <h2 class="section-title text-primary">Frequently Ask Questions</h2>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngFor="let faq of faqs">
           <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="text-black h4 mb-4">Can I accept both Paypal and Stripe?</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda eum blanditiis perferendis.</p>
-          </div>
-          <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="text-black h4 mb-4">What available is refund period?</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda eum blanditiis perferendis.</p>
-          </div>
-          <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="text-black h4 mb-4">Can I accept both Paypal and Stripe?</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda eum blanditiis perferendis.</p>
-          </div>
-          <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="text-black h4 mb-4">What available is refund period?</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda eum blanditiis perferendis.</p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="text-black h4 mb-4">Where are you from?</h3>
-            <p>Voluptatum nobis obcaecati perferendis dolor totam unde dolores quod maxime corporis officia et. Distinctio assumenda minima maiores.</p>
-          </div>
-          <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="text-black h4 mb-4">What is your opening time?</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda eum blanditiis perferendis.</p>
-          </div>
-          <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="text-black h4 mb-4">Can I accept both Paypal and Stripe?</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda eum blanditiis perferendis.</p>
-          </div>
-          <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="text-black h4 mb-4">What available is refund period?</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda eum blanditiis perferendis.</p>
+            <h3 class="text-black h4 mb-4">{{faq.pregunta}}</h3>
+            <p>{{faq.respuesta}}</p>
           </div>
         </div>
       </div>
