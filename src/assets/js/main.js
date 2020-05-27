@@ -206,6 +206,11 @@ jQuery(document).ready(function($) {
 	};
 	siteSticky();
 
+  var adminSticky = function() {
+		$(".js-sticky-admin").sticky({topSpacing:67});
+	};
+	adminSticky();
+
 	// navigation
   var OnePageNavigation = function() {
     var navToggler = $('.site-menu-toggle');

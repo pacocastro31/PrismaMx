@@ -17,7 +17,7 @@ export class PedidoFilaComponent implements OnInit {
 
   @Input() pedido: cotizacion;
   @Input() index: any;
-  
+
   status: any;
   valorReal: any;
   downloadURL: Observable<string>;
@@ -45,7 +45,7 @@ export class PedidoFilaComponent implements OnInit {
   }
 
   uploadFile(){
-    
+
     const filePath = `Pedidos/`+ this.pedido.id;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(`Pedidos/`+ this.pedido.id, this.imgFile);
@@ -66,5 +66,19 @@ export class PedidoFilaComponent implements OnInit {
   changeFile(event){
     this.imgFile = event.target.files[0];
     this.uploadFile();
+  }
+
+  changeDown(i){
+    var up = "btn-up" + i;
+    var down = "btn-down" + i;
+    document.getElementById(up).style.display = "none";
+    document.getElementById(down).style.display = "inline-block";
+  }
+
+  changeUp(i){
+    var up = "btn-up" + i;
+    var down = "btn-down" + i;
+    document.getElementById(up).style.display = "inline-block";
+    document.getElementById(down).style.display = "none";
   }
 }

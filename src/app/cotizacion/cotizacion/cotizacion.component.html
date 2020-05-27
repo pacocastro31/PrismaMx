@@ -91,7 +91,7 @@
             <div class="col-12">
               <div class="form-group">
                 <label for="material">Material</label>
-                <select id="material" name= "material" class="form-control" (change)="selectChangeHandler($event)" required [(ngModel)]="cotizacion.material" >
+                <select id="materialLb" name= "material" class="form-control" (change)="selectChangeHandler($event)" required [(ngModel)]="cotizacion.material" >
                   <option  value="PLA">PLA</option>
                   <option  value="ABS">ABS</option>
                   <option  value="PetG">PetG</option>
@@ -103,7 +103,7 @@
             <div class="col-12">
               <div class="form-group">
                 <label for="color">Color</label>
-                <select id="color" name= "color" class="form-control" (change)="selectColorHandler($event)" required [(ngModel)]="cotizacion.color">
+                <select id="colorLb" name= "color" class="form-control" (change)="selectColorHandler($event)" required [(ngModel)]="cotizacion.color">
                   <option  value="Rojo">Rojo</option>
                   <option  value="Verde">Verde</option>
                   <option  value="Morado">Morado</option>
@@ -113,7 +113,7 @@
             <div class="col-12">
               <div class="form-group">
                 <label for="calidad">Calidad (Altura de Capa)</label>
-                <select class="form-control">
+                <select id="calidadLb" name= "calidad" class="form-control" (change)="selectQualityHandler($event)" required [(ngModel)]="cotizacion.calidad">
                   <option  value="Baja">Baja (0.3)</option>
                   <option  value="Normal">Normal (0.2)</option>
                   <option  value="Alta">Alta (0.15)</option>
@@ -124,13 +124,13 @@
             <div class="col-12">
               <div class="form-group">
                 <label for="relleno">Porcentaje de Relleno</label>
-                <input class="form-control" type="number" placeholder="20 (Recomendado)">
+                <input id="rellenoLB" name= "relleno" class="form-control" (change)="selectFillHandler($event)" required [(ngModel)]="cotizacion.relleno" type="number" placeholder="20% (Recomendado)">
               </div>
             </div>
             <div class="col-12">
               <div class="form-group">
                 <label for="cantidad">Cantidad</label>
-                <input class="form-control" type="number" placeholder="1">
+                <input id="cantidadLB" name= "cantidad" class="form-control" (change)="selectQuantityHandler($event)" required [(ngModel)]="cotizacion.cantidad" type="number" placeholder="1">
               </div>
             </div>
           </div>
@@ -147,30 +147,6 @@
 
   </div>
 
-  <br><br><br><br>
-
-  <!---
-  <input type= "text"  id="name"  placeholder="nombre.." name="name" (change)= "getValues($event)"
-  required [(ngModel)]="cotizacion.nombre"
-  />
-
-  <br><br>
-
-  <input type= "text"  id="secondName"  placeholder="apellido.." name="secondName" (change)= "getValuesSecondName($event)"
-  required [(ngModel)]="cotizacion.apellido"/>
-  <br><br>
-
-
-  <input type= "text"  id="mail" placeholder="mail.." name="mail" (change)= "getValueMail($event)"
-  required [(ngModel)]="cotizacion.mail"/>
-  -->
-  <br><br>
-
-  <!-- <p><span>You selected: </span><b>{{selectedMaterial}}</b></p>
-  <br>
-
-  <p><span>You selected: </span><b>{{selectedColor}}</b></p>
-  <br><br> -->
 </div>
 
 
@@ -253,7 +229,7 @@
             </div>
             <div class="form-group">
               <label for="calidad">Calidad</label>
-              <input class="form-control" type="text" placeholder="Calidad seleccionada" readonly>
+              <input class="form-control" type="text" placeholder="{{selectedQuality}}" readonly>
             </div>
             <div class="form-group">
               <label for="color">Color</label>
@@ -271,7 +247,7 @@
             </div>
             <div class="form-group">
               <label for="cantidad">Cantidad</label>
-              <input class="form-control" type="text" placeholder="Calidad seleccionada" readonly>
+              <input class="form-control" type="text" placeholder="{{selectedQuantity}}" readonly>
             </div>
             <div class="form-group">
               <label class="aprox" for="costo">Costo Aproximado</label>
@@ -284,7 +260,6 @@
             <div class="form-group">
               <label for="nombre">Nombre Completo</label>
               <input class="form-control" id="name" name="name" type="text" placeholder="{{userName}}" required [(ngModel)]="cotizacion.nombre">              
-              />
             </div>
           </div>
           <div class="col-6">

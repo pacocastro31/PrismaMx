@@ -3,6 +3,9 @@ export class cotizacion {
 	nombre: string;
     color: string;
     material: string;
+    relleno: string;
+    calidad : string;
+    cantidad : string;
     mail: string;
     precio: string;
     status:string;
