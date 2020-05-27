@@ -5,7 +5,7 @@ export class cotizacion {
     material: string;
     relleno: string;
     calidad : string;
-    cantidad : string;
+    cantidad : any;
     mail: string;
     precio: string;
     status:string;
@@ -14,6 +14,4 @@ export class cotizacion {
     fecha:string;
     tieneImagen: boolean;
     urlImagenPedido: string;
-    cantidad: Int16Array;
-    calidad: string
 }
