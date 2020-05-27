@@ -11,4 +11,6 @@ export class cotizacion {
     fecha:string;
     tieneImagen: boolean;
     urlImagenPedido: string;
+    cantidad: Int16Array;
+    calidad: string
 }

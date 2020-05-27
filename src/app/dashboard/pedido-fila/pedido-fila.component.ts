@@ -29,20 +29,19 @@ export class PedidoFilaComponent implements OnInit {
   ngOnInit(): void {
     this.status = this.pedido.status;
     this.valorReal = this.pedido.precioReal
+    console.log(this.pedido);
     if (this.pedido.tieneImagen){
       this.tieneImagen = true;
-      this.img = this.pedido.urlImagenPedido
+      this.img = this.pedido.urlImagenPedido;
     }
-
   }
 
   updateInfo(){
+    if(this.imgFile){
+      console.log("ASD");
+    }
     this.cotizacionService.updatePedido(this.pedido.key, {precioReal: this.valorReal}).catch(err => console.log(err));
     this.cotizacionService.updatePedido(this.pedido.key, {status: this.status}).catch(err => console.log(err));
-    if(this.imgFile){
-      this.uploadFile();
-    }
-    console.log("ASD");
   }
 
   uploadFile(){
@@ -56,9 +55,6 @@ export class PedidoFilaComponent implements OnInit {
         finalize(() => {
           this.downloadURL = fileRef.getDownloadURL();
           this.downloadURL.subscribe(url => {
-            if (url) {
-              this.fb = url;
-            }
             this.img = url;
             console.log(this.img);
             this.cotizacionService.updatePedido(this.pedido.key, {tieneImagen: true, urlImagenPedido: this.img}).catch(err => console.log(err));
@@ -69,5 +65,6 @@ export class PedidoFilaComponent implements OnInit {
 
   changeFile(event){
     this.imgFile = event.target.files[0];
+    this.uploadFile();
   }
 }
