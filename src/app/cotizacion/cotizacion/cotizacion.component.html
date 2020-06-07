@@ -13,6 +13,7 @@
     <div class="col-6 pr-5">
       <div class="row">
         <div class="visualizador col-12 bg-secondary mb-3" style="height: 470px;">
+          <iframe id="vs_iframe" src="https://www.viewstl.com/?embedded&noborder=yes&color=white&bgcolor=transparent" style="border:0;margin:0;width:100%;height:100%;"></iframe>
         </div>
         <!-- <div class="col-12">
           <div class="form-group">
@@ -91,7 +92,7 @@
             <div class="col-12">
               <div class="form-group">
                 <label for="material">Material</label>
-                <select id="materialLb" name= "material" class="form-control" (change)="selectChangeHandler($event)" required [(ngModel)]="cotizacion.material" >
+                <select id="materialLb" name= "material" class="form-control" (change)="selectChangeHandler($event)" required [(ngModel)]="cotizacion.material" placeholder="PLA">
                   <option  value="PLA">PLA</option>
                   <option  value="ABS">ABS</option>
                   <option  value="PetG">PetG</option>
@@ -103,7 +104,7 @@
             <div class="col-12">
               <div class="form-group">
                 <label for="color">Color</label>
-                <select id="colorLb" name= "color" class="form-control" (change)="selectColorHandler($event)" required [(ngModel)]="cotizacion.color">
+                <select id="colorLb" name= "color" class="form-control" (change)="selectColorHandler($event)" required [(ngModel)]="cotizacion.color" placeholder="Sin Definir">
                   <option  value="Rojo">Rojo</option>
                   <option  value="Verde">Verde</option>
                   <option  value="Morado">Morado</option>
@@ -113,7 +114,7 @@
             <div class="col-12">
               <div class="form-group">
                 <label for="calidad">Calidad (Altura de Capa)</label>
-                <select id="calidadLb" name= "calidad" class="form-control" (change)="selectQualityHandler($event)" required [(ngModel)]="cotizacion.calidad">
+                <select id="calidadLb" name= "calidad" class="form-control" (change)="selectQualityHandler($event)" required [(ngModel)]="cotizacion.calidad" placeholder="Normal (0.2)">
                   <option  value="Baja">Baja (0.3)</option>
                   <option  value="Normal">Normal (0.2)</option>
                   <option  value="Alta">Alta (0.15)</option>
@@ -148,56 +149,6 @@
   </div>
 
 </div>
-
-
-
-<!---
-   <div class="dropdown show">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Material
-    </a>
-
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item" href="#">Material 1</a>
-      <a class="dropdown-item" href="#">Material 2</a>
-      <a class="dropdown-item" href="#">Material 3</a>
-    </div>
-  </div>
-<br>
-
-<div class="dropdown show">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Color
-    </a>
-
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item" href="#">Blanco</a>
-      <a class="dropdown-item" href="#">Verde</a>
-      <a class="dropdown-item" href="#">Rojo</a>
-    </div>
-  </div>
-<br>
-
-<div class="dropdown show">
-    <a class="btn btn-secondary dropdown-toggle" role="button" id="calidad" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onchange="setCalidad()">
-      Calidad
-    </a>
-    <div class="dropdown-menu" aria-labelledby="calidad">
-      <a class="dropdown-item" >Calidad 1</a>
-      <a class="dropdown-item" >Calidad 2</a>
-      <a class="dropdown-item" >Calidad 3</a>
-    </div>
-  </div>
-
-
-<br><br>
-<div class="form-group row">
-    <div class="col-xs-2">
-    <label for="ex1">Cantidad</label>
-      <input class="form-control" type="number" value="1" id="example-number-input">
-    </div>
-  </div>
--->
 
 
 <!-- Modal -->
@@ -259,7 +210,7 @@
           <div class="col-6">
             <div class="form-group">
               <label for="nombre">Nombre Completo</label>
-              <input class="form-control" id="name" name="name" type="text" placeholder="{{userName}}" required [(ngModel)]="cotizacion.nombre">              
+              <input class="form-control" id="name" name="name" type="text" placeholder="{{userName}}" required [(ngModel)]="cotizacion.nombre">
             </div>
           </div>
           <div class="col-6">

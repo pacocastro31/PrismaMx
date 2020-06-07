@@ -25,7 +25,7 @@ export class CotizacionComponent implements OnInit {
   fecha: string = "";
   id : string = "";
 
-  
+
   cotizacion: cotizacion = new cotizacion();
 
 
@@ -35,8 +35,8 @@ export class CotizacionComponent implements OnInit {
 
   saveValues(){
     var name = (<HTMLInputElement>document.getElementById("name")).value;
-    var mail = (<HTMLInputElement>document.getElementById("mail")).value; 
-   
+    var mail = (<HTMLInputElement>document.getElementById("mail")).value;
+
 
 
     if(name != "" && mail != "") {
@@ -44,7 +44,7 @@ export class CotizacionComponent implements OnInit {
       this.generateDate();
       this.cotizacionService.createCotizacion(this.cotizacion, this.id,this.fecha);
 
-      $("#myModal2").modal('show');      
+      $("#myModal2").modal('show');
     }
     else{
       alert("Favor de llenar los campos de nombre y/o mail");
@@ -70,7 +70,6 @@ export class CotizacionComponent implements OnInit {
     var dateTime = date;
     console.log(dateTime);
     this.fecha = dateTime;
-  
 
   }
 
@@ -83,7 +82,7 @@ export class CotizacionComponent implements OnInit {
   }
 
   selectChangeHandler (event: any){
-    var material = (<HTMLSelectElement>document.getElementById("materialLb")).value; 
+    var material = (<HTMLSelectElement>document.getElementById("materialLb")).value;
     if(material != ""){
       this.selectedMaterial = event.target.value;
     }
@@ -92,7 +91,7 @@ export class CotizacionComponent implements OnInit {
   }
 
   selectColorHandler (event: any){
-    var color = (<HTMLSelectElement>document.getElementById("colorLb")).value; 
+    var color = (<HTMLSelectElement>document.getElementById("colorLb")).value;
     if(color != ""){
       this.selectedColor = event.target.value;
     }
@@ -100,7 +99,7 @@ export class CotizacionComponent implements OnInit {
   }
 
   selectQualityHandler (event: any){
-    var calidad = (<HTMLSelectElement>document.getElementById("calidadLb")).value; 
+    var calidad = (<HTMLSelectElement>document.getElementById("calidadLb")).value;
     if(calidad != ""){
       this.selectedQuality = event.target.value;
     }
@@ -108,7 +107,7 @@ export class CotizacionComponent implements OnInit {
   }
 
   selectFillHandler(event: any){
-    var relleno = (<HTMLSelectElement>document.getElementById("rellenoLB")).value; 
+    var relleno = (<HTMLSelectElement>document.getElementById("rellenoLB")).value;
     if(relleno != ""){
       this.selectedFill = event.target.value;
     }
@@ -116,7 +115,7 @@ export class CotizacionComponent implements OnInit {
   }
 
   selectQuantityHandler(event: any){
-    var cantidad = (<HTMLSelectElement>document.getElementById("cantidadLB")).value; 
+    var cantidad = (<HTMLSelectElement>document.getElementById("cantidadLB")).value;
     if(cantidad != ""){
       this.selectedQuantity = event.target.value;
     }
@@ -132,7 +131,7 @@ export class CotizacionComponent implements OnInit {
   ngOnInit() {}
 
   upLoadInfo(event){
-    
+
     var n = Date.now();
     const file = event.target.files[0];
     const filePath = `RoomsImages/${n}`;
@@ -156,13 +155,12 @@ export class CotizacionComponent implements OnInit {
           console.log(url);
         }
       });
-      
+
   }
 
   onFileSelected(event) {
     const price = "500";
     document.getElementById("priceFile").innerHTML = price;
-    
   }
 
 }
