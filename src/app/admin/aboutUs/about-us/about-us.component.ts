@@ -90,11 +90,11 @@ export class AboutUsComponent implements OnInit {
       this.submitted = true;
       this.aboutUsService.updateAboutUs(this.info[0].key, {titulo: this.aboutUs.titulo}).catch(err => console.log(err));
     }
-    if(this.info[0].phoneNumber != this.aboutUs.parrafo1){
+    if(this.info[0].parrafo1 != this.aboutUs.parrafo1){
       this.submitted = true;
       this.aboutUsService.updateAboutUs(this.info[0].key, {parrafo1: this.aboutUs.parrafo1}).catch(err => console.log(err));
     }
-    if(this.info[0].email != this.aboutUs.parrafo2){
+    if(this.info[0].parrafo2 != this.aboutUs.parrafo2){
       this.submitted = true;
       this.aboutUsService.updateAboutUs(this.info[0].key, {parrafo2: this.aboutUs.parrafo2}).catch(err => console.log(err));
     }

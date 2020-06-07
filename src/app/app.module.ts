@@ -41,6 +41,7 @@ import { FaqsComponent } from './admin/faqs/faqs/faqs.component';
 import { FaqsDetailComponent } from './admin/faqs/faqs-detail/faqs-detail.component';
 import { FaqsListComponent } from './admin/faqs/faqs-list/faqs-list.component';
 import { AboutUsComponent } from './admin/aboutUs/about-us/about-us.component';
+import { ContactUsAdminComponent } from './admin/contactUs/contact-us-admin/contact-us-admin.component';
 
 
 
@@ -76,6 +77,7 @@ import { AboutUsComponent } from './admin/aboutUs/about-us/about-us.component';
 		FaqsDetailComponent,
 		FaqsListComponent,
 		AboutUsComponent,
+		ContactUsAdminComponent,
 	],
 	imports: [
 		BrowserModule,
