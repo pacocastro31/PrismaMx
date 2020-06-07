@@ -1,0 +1,61 @@
+<div class="card mb-5 mt-5">
+  <div class="card-header">
+    <h3>Sobre Nosotros</h3>
+  </div>
+
+  <div [hidden]="submitted">
+    <form (ngSubmit)="onSubmit()">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6 offset-lg-0">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="logo">Imagen</label><br />
+                  <input type="file" class="form-control" name="logo" accept=".png,.jpg" (change)="saveImage($event)" />
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="titulo">Titulo</label><br />
+                  <input type="text" class="form-control" name="titulo" required [(ngModel)]="aboutUs.titulo" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 offset-lg-0">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="parrafo1">Parrafo 1</label><br />
+                  <textarea type="text" class="form-control" required name="parrafo1" [(ngModel)]="aboutUs.parrafo1"></textarea>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="parrafo2">Parrafo 2</label><br />
+                  <textarea type="text" class="form-control" name="parrafo2" required [(ngModel)]="aboutUs.parrafo2" ></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <div class="row justify-content-end">
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div [hidden]="!submitted">
+    <h4>Se guardo la información</h4>
+    <button class="btn btn-primary" (click)="availForm()">Regresar</button>
+  </div>
+
+</div>
