@@ -26,7 +26,7 @@ export class AboutUsComponent implements OnInit {
 
   save() {
     this.submitted = true;
-    this.aboutUsService.createAboutUs(this.aboutUs);
+    this.aboutUsService.createAboutUs(this.aboutUs, this.fb);
   }
 
   onSubmit() {

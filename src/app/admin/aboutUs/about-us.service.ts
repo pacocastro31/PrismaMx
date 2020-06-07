@@ -14,7 +14,8 @@ export class AboutUsService {
     this.aboutUsRef = db.list(this.dbPath);
   }
 
-  createAboutUs(info: AboutUsInfo): void {
+  createAboutUs(info: AboutUsInfo, img: string): void {
+    info.imagen = img
     this.aboutUsRef.push(info);
     console.log("Se guardo");
   }
