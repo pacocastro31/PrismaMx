@@ -7,17 +7,17 @@
         <div class="col-12">
           <nav class="site-navigation text-right ml-auto " role="navigation">
             <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-              <li>
+              <li [hidden]="!admin2">
                 <a routerLink="/dashboard" class="nav-link">Dashboard</a>
               </li>
-              <li>
+              <li [hidden]="!admin2">
                 <a routerLink="/admin" class="nav-link">Contenido</a>
               </li>
-              <li>
+              <li [hidden]="admin2">
                 <a routerLink="/login" class="nav-link">Log In</a>
               </li>
-              <li style="display:none;">
-                <a routerLink="/login" class="nav-link">Log Out</a>
+              <li [hidden]="!admin2">
+                <a class="nav-link" (click)="cerrarSesion()">Log Out</a>
               </li>
             </ul>
           </nav>
