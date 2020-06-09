@@ -59,6 +59,10 @@ export class EditContactInfoComponent implements OnInit {
       this.submitted = true;
       this.editContactInfoService.updateContactInfo(this.info[0].key, {address: this.contactInfo.address}).catch(err => console.log(err));
     }
+    if(this.info[0].sobreNosotros != this.contactInfo.sobreNosotros){
+      this.submitted = true;
+      this.editContactInfoService.updateContactInfo(this.info[0].key, {sobreNosotros: this.contactInfo.sobreNosotros}).catch(err => console.log(err));
+    }
   }
 
   availForm(){
@@ -92,6 +96,7 @@ export class EditContactInfoComponent implements OnInit {
     this.contactInfo.facebook = this.info[0].facebook
     this.contactInfo.instagram = this.info[0].instagram
     this.contactInfo.phoneNumber = this.info[0].phoneNumber
+    this.contactInfo.sobreNosotros = this.info[0].sobreNosotros
   }
 
   saveImage(event: any){
