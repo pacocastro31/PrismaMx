@@ -22,9 +22,10 @@ export class PedidoFilaComponent implements OnInit {
   valorReal: any;
   downloadURL: Observable<string>;
   fb;
-  img: any;
+  img: String;
   tieneImagen: boolean = false;
   imgFile: any = null
+  subiendo: boolean = false;
 
   ngOnInit(): void {
     this.status = this.pedido.status;
@@ -32,20 +33,21 @@ export class PedidoFilaComponent implements OnInit {
     console.log(this.pedido);
     if (this.pedido.tieneImagen){
       this.tieneImagen = true;
-      this.img = this.pedido.urlImagenPedido;
+      this.img = this.pedido.urlImagen;
     }
   }
 
   updateInfo(){
-    if(this.imgFile){
-      console.log("ASD");
+    if(this.imgFile != null){
+      this.subiendo = true;
+      this.uploadFile();
+    } else{
+      this.subiendo = true;
+      this.cotizacionService.updatePedido(this.pedido.key, {precioReal: this.valorReal, status: this.pedido.status}).catch(err => console.log(err));
     }
-    this.cotizacionService.updatePedido(this.pedido.key, {precioReal: this.valorReal}).catch(err => console.log(err));
-    this.cotizacionService.updatePedido(this.pedido.key, {status: this.status}).catch(err => console.log(err));
   }
 
   uploadFile(){
-
     const filePath = `Pedidos/`+ this.pedido.id;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(`Pedidos/`+ this.pedido.id, this.imgFile);
@@ -55,17 +57,26 @@ export class PedidoFilaComponent implements OnInit {
         finalize(() => {
           this.downloadURL = fileRef.getDownloadURL();
           this.downloadURL.subscribe(url => {
-            this.img = url;
-            console.log(this.img);
-            this.cotizacionService.updatePedido(this.pedido.key, {tieneImagen: true, urlImagenPedido: this.img}).catch(err => console.log(err));
+            if (url) {
+              this.fb = url;
+            }
+            this.cotizacionService.updatePedido(this.pedido.key, {precioReal: this.valorReal, status: this.pedido.status, tieneImagen: true,
+              urlImagen: this.fb
+            }).catch(err => console.log(err)).finally( 
+            );
+            console.log(this.fb);
           });
         })
-      );
+      )
+      .subscribe(url => {
+        if (url) {
+          console.log(url);
+        }
+      });
   }
 
   changeFile(event){
     this.imgFile = event.target.files[0];
-    this.uploadFile();
   }
 
   changeDown(i){
