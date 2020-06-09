@@ -6,4 +6,5 @@ export class ContactInfo {
     facebook: string;
     instagram: string;
     email: string;
+    sobreNosotros: string;
 }

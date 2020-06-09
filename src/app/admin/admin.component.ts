@@ -7,8 +7,18 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 })
 export class AdminComponent implements OnInit {
   public modelObj: Object = { placeholder: "Enter employee name" };
+
+  admin: any
+  admin2 = false
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.admin = false
+    this.admin = localStorage.getItem('admin')
+    if(this.admin == "admin"){
+      this.admin2 = true
+    }
+  }
 
 }

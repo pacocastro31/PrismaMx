@@ -1,0 +1,98 @@
+<div class="card mb-5 mt-5">
+    <div class="card-header">
+      <h3>Contacto</h3>
+    </div>
+  
+    <div [hidden]="submitted">
+      <form (ngSubmit)="onSubmit()">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-6 offset-lg-0">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label for="titulo">Titulo</label><br />
+                    <input type="text" class="form-control" name="titulo" required [(ngModel)]="contactUs.titulo"/>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label for="tituloDesc">Titulo Descripción</label><br />
+                    <input type="text" class="form-control" name="tituloDesc" required [(ngModel)]="contactUs.tituloDescripcion"/>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for="cta">CTA</label><br />
+                      <input type="text" class="form-control" name="cta" required [(ngModel)]="contactUs.cta"/>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for="phNombre">Placeholder Nombre</label><br />
+                      <input type="text" class="form-control" name="phNombre" required [(ngModel)]="contactUs.placeHolderNombre"/>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for="phCorreo">Placeholder Correo</label><br />
+                      <input type="text" class="form-control" name="phCorreo" required [(ngModel)]="contactUs.placeHolderCorreo"/>
+                    </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-lg-6 offset-lg-0">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label for="subtitulo">Subtitulo</label><br />
+                    <input type="text" class="form-control" name="subtitulo" required [(ngModel)]="contactUs.subtitulo">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label for="descripcion">Descripción</label><br />
+                    <input type="text" class="form-control" name="descripcion" required [(ngModel)]="contactUs.descripcion">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for="linkCta">Link CTA</label><br />
+                      <input type="text" class="form-control" name="linkCta" required [(ngModel)]="contactUs.linkCta">
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for="phApellido">Placeholder Apellido</label><br />
+                      <input type="text" class="form-control" name="phApellido" required [(ngModel)]="contactUs.placeHolderApellido">
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for="phMensaje">Placeholder Mensaje</label><br />
+                      <input type="text" class="form-control" name="phMensaje" required [(ngModel)]="contactUs.placeHolderMensaje">
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="card-footer">
+          <div class="row justify-content-end">
+            <div class="col-4">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div [hidden]="!submitted">
+        <h4>Se guardo la información</h4>
+        <button class="btn btn-primary" (click)="availForm()">Regresar</button>
+    </div>
+
+  </div>
+  

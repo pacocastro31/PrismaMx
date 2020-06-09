@@ -1,3 +1,4 @@
+<div [hidden]="!admin2">
 <app-navbar-admin></app-navbar-admin>
 
 <div class="container">
@@ -12,14 +13,20 @@
     <a href="/admin#infoGeneral" class="nav-link" role="button">Información General</a>
     <a href="/admin#homeBanners" class="nav-link" role="button">Home Banner Slider</a>
     <a href="/admin#homeServicios" class="nav-link" role="button">Servicios</a>
+    <a href="/admin#sobreNosotros" class="nav-link" role="button">Sobre Nosotros</a>
     <a href="/admin#precios" class="nav-link" role="button">Precios</a>
     <a href="/admin#faqs" class="nav-link" role="button">Preguntas Frecuentes</a>
+    <a href="/admin#contactUs" class="nav-link" role="button">Contacto</a>
   </nav>
 
 
   <app-edit-contact-info id="infoGeneral"></app-edit-contact-info>
   <app-home-banner-slider id="homeBanners"></app-home-banner-slider>
   <app-servicios-parte1 id="homeServicios"></app-servicios-parte1>
+  <app-about-us id="sobreNosotros"></app-about-us>
   <app-precios id="precios"></app-precios>
   <app-faqs id="faqs"></app-faqs>
+  <app-contact-us-admin id="contactUS"></app-contact-us-admin>
+</div>
+
 </div>

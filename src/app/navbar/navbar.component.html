@@ -18,7 +18,7 @@
             <li><a href="/home#contact-section" class="nav-link">Contacto</a></li>
             <li><a routerLink="/cotizacion" class="nav-link">Cotizar</a></li>
             <li><a routerLink="/mis-pedidos" class="nav-link">Mis Pedidos</a></li>
-            <li><a routerLink="/login" class="nav-link">Log In</a></li>
+            <li><a [hidden]="!admin2" class="nav-link" (click)="adminFunc()">Admin</a></li>
           </ul>
           </nav>
         </div>

@@ -7,11 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  admin: any
+  admin2 = false
+
   constructor() { }
 
   Pedidos: any;
 
   ngOnInit(): void {
+    this.admin = false
+    this.admin = localStorage.getItem('admin')
+    if(this.admin == "admin"){
+      this.admin2 = true
+    }
   }
 
   
