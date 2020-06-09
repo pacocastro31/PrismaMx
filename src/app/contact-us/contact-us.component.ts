@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
+
+import { ContactUsInfo } from '../admin/contactUs/contactUs'
+import { ContactUsService } from '../admin/contactUs/contact-us.service'
 
 @Component({
   selector: 'app-contact-us',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactUsComponent implements OnInit {
 
-  constructor() { }
+  info: any;
+
+  constructor(private contactUsService: ContactUsService) { }
 
   ngOnInit(): void {
+    this.getContactUsInfo();
+  }
+
+  getContactUsInfo(){
+    this.contactUsService.getContactUsInfo().snapshotChanges().pipe(
+      map(changes=>
+        changes.map(c =>
+            ({key: c.payload.key, ...c.payload.val() })
+          )
+        )
+    ).subscribe(Cinfo => {
+      this.info = Cinfo;
+    });
   }
 
 }

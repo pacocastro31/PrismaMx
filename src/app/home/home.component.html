@@ -67,17 +67,22 @@
   </div>
 
   <div class="bg-dark" id="aboutus-section">
-    <div class="row">
-      <div class="col-lg-6 col-md-6 col-12" data-aos="fade-right" data-aos-delay="">
-        <img class="aboutus-img" src="../assets/images/img_1.jpg" />
-      </div>
-      <div class="col-lg-6 col-md-6 col-12" data-aos="fade-up" data-aos-delay="">
-        <div class="p-5 text-white">
-          <div class="block__35630">
-            <h2 class="mb-3">Surface Mining</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolores voluptas obcaecati quo consequuntur mollitia facilis.
-            </p>
+    <div *ngFor="let about of aboutUs">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-12" data-aos="fade-right" data-aos-delay="">
+          <img class="aboutus-img" src="{{about.imagen}}" />
+        </div>
+        <div class="col-lg-6 col-md-6 col-12" data-aos="fade-up" data-aos-delay="">
+          <div class="p-5 text-white">
+            <div class="block__35630">
+              <h2 class="mb-3">{{about.titulo}}</h2>
+              <p>
+                {{about.parrafo1}}
+              </p>
+              <p>
+                {{about.parrafo2}}
+              </p>
+            </div>
           </div>
         </div>
       </div>
