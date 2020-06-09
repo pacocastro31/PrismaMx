@@ -16,7 +16,6 @@ export class AboutUsComponent implements OnInit {
   fb: any;
   aboutUs: AboutUsInfo = new AboutUsInfo();
   info: any;
-  submitted = false;
 
   constructor(private aboutUsService: AboutUsService,private storage: AngularFireStorage) {}
 
@@ -25,7 +24,6 @@ export class AboutUsComponent implements OnInit {
   }
 
   save() {
-    this.submitted = true;
     this.aboutUsService.createAboutUs(this.aboutUs, this.fb);
   }
 
@@ -34,6 +32,12 @@ export class AboutUsComponent implements OnInit {
       this.save()
     }
     this.updateInfo()
+  }
+
+  showSnackbar(){
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
   }
 
   saveImage(event: any) {
@@ -62,10 +66,6 @@ export class AboutUsComponent implements OnInit {
       });
   }
 
-  availForm(){
-    this.submitted = false;
-  }
-
   setInfo(){
     this.aboutUs.titulo = this.info[0].titulo
     this.aboutUs.parrafo1 = this.info[0].parrafo1
@@ -87,15 +87,12 @@ export class AboutUsComponent implements OnInit {
 
   updateInfo(){
     if(this.info[0].titulo != this.aboutUs.titulo){
-      this.submitted = true;
       this.aboutUsService.updateAboutUs(this.info[0].key, {titulo: this.aboutUs.titulo}).catch(err => console.log(err));
     }
     if(this.info[0].parrafo1 != this.aboutUs.parrafo1){
-      this.submitted = true;
       this.aboutUsService.updateAboutUs(this.info[0].key, {parrafo1: this.aboutUs.parrafo1}).catch(err => console.log(err));
     }
     if(this.info[0].parrafo2 != this.aboutUs.parrafo2){
-      this.submitted = true;
       this.aboutUsService.updateAboutUs(this.info[0].key, {parrafo2: this.aboutUs.parrafo2}).catch(err => console.log(err));
     }
   }

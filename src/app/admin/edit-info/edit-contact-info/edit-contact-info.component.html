@@ -4,7 +4,7 @@
     <h3>Información General</h3>
   </div>
 
-  <div [hidden]="submitted">
+  <div>
     <form (ngSubmit)="onSubmit()">
       <div class="card-body">
         <div class="row">
@@ -73,23 +73,18 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
+
+      <div id="snackbar">Guardado</div>
 
       <div class="card-footer">
         <div class="row justify-content-end">
           <div class="col-4">
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary" (click) = "showSnackbar()">Guardar</button>
           </div>
         </div>
       </div>
     </form>
   </div>
-
-  <div [hidden]="!submitted">
-    <h4>Se guardo la información</h4>
-    <button class="btn btn-primary" (click)="availForm()">Regresar</button>
-  </div>
-
 </div>
