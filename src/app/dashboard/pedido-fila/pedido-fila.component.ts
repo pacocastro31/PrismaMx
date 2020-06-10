@@ -6,6 +6,7 @@ import { map, finalize } from "rxjs/operators";
 import { Observable } from "rxjs";
 import * as firebase from 'firebase';
 import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
+import { ResourceLoader } from '@angular/compiler';
 
 @Component({
   selector: 'app-pedido-fila',
@@ -84,6 +85,7 @@ export class PedidoFilaComponent implements OnInit {
   update(obj){
     this.cotizacionService.updatePedido(this.pedido.key, obj).catch(err => console.log(err)).finally( );
     this.enviaEmail();
+    location.reload();
   }
 
   enviaEmail(){
