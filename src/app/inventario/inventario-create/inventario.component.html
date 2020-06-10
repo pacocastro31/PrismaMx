@@ -1,0 +1,48 @@
+<div class="card-header">
+ <h3>Inventario</h3>
+</div>
+
+<div class="card-header bg-secondary">
+  <form>
+    <div class="row text-white p-2">
+      <div class="col-lg-10">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label for="material">Material</label>
+              <input type="text" class="form-control" name="material" required [(ngModel)]="inventario.material">
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label for="precioMinuto">Precio por minuto</label>
+              <input type="text" class="form-control" name="precioMinuto" required [(ngModel)]="inventario.precioMinuto">
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label for="color">Color</label>
+              <input type="text" class="form-control" name="color" required [(ngModel)]="inventario.color">
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group">
+              <label for="rollos">Rollos</label>
+              <input type="text" class="form-control" name="rollos" required [(ngModel)]="inventario.rollos">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2 add-service">
+        <div class="form-group">
+          <label class="text-secondary">Masa CEO</label>
+          <button type="submit" class="btn btn-primary" (click)="onSubmit()">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="card-body">
+  <app-inventario-lista></app-inventario-lista>
+</div>

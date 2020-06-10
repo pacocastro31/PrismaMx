@@ -1,0 +1,147 @@
+<div class="card mb-5">
+
+  <div class="card-header">
+    <h3>Precios</h3>
+  </div>
+
+  <div>
+    <form (ngSubmit)="onSubmit()">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="titulo">Título</label><br>
+                  <input type="text" class="form-control" name="titulo" required [(ngModel)]="prices.title">
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label for="desc">Descripción</label><br>
+                  <input type="text" class="form-control"name="desc" required [(ngModel)]="prices.description">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 offset-lg-0">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="material1">Nombre Material 1</label><br>
+                  <input type="text" class="form-control" name="material1" required [(ngModel)]="prices.titleMaterial1">
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="precio1">Precio 1</label><br>
+                  <input type="text" class="form-control" name="precio1" required [(ngModel)]="prices.price1">
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="beneficio1">Beneficios 1</label><br>
+                  <textarea type="text" class="form-control" name="beneficio1" style="height: 200px;" required [(ngModel)]="prices.benefits1"></textarea>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="cta1">CTA 1</label><br>
+                  <input type="text" class="form-control" name="cta1" required [(ngModel)]="prices.cta1">
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="linkcta1">Link CTA 1</label><br>
+                  <input type="text" class="form-control" name="linkcta1" required [(ngModel)]="prices.linkCta1">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 offset-lg-0">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="fb1">Nombre Material 2</label><br>
+                  <input type="text" class="form-control" name="fb1" required [(ngModel)]="prices.facebook1">
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="precio2">Precio 2</label><br>
+                  <input type="text" class="form-control" name="precio2" required [(ngModel)]="prices.price2">
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="beneficio2">Beneficios 2</label><br>
+                  <textarea type="text" class="form-control" name="beneficio2" style="height: 200px;" required [(ngModel)]="prices.benefits2"></textarea>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="cta2">CTA 2</label><br>
+                  <input type="text" class="form-control" name="cta2" required [(ngModel)]="prices.cta2">
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="linkcta2">Link CTA 2</label><br>
+                  <input type="text" class="form-control" name="linkcta2" required [(ngModel)]="prices.linkCta2">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 offset-lg-0">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="fb2">Nombre Material 3</label><br>
+                  <input type="text" class="form-control" name="fb2" required [(ngModel)]="prices.facebook2">
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="precio3">Precio 3</label><br>
+                  <input type="text" class="form-control" name="precio3" required [(ngModel)]="prices.price3">
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="beneficio3">Beneficios 3</label><br>
+                  <textarea type="text" class="form-control" name="beneficio3" style="height: 200px;" required [(ngModel)]="prices.benefits3"></textarea>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="cta3">CTA 3</label><br>
+                  <input type="text" class="form-control" name="cta3" required [(ngModel)]="prices.cta3">
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="linkcta3">Link CTA 3</label><br>
+                  <input type="text" class="form-control" name="linkcta3" required [(ngModel)]="prices.linkCta3">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <div class="row justify-content-end">
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary" (click)="showSnackbar()">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div id="snackbar">Guardado</div>
+
+</div>

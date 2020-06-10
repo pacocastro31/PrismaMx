@@ -1,0 +1,31 @@
+<div *ngIf="slider">
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="fondo">Imagen de Fondo</label><br />
+          <a href="{{slider.imagen}}" target="_blank"><img src={{slider.imagen}} class="imagen"></a>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="titulo">Titulo</label>
+          <input class="form-control" type="text" placeholder="{{ slider.title }}" readonly>
+        </div>
+        <div class="form-group">
+          <label for="subtitulo">Subtitulo</label>
+          <input class="form-control" type="text" placeholder="{{ slider.subtitle }}" readonly>
+        </div>
+        <div class="form-group">
+          <label for="cta">CTA</label><br>
+          <input class="form-control" type="text" placeholder="{{ slider.cta }}" readonly>
+        </div>
+      </div>
+      <div class="col-lg-1">
+        <button type="button" class="close text-center" aria-label="Close" (click)='deleteSlider()'>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

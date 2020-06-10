@@ -1,0 +1,90 @@
+<div class="card mb-5 mt-5">
+
+  <div class="card-header">
+    <h3>Información General</h3>
+  </div>
+
+  <div>
+    <form (ngSubmit)="onSubmit()">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-4 offset-lg-0">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="logo">Logo</label><br>
+                  <input type="file" class="form-control" name="logo" accept=".png,.jpg" (change)="saveImage($event)">
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="name">Nombre de la empresa</label><br>
+                  <input type="text" class="form-control" required [(ngModel)]="contactInfo.name" name="name" id="name">
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="phone">Teléfono</label><br>
+                  <input type="text" class="form-control" required [(ngModel)]="contactInfo.phoneNumber" name="phone">
+                </div>
+              </div>
+              <div class="col-lg-12">
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 offset-lg-0">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="mail">Correo</label><br>
+                  <input type="text" class="form-control" required [(ngModel)]="contactInfo.email" name="mail">
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="fb">Facebook</label><br>
+                  <input type="text" class="form-control" required [(ngModel)]="contactInfo.facebook" name="fb">
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="ig">Instagram</label><br>
+                  <input type="text" class="form-control" required [(ngModel)]="contactInfo.instagram" name="ig">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 offset-lg-0">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="address">Dirección</label><br>
+                  <input type="text" class="form-control" required [(ngModel)]="contactInfo.address" name="address">
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="sobreNosotros">Sobre Nosotros</label><br>
+                  <textarea style="height: 160px;" type="text" class="form-control" required [(ngModel)]="contactInfo.sobreNosotros" name="sobreNosotros"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="snackbar">Guardado</div>
+
+      <div class="card-footer">
+        <div class="row justify-content-end">
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary" (click) = "showSnackbar()">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

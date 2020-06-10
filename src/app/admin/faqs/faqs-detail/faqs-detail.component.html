@@ -1,0 +1,25 @@
+<div *ngIf="faq">
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="titulo">Título</label>
+          <input class="form-control" type="text" placeholder="{{ faq.title }}" readonly>
+        </div>
+        <div class="form-group">
+          <label for="pregunta">Pregunta</label>
+          <input class="form-control" type="text" placeholder="{{ faq.pregunta }}" readonly>
+        </div>
+        <div class="form-group">
+          <label for="cta">Respuesta</label>
+          <input class="form-control" type="text" placeholder="{{ faq.respuesta }}" readonly>
+        </div>
+      </div>
+      <div class="col-lg-1">
+        <button type="button" class="close" aria-label="Close" (click)='deleteServicio1()'>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

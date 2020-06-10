@@ -1,0 +1,53 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-md-6">
+            <div *ngFor="let gral of info">
+              <h2 class="footer-heading mb-4">Sobre Nosotros</h2>
+              <p>{{gral.sobreNosotros}}</p>
+            </div>
+          </div>
+          <div class="col-md-6 ml-auto">
+            <h2 class="footer-heading mb-4">Más Información</h2>
+            <div class="row">
+              <div class="col-6">
+                <ul class="list-unstyled">
+                  <li><a href="/home#services-section">Servicios</a></li>
+                  <li><a href="/home#pricing-section">Precios</a></li>
+                  <li><a href="/home#faq-section">Preguntas Frecuentes</a></li>
+                </ul>
+              </div>
+              <div class="col-6">
+                <ul class="list-unstyled">
+                  <li><a href="/home#contact-section">Contacto</a></li>
+                  <li><a href="/cotizacion">Cotizar</a></li>
+                  <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 ml-auto">
+        <h2 class="footer-heading mb-4">Sigue nuestras Redes</h2>
+          <div *ngFor="let gral of info">
+            <a href="{{gral.facebook}}" class="smoothscroll pl-0 pr-3"><span class="icon-facebook"></span></a>
+            <a href="{{gral.instagram}}" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+          </div>
+      </div>
+    </div>
+    <div class="row pt-5 mt-5 text-center">
+      <div class="col-md-12">
+        <div class="border-top pt-5">
+        <p class="copyright"><small>
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

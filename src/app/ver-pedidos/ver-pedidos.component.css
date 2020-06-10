@@ -1,0 +1,21 @@
+.card {
+  box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15) !important;
+}
+
+.header-pedido {
+  border-radius: 0.25rem;
+}
+
+.imagen-modelo {
+  height: 195px;
+}
+
+.btn.btn-primary {
+  height: 55px;
+  width: 100%;
+}
+
+.imagen {
+  width: 100%;
+  height: 100%;
+}

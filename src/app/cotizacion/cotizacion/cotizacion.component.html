@@ -1,0 +1,284 @@
+<app-navbar></app-navbar>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
+<div class="container">
+
+  <div class="row mt-5 mb-3">
+    <div class="col-12">
+      <h1>Cotizador</h1>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-6 pr-5">
+      <div class="row">
+        <div class="visualizador col-12 bg-secondary mb-3" style="height: 470px;">
+          <iframe id="vs_iframe" src="https://www.viewstl.com/?embedded&noborder=yes&color=white&bgcolor=transparent" style="border:0;margin:0;width:100%;height:100%;"></iframe>
+        </div>
+        <!-- <div class="col-12">
+          <div class="form-group">
+            <input type="file"
+              id="file"
+              #userPhoto
+              (change)="onFileSelected($event)"
+              (change)="upLoadInfo($event)"
+              name="image"
+              autocomplete="off"
+            />
+          </div>
+        </div> -->
+        <div class="col-12 mb-3">
+          <div class="form-group">
+            <input type="file"
+              id="file"
+              #userPhoto
+              (change)="onFileSelected($event)"
+              name="image"
+              autocomplete="off"
+              (change)="selectNameFile($event)"
+              required [(ngModel)]="cotizacion.nombreArchivo"
+            />
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          <h4>Medidas por Eje (mm)</h4>
+        </div>
+        <div class="col-12">
+          <div class="row">
+            <div class="col-4">
+              <div class="row">
+                <div class="col-3 eje">
+                  <span>x</span>
+                </div>
+                <div class="col-9">
+                  <div class="form-group">
+                    <input id= "tamX" class="form-control" type="number" value="" readonly style="cursor: pointer;">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="row">
+                <div class="col-3 eje">
+                  <span>y</span>
+                </div>
+                <div class="col-9">
+                  <div class="form-group">
+                    <input  id= "tamY" class="form-control" type="number" value="" readonly style="cursor: pointer;">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="row">
+                <div class="col-3 eje">
+                  <span>z</span>
+                </div>
+                <div class="col-9">
+                  <div class="form-group">
+                    <input id="tamZ"class="form-control" type="number" value="" readonly style="cursor: pointer;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <label for="material">Material</label>
+                <select id="materialLb" name= "material" class="form-control" (change)="selectChangeHandler($event)" required [(ngModel)]="cotizacion.material" placeholder="PLA">
+                  <option *ngFor="let material of materiales" value="{{material}}">{{material}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label for="color">Color</label>
+                <select id="colorLb" name= "color" class="form-control" (change)="selectColorHandler($event)" required [(ngModel)]="cotizacion.color" placeholder="Sin Definir">
+                  <option *ngFor="let color of colores" value="{{color}}">{{color}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label for="calidad">Calidad (Altura de Capa)</label>
+                <select id="calidadLb" name= "calidad" class="form-control" (change)="selectQualityHandler($event)" required [(ngModel)]="cotizacion.calidad" placeholder="Normal (0.2)">
+                  <option  value="Baja">Baja (0.3)</option>
+                  <option  value="Normal">Normal (0.2)</option>
+                  <option  value="Alta">Alta (0.15)</option>
+                  <option  value="Ultra">Ultra (0.05)</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label for="relleno">Porcentaje de Relleno</label>
+                <input id="rellenoLB" name= "relleno" class="form-control" (change)="selectFillHandler($event)" required [(ngModel)]="cotizacion.relleno" type="number" placeholder="20% (Recomendado)">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label for="cantidad">Cantidad</label>
+                <input id="cantidadLB" name= "cantidad" class="form-control" (change)="selectQuantityHandler($event)" required [(ngModel)]="cotizacion.cantidad" type="number" placeholder="1">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="col-12">
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-primary"  (click)="verificaImagen()">Precio aproximado</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- Modal -->
+<div id="myModal1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body container">
+        <div class="row">
+          <div class="col-12">
+            <h5 class="text-center text-dark">El precio presentado es un aproximado.
+              Para cotizar el precio real, favor de ingresar sus datos y
+              seleccionar el botón de Cotizar.</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label for="archivo">Archivo</label>
+              <input class="form-control" type="text" placeholder="{{nombreArchivo}}" readonly>
+            </div>
+            <div class="form-group">
+              <label for="material">Material</label>
+              <input class="form-control" type="text" id="materialModal" placeholder="{{selectedMaterial}}" value="PLA" readonly>
+            </div>
+            <div class="form-group">
+              <label for="calidad">Calidad</label>
+              <input class="form-control" type="text" id="calidadModal" placeholder="{{selectedQuality}}" value="0.2" readonly>
+            </div>
+            <div class="form-group">
+              <label for="color">Color</label>
+              <input class="form-control" type="text" id="colormodal" placeholder="{{selectedColor}}" value= "Sin definir" readonly>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label for="dimensiones">Dimensiones (x,y,z)</label>
+              <input class="form-control" id="dimensionPopUp" type="text" readonly>
+            </div>
+            <div class="form-group">
+              <label for="relleno">Porcentaje de Relleno</label>
+              <input class="form-control" type="text" id="rellenoModal" placeholder="{{selectedFill}}" value="20" readonly>
+            </div>
+            <div class="form-group">
+              <label for="cantidad">Cantidad</label>
+              <input class="form-control" type="text" id="cantidadModal" placeholder="{{selectedQuantity}}" value="1" readonly>
+            </div>
+            <div class="form-group">
+              <label class="aprox" for="costo">Costo Aproximado</label>
+              <input id="priceFile" class="form-control" type="text" placeholder="{{resultadoPrecio}}" readonly>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-6">
+            <div class="form-group">
+              <label for="nombre">Nombre Completo</label>
+              <input class="form-control" id="name" name="name" type="text" placeholder="{{userName}}" required [(ngModel)]="cotizacion.nombre">
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label for="nombre">Correo Electrónico</label>
+              <input class="form-control" id="mail" type="text" placeholder="{{userMail}}" required [(ngModel)]="cotizacion.mail">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="col-6">
+          <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-primary" data-toggle="modal"  data-dismiss="modal"
+          (click)="saveValues()">Cotizar </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<br><br><br><br>
+
+
+<!-- Modal -->
+<div id="myModal3" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="container modal-body">
+        <div class="row">
+          <div class="col-12">
+            <p class="text-center">¡Gracias por confiar en nosotros!</p>
+            <p class="text-center">Recibirá un correo con la cotización de su pieza en cuanto el
+              archivo sea revisado por nuestro equipo.</p>
+          </div>
+        </div>
+        <div class="row mt-5 mb-5">
+          <div class="col-12 mb-3">
+            <h3 class="text-center">Código de Seguimiento de Pedido</h3>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <input class="form-control input-lg" type="text" value="{{id}}" readonly>
+            </div>
+          </div>
+        </div>
+        <div class="row pb-3">
+          <div class="col-12">
+            <p class="text-center">Ingrese el código proporcionado en la sección de Mis Pedidos
+              para dar seguimiento a su orden.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <div class="col-6">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)='reload()'>OK</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<router-outlet> </router-outlet>

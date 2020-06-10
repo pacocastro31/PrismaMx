@@ -1,0 +1,117 @@
+<div *ngIf="entregado">
+<div class="card-header bg-secondary">
+  <div class="row text-white p-2 header-pedido align-items-center">
+    <div class="col-11">
+      <div class="row">
+        <div class=col-2>
+          <h6>Pedido:</h6>
+          <span>{{pedido.id}}</span>
+        </div>
+        <div class=col-2>
+          <h6>Fecha:</h6>
+          <span [ngModel]="fecha">{{fecha}}</span>
+        </div>
+        <div class=col-2>
+          <h6>Cliente:</h6>
+          <span>{{pedido.nombre}}</span>
+        </div>
+        <div class=col-2>
+          <h6>Precio Estimado:</h6>
+          <span>${{pedido.precio}} MXN</span>
+        </div>
+        <div class=col-2>
+          <h6>Precio Real:</h6>
+          <input [(ngModel)] = "valorReal" name="valorReal" type="email"  class="form-control input-pedidos" id="exampleInputEmail1" aria-describedby="emailHelp" value="0">
+        </div>
+        <div class="col-2">
+          <h6>Estado:</h6>
+          <div class="form-group">
+            <select id="material" [(ngModel)]= "status" name="status" class="form-control input-status">
+              <option value = "pendiente">Cotizando</option>
+              <option value = "espera">A espera de pago</option>
+              <option value = "revision">En revisión</option>
+              <option value = "produccion">En producción</option>
+              <option value = "listo">Listo</option>
+              <option value = "entregado">Entregado</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-1 text-center">
+      <button [attr.id]="'btn-up' + index" #buttonCollapse type="button" class="btn btn-default text-white" data-toggle="collapse" [attr.data-target]="'#a' + index" style="display: none;" (click)="changeDown(index)"><i class="fas fa-angle-up"></i></button>
+      <button [attr.id]="'btn-down' + index" #buttonCollapse1 type="button" class="btn btn-default text-white" data-toggle="collapse" [attr.data-target]="'#a' + index" (click)="changeUp(index)"><i class="fas fa-angle-down"></i></button>
+    </div>
+  </div>
+</div>
+
+<div class="collapse" [attr.id]="'a' + index">
+<div class="card-body">
+  <div class="row">
+    <div class="col-4">
+      <div class="form-group bg-secondary imagen-modelo"  alt="Responsive image" style="background-image:'';">
+        <div *ngIf="tieneImagen">
+          <a href='' target="_blank"><img src='{{img}}' class="imagen"></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="image">Subir Imagen de Modelo</label>
+        <input type="file" #modelPhoto
+        (change)="changeFile($event)"
+        name="image"
+        autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="dimensiones">Dimensiones</label>
+        <input class="form-control" type="number" name="dimensiones" placeholder="{{dimensionFinal}}" readonly>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <label for="archivo">Archivo</label>
+        <input class="form-control" name="archivo" type="textng" [(ngModel)]="nombreArch" readonly>
+      </div>
+      <div class="form-group">
+        <label for="material">Material</label>
+        <input class="form-control" type="text" name="material"  readonly required [(ngModel)]="pedido.material">
+      </div>
+      <div *ngIf="subiendo">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-grow text-warning" style="width: 5rem; height: 5rem; position: absolute;" role="status">
+            <span class="sr-only" >Loading...</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="calidad">Calidad</label>
+        <input class="form-control" type="text" name="calidad" [(ngModel)]="pedido.calidad" readonly>
+      </div>
+      <button type="button" class="btn btn-info mt-2 descarga" (click)="downloadFile()">Descargar Modelo</button>
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <label for="color">Color</label>
+        <input class="form-control" type="text" name="color" readonly required [(ngModel)]="pedido.color">
+      </div>
+      <div class="form-group">
+        <label for="relleno">Porcentaje de Relleno</label>
+        <input class="form-control" type="text" name="relleno" [(ngModel)]="pedido.relleno" readonly>
+      </div>
+      <div class="form-group">
+        <label for="cantidad">Cantidad</label>
+        <input class="form-control" type="number" name="cantidad" [(ngModel)]="pedido.cantidad" readonly>
+      </div>
+      <button type="button" *ngIf = 'tienePago' class="btn btn-info descarga mt-2" (click) = 'openPago()'>Ver Recibo de Pago</button>
+    </div>
+  </div>
+</div>
+
+<div class="card-footer">
+  <div class="row justify-content-end">
+    <div class="col-4">
+      <button (click)="updateInfo()" class="btn btn-primary">Actualizar</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
