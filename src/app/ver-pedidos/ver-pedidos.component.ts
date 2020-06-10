@@ -3,7 +3,7 @@ import { CotizacionService } from '../cotizacion/cotizacion.service';
 import { AngularFireStorage } from "@angular/fire/storage";
 import { map, finalize } from 'rxjs/operators';
 import { Observable, interval } from 'rxjs';
-
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 
 @Component({
   selector: 'app-ver-pedidos',
@@ -115,6 +115,7 @@ export class VerPedidosComponent implements OnInit {
             }).catch(err => console.log(err)).finally( () => {
               this.showPago = false;
               this.subiendo = false;
+              this.enviaEmail();
               this.mensaje = 'El pago está siendo revisado por nuestro equipo. En cuanto esté confirmado, se iniciará la producción de la pieza.';
             })
           });
@@ -125,5 +126,20 @@ export class VerPedidosComponent implements OnInit {
           console.log(url);
         }
       });
+  }
+
+  enviaEmail(){
+    var templateParams = {
+      to_name_value: 'prismai3d@gmail.com',
+      from_name: 'prismai3d@gmail.com',
+      message_html: 'El cliente '+ this.pedido.nombre + ' ha realizado el pago del pedido ' + this.pedido.id
+    };
+    emailjs.init("user_YVQlRv5P0X8LNqc4AXTo9");
+    emailjs.send('gmail', 'template_3y8KxQsG', templateParams)
+    .then(function(response) {
+      console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+      console.log('FAILED...', error);
+    });
   }
 }
