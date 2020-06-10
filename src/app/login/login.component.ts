@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    if(this.usuario != "admin" && this.password != "admin"){
+    if(this.usuario != "admin" || this.password != "admin"){
       this.showSnackbar()
     } else{
       localStorage.setItem("admin", this.usuario)
