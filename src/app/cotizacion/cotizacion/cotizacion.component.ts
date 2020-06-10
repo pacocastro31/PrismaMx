@@ -6,8 +6,16 @@ import { Observable } from "rxjs";
 import{cotizacion} from "../cotizacion";
 import{CotizacionService} from "../cotizacion.service";
 import { element } from 'protractor';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 
 declare var $: any;
+
+var templateParams = {
+  to_name: 'a00949282@itesm.mx',
+  from_name: 'noe0479@gmail.com',
+  message_html: 'Please Find out the attached file'
+};
+
 @Component({
   selector: 'app-cotizacion',
   templateUrl: './cotizacion.component.html',
@@ -44,7 +52,11 @@ export class CotizacionComponent implements OnInit {
       this.generateId();
       this.generateDate();
       this.upLoadInfo();
-      $("#myModal2").modal('show');
+      this.sendEmail($);
+      this.cotizacionService.createCotizacion(this.cotizacion, this.id,this.fecha);
+
+      $("#myModal3").modal('show');
+      //alert("Si");
     }
     else{
       alert("Favor de llenar los campos de nombre y/o mail");
@@ -53,6 +65,7 @@ export class CotizacionComponent implements OnInit {
 
 
   }
+  
   generateId(){
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&=';
@@ -64,6 +77,7 @@ export class CotizacionComponent implements OnInit {
     this.id = result;
   }
 
+
   generateDate(){
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -72,6 +86,18 @@ export class CotizacionComponent implements OnInit {
     this.fecha = dateTime;
 
   }
+
+
+  public sendEmail(e: Event) {
+    emailjs.init("user_YVQlRv5P0X8LNqc4AXTo9");
+    emailjs.send('gmail', 'template_3y8KxQsG', templateParams)
+    .then(function(response) {
+      console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+      console.log('FAILED...', error);
+    });
+  }
+
 
   getValueMail(event:any){
     this.userMail = event.target.value;
