@@ -47,7 +47,7 @@ export class PedidoFilaComponent implements OnInit {
       this.uploadFile();
     } else{
       this.subiendo = true;
-      this.cotizacionService.updatePedido(this.pedido.key, {precioReal: this.valorReal, status: this.pedido.status}).catch(err => console.log(err));
+      this.cotizacionService.updatePedido(this.pedido.key, {precioReal: this.valorReal, status: this.status}).catch(err => console.log(err));
     }
   }
 
