@@ -14,4 +14,5 @@ export class cotizacion {
     fecha:string;
     tieneImagen: boolean;
     urlImagen: string;
+    nombreArchivo:string;
 }

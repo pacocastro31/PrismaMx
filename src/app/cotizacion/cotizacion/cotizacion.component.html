@@ -35,6 +35,8 @@
               (change)="onFileSelected($event)"
               name="image"
               autocomplete="off"
+              (change)="selectNameFile($event)"
+              required [(ngModel)]="cotizacion.nombreArchivo"
             />
           </div>
         </div>
@@ -139,7 +141,7 @@
         <div class="card-footer">
           <div class="col-12">
             <!-- Trigger the modal with a button -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Precio aproximado</button>
+            <button type="button" class="btn btn-primary"  (click)="verificaImagen()">Precio aproximado</button>
           </div>
         </div>
       </div>
@@ -151,7 +153,7 @@
 
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="myModal1" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -171,19 +173,19 @@
           <div class="col-6">
             <div class="form-group">
               <label for="archivo">Archivo</label>
-              <input class="form-control" type="text" placeholder="Nombre del Archivo" readonly>
+              <input class="form-control" type="text" placeholder="{{nombreArchivo}}" readonly>
             </div>
             <div class="form-group">
               <label for="material">Material</label>
-              <input class="form-control" type="text" placeholder="{{selectedMaterial}}" readonly>
+              <input class="form-control" type="text" id="materialModal" placeholder="{{selectedMaterial}}" value="Sin especificar" readonly>
             </div>
             <div class="form-group">
               <label for="calidad">Calidad</label>
-              <input class="form-control" type="text" placeholder="{{selectedQuality}}" readonly>
+              <input class="form-control" type="text" id="calidadModal" placeholder="{{selectedQuality}}" value="Sin esppecificar" readonly>
             </div>
             <div class="form-group">
               <label for="color">Color</label>
-              <input class="form-control" type="text" placeholder="{{selectedColor}}" readonly>
+              <input class="form-control" type="text" id="colormodal" placeholder="{{selectedColor}}" value= "Sin especificar" readonly>
             </div>
           </div>
           <div class="col-6">
@@ -193,11 +195,11 @@
             </div>
             <div class="form-group">
               <label for="relleno">Porcentaje de Relleno</label>
-              <input class="form-control" type="text" placeholder="Relleno especificado" readonly>
+              <input class="form-control" type="text" id="rellenoModal" placeholder="{{selectedFill}}" value="sin especificar" readonly>
             </div>
             <div class="form-group">
               <label for="cantidad">Cantidad</label>
-              <input class="form-control" type="text" placeholder="{{selectedQuantity}}" readonly>
+              <input class="form-control" type="text" id="cantidadModal" placeholder="{{selectedQuantity}}" value="sin especificar" readonly>
             </div>
             <div class="form-group">
               <label class="aprox" for="costo">Costo Aproximado</label>
