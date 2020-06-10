@@ -176,8 +176,19 @@ export class CotizacionComponent implements OnInit {
     //console.log(rellenoReal);
     //console.log(cantidadReal);
     //falta multiplicar por precio del material del cliente
+    console.log(valorX);
+    console.log(valorY);
+    console.log(valorZ);
+    console.log(calidadReal);
+    console.log(rellenoReal);
+    console.log(materialReal);
+    console.log(cantidadReal);
 
-    formulaResultado = (((((valorZ - 8 * calidadReal) / calidadReal) * ((6 * valorX + 6 * valorY) + (((valorY - 2.4)/0.4) * rellenoReal * (valorX - 2.4) + valorY / 0.4 * 8 * valorX)))/ num) * materialReal)*cantidadReal;
+    var dato1 = (valorZ - 8 * calidadReal) / calidadReal;
+    var dato2 = (6 * valorX )+ (6 * valorY);
+    var dato3 = (valorY - 2.4)/0.4;
+
+    formulaResultado = ((( dato1 * ( dato2 + ( dato3 * rellenoReal * (valorX - 2.4))) + ((valorY / 0.4) * (8 * valorX)))/ num) * materialReal)*cantidadReal;
     console.log(formulaResultado);
     this.resultadoPrecio = formulaResultado.toFixed(2);
   }
