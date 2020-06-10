@@ -27,8 +27,10 @@ export class PedidoFilaComponent implements OnInit {
   imgFile: any = null
   subiendo: boolean = false;
   nombreArch = ""
+  fecha: any;
 
   ngOnInit(): void {
+    this.fecha = String(this.pedido.dia) + "-" + String(this.pedido.mes) + "-" + String(this.pedido.ano)
     this.status = this.pedido.status;
     this.valorReal = this.pedido.precioReal
     console.log(this.pedido);

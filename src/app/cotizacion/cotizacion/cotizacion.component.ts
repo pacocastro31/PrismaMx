@@ -30,7 +30,9 @@ export class CotizacionComponent implements OnInit {
   selectedQuantity: string = "";
   userName: string = "";
   userMail: string = "";
-  fecha: string = "";
+  dia = 0;
+  mes = 0;
+  ano = 0;
   id : string = "";
   file: any;
 
@@ -53,7 +55,6 @@ export class CotizacionComponent implements OnInit {
       this.generateDate();
       this.upLoadInfo();
       this.sendEmail($);
-      this.cotizacionService.createCotizacion(this.cotizacion, this.id,this.fecha);
 
       $("#myModal3").modal('show');
       //alert("Si");
@@ -80,11 +81,10 @@ export class CotizacionComponent implements OnInit {
 
   generateDate(){
     var today = new Date();
-    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    var dateTime = date;
-    console.log(dateTime);
-    this.fecha = dateTime;
-
+    this.ano = today.getFullYear();
+    this.mes = today.getMonth()+1;
+    this.dia = today.getDate();
+   
   }
 
 
@@ -169,7 +169,7 @@ export class CotizacionComponent implements OnInit {
             if (url) {
               this.fb = url;
             }
-            this.cotizacionService.createCotizacion(this.cotizacion, this.id,this.fecha);
+            this.cotizacionService.createCotizacion(this.cotizacion, this.id,this.dia,this.mes,this.ano);
             console.log(this.fb);
           });
         })
