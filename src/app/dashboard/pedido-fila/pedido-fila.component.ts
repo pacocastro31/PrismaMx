@@ -26,11 +26,13 @@ export class PedidoFilaComponent implements OnInit {
   tieneImagen: boolean = false;
   imgFile: any = null
   subiendo: boolean = false;
+  nombreArch = ""
 
   ngOnInit(): void {
     this.status = this.pedido.status;
     this.valorReal = this.pedido.precioReal
     console.log(this.pedido);
+    this.nombreArch = this.pedido.id + '.stl'
     if (this.pedido.tieneImagen){
       this.tieneImagen = true;
       this.img = this.pedido.urlImagen;
@@ -91,5 +93,18 @@ export class PedidoFilaComponent implements OnInit {
     var down = "btn-down" + i;
     document.getElementById(up).style.display = "inline-block";
     document.getElementById(down).style.display = "none";
+  }
+
+  downloadFile(){
+    console.log("aaajnjnjnjnaa");
+    const filePath = `RoomsImages/`+ this.pedido.id + '.stl';
+    const fileRef = this.storage.ref(filePath);
+    fileRef.getDownloadURL().subscribe(url => {
+      console.log(url);
+      var link = document.createElement('a');
+      link.download = url;
+      link.href = url;  
+      link.click();
+      });
   }
 }

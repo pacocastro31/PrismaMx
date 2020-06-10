@@ -24,6 +24,7 @@ export class CotizacionComponent implements OnInit {
   userMail: string = "";
   fecha: string = "";
   id : string = "";
+  file: any;
 
 
   cotizacion: cotizacion = new cotizacion();
@@ -42,8 +43,7 @@ export class CotizacionComponent implements OnInit {
     if(name != "" && mail != "") {
       this.generateId();
       this.generateDate();
-      this.cotizacionService.createCotizacion(this.cotizacion, this.id,this.fecha);
-
+      this.upLoadInfo();
       $("#myModal2").modal('show');
     }
     else{
@@ -130,13 +130,10 @@ export class CotizacionComponent implements OnInit {
   constructor(private Api: ApiService, private storage: AngularFireStorage, private cotizacionService: CotizacionService) {}
   ngOnInit() {}
 
-  upLoadInfo(event){
-
-    var n = Date.now();
-    const file = event.target.files[0];
-    const filePath = `RoomsImages/${n}`;
+  upLoadInfo(){
+    const filePath = `RoomsImages/`+this.id + '.stl';
     const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(`RoomsImages/${n}`, file);
+    const task = this.storage.upload(`RoomsImages/` + this.id + '.stl', this.file);
     task
       .snapshotChanges()
       .pipe(
@@ -146,6 +143,7 @@ export class CotizacionComponent implements OnInit {
             if (url) {
               this.fb = url;
             }
+            this.cotizacionService.createCotizacion(this.cotizacion, this.id,this.fecha);
             console.log(this.fb);
           });
         })
@@ -159,8 +157,7 @@ export class CotizacionComponent implements OnInit {
   }
 
   onFileSelected(event) {
-    const price = "500";
-    document.getElementById("priceFile").innerHTML = price;
+    this.file = event.target.files[0];
   }
 
 }

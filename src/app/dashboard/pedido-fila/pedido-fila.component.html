@@ -68,7 +68,7 @@
     <div class="col-4">
       <div class="form-group">
         <label for="archivo">Archivo</label>
-        <input class="form-control" type="number" placeholder="Nombre de archivo" readonly>
+        <input class="form-control" type="text" [(ngModel)]="nombreArch" readonly>
       </div>
       <div class="form-group">
         <label for="material">Material</label>
@@ -85,7 +85,7 @@
         <label for="calidad">Calidad</label>
         <input class="form-control" type="text" [(ngModel)]="pedido.calidad" readonly>
       </div>
-      <button type="button" class="btn btn-info mt-2 descarga">Descargar Modelo</button>
+      <button type="button" class="btn btn-info mt-2 descarga" (click)="downloadFile()">Descargar Modelo</button>
     </div>
     <div class="col-4">
       <div class="form-group">
