@@ -19,16 +19,16 @@
         <div class="col-2">
           <div class="form-group">
               <p class="card-title text-left">Año</p>
-            <select class="form-control filtro">
-              <option *ngFor="let item of items">{{item.ano}}</option>
+            <select class="form-control filtro" (change) = "filtroAnio($event.target.value)">
+              <option *ngFor="let item of items">{{ item }}</option>
             </select>
           </div>
         </div>
         <div class="col-2">
           <div class="form-group">
               <p class="card-title text-left">Mes</p>
-            <select class="form-control filtro">
-              <option *ngFor="let item of items">{{item.ano}}</option>
+            <select class="form-control filtro" (change) = "filtroMes($event.target.value)">
+              <option *ngFor="let mes of mes">{{ mes }}</option>
             </select>
           </div>
         </div>
@@ -38,7 +38,7 @@
           <div class="card background-orange">
             <div class="card-body">
               <h5>Pedidos Realizados</h5>
-              <h3>123</h3>
+              <h3 name="realizados">{{ realizados }}</h3>
             </div>
           </div>
         </div>
@@ -46,7 +46,7 @@
           <div class="card background-blue">
             <div class="card-body">
               <h5>Pedidos Pagados</h5>
-              <h3>123</h3>
+              <h3>{{ totalPagados }}</h3>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@
           <div class="card background-green">
             <div class="card-body">
               <h5>Ingresos</h5>
-              <h3>123</h3>
+              <h3>{{ ingresos }}</h3>
             </div>
           </div>
         </div>

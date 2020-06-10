@@ -33,7 +33,6 @@ export class PedidoFilaComponent implements OnInit {
     this.fecha = String(this.pedido.dia) + "-" + String(this.pedido.mes) + "-" + String(this.pedido.ano)
     this.status = this.pedido.status;
     this.valorReal = this.pedido.precioReal
-    console.log(this.pedido);
     this.nombreArch = this.pedido.id + '.stl'
     if (this.pedido.tieneImagen){
       this.tieneImagen = true;
@@ -42,6 +41,7 @@ export class PedidoFilaComponent implements OnInit {
   }
 
   updateInfo(){
+    location.reload()
     if(this.imgFile != null){
       this.subiendo = true;
       this.uploadFile();
