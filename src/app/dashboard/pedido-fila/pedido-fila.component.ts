@@ -26,6 +26,7 @@ export class PedidoFilaComponent implements OnInit {
   tieneImagen: boolean = false;
   imgFile: any = null
   subiendo: boolean = false;
+
   nombreArch = ""
   fecha: any;
 
