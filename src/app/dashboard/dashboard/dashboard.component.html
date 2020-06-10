@@ -19,15 +19,15 @@
         <div class="col-2">
           <div class="form-group">
               <p class="card-title text-left">Año</p>
-            <select class="form-control filtro" (change) = "filtroAnio($event.target.value)">
-              <option *ngFor="let item of items">{{ item }}</option>
+            <select class="form-control filtro" (change) = "filtroAnio($event.target.value)" >
+              <option *ngFor="let ano of anos">{{ ano }}</option>
             </select>
           </div>
         </div>
         <div class="col-2">
           <div class="form-group">
               <p class="card-title text-left">Mes</p>
-            <select class="form-control filtro" (change) = "filtroMes($event.target.value)">
+            <select class="form-control filtro" (change) = "filtroMes($event.target.value)" [disabled] = "disableMes">
               <option *ngFor="let mes of mes">{{ mes }}</option>
             </select>
           </div>
@@ -75,8 +75,6 @@
   </div>
 
 </div>
-
-
 <br>
 
 </div>

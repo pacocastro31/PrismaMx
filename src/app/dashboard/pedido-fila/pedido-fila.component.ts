@@ -26,11 +26,14 @@ export class PedidoFilaComponent implements OnInit {
   tieneImagen: boolean = false;
   imgFile: any = null
   subiendo: boolean = false;
-
+  entregado = true;
   nombreArch = ""
   fecha: any;
 
   ngOnInit(): void {
+    if(this.pedido.status == 'entregado'){
+      this.entregado = false
+    }
     this.fecha = String(this.pedido.dia) + "-" + String(this.pedido.mes) + "-" + String(this.pedido.ano)
     this.status = this.pedido.status;
     this.valorReal = this.pedido.precioReal
@@ -42,13 +45,14 @@ export class PedidoFilaComponent implements OnInit {
   }
 
   updateInfo(){
-    location.reload()
     if(this.imgFile != null){
       this.subiendo = true;
       this.uploadFile();
     } else{
       this.subiendo = true;
-      this.cotizacionService.updatePedido(this.pedido.key, {precioReal: this.valorReal, status: this.status}).catch(err => console.log(err));
+      this.cotizacionService.updatePedido(this.pedido.key, {precioReal: this.valorReal, status: this.status}).catch(err => console.log(err)).finally( () => {
+        location.reload();
+      });
     }
   }
 
@@ -65,9 +69,11 @@ export class PedidoFilaComponent implements OnInit {
             if (url) {
               this.fb = url;
             }
-            this.cotizacionService.updatePedido(this.pedido.key, {precioReal: this.valorReal, status: this.pedido.status, tieneImagen: true,
+            this.cotizacionService.updatePedido(this.pedido.key, {precioReal: this.valorReal, status: this.status, tieneImagen: true,
               urlImagen: this.fb
-            }).catch(err => console.log(err)).finally( 
+            }).catch(err => console.log(err)).finally( () => {
+              location.reload();
+            }
             );
             console.log(this.fb);
           });
@@ -99,7 +105,6 @@ export class PedidoFilaComponent implements OnInit {
   }
 
   downloadFile(){
-    console.log("aaajnjnjnjnaa");
     const filePath = `RoomsImages/`+ this.pedido.id + '.stl';
     const fileRef = this.storage.ref(filePath);
     fileRef.getDownloadURL().subscribe(url => {
