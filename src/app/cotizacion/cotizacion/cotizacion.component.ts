@@ -157,7 +157,7 @@ export class CotizacionComponent implements OnInit {
       calidadReal = 0.05;
     }
     ///HABILITAR CUANDO SE TRAIGAN LOS DATOS DE LA BASE, YA ESTA PERO HACE FALTA UN PULL"
-    /*
+    
     if(materialFormula == "PLA"){
       materialReal = 0.95;
     }
@@ -169,7 +169,7 @@ export class CotizacionComponent implements OnInit {
     }
     else if (materialFormula == "PLA WOOD"){
       materialReal = 1.30;
-    }*/
+    }
 
     //console.log("aqui");
     //console.log(calidadReal);
@@ -177,7 +177,7 @@ export class CotizacionComponent implements OnInit {
     //console.log(cantidadReal);
     //falta multiplicar por precio del material del cliente
 
-    formulaResultado = ((((valorZ - 8 * calidadReal) / calidadReal) * ((6 * valorX + 6 * valorY) + (((valorY - 2.4)/0.4) * rellenoReal * (valorX - 2.4) + valorY / 0.4 * 8 * valorX)))/ num) * cantidadReal;
+    formulaResultado = (((((valorZ - 8 * calidadReal) / calidadReal) * ((6 * valorX + 6 * valorY) + (((valorY - 2.4)/0.4) * rellenoReal * (valorX - 2.4) + valorY / 0.4 * 8 * valorX)))/ num) * materialReal)*cantidadReal;
     console.log(formulaResultado);
     this.resultadoPrecio = formulaResultado.toFixed(2);
   }
