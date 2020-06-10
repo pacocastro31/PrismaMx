@@ -31,10 +31,14 @@ export class PedidoFilaComponent implements OnInit {
   entregado = true;
   nombreArch = ""
   fecha: any;
+  tienePago = false;
 
   ngOnInit(): void {
     if(this.pedido.status == 'entregado'){
-      this.entregado = false
+      this.entregado = false;
+    }
+    if(this.pedido.urlPago){
+      this.tienePago = true;
     }
     this.fecha = String(this.pedido.dia) + "-" + String(this.pedido.mes) + "-" + String(this.pedido.ano)
     this.status = this.pedido.status;
@@ -148,6 +152,18 @@ export class PedidoFilaComponent implements OnInit {
       var link = document.createElement('a');
       link.download = url;
       link.href = url;  
+      link.click();
+      });
+  }
+
+  openPago(){
+    const filePath = `Pagos/`+ this.pedido.id ;
+    const fileRef = this.storage.ref(filePath);
+    fileRef.getDownloadURL().subscribe(url => {
+      var link = document.createElement('a');
+      link.download = url;
+      link.href = url;  
+      link.target = '_blanck';
       link.click();
       });
   }
