@@ -58,6 +58,8 @@ export class ContactUsComponent implements OnInit {
     emailjs.init("user_YVQlRv5P0X8LNqc4AXTo9");
     emailjs.send('gmail', 'template_3y8KxQsG', templateParams)
     .then(function(response) {
+      alert("Mensaje Enviado!");
+      location.reload();
       console.log('SUCCESS!', response.status, response.text);
     }, function(error) {
       console.log('FAILED...', error);
