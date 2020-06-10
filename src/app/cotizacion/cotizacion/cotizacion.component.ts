@@ -65,7 +65,7 @@ export class CotizacionComponent implements OnInit {
 
 
   }
-  
+
   generateId(){
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&=';
@@ -184,6 +184,23 @@ export class CotizacionComponent implements OnInit {
 
   onFileSelected(event) {
     this.file = event.target.files[0];
+    let iframe = document.getElementById('vs_iframe') as HTMLIFrameElement
+	  iframe.contentWindow.postMessage({msg_type:'load', file:this.file}, '*');
+    iframe.contentWindow.postMessage({msg_type:'get_info'}, '*');
+    document.defaultView.addEventListener("message", this.receiveMessage, false);
+  }
+
+  receiveMessage(e) {
+    if ((e.origin=="https://www.viewstl.com")&&(e.data.msg_type)) {
+      if (e.data.msg_type=='info') {
+        alert("Model filename: "+e.data.filename);
+        alert("Volume: "+e.data.volume);
+        alert("x: "+e.data.x);
+        alert("y: "+e.data.y);
+        alert("z: "+e.data.z);
+        alert("area: "+e.data.area);
+      }
+    }
   }
 
 }
