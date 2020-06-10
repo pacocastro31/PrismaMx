@@ -370,7 +370,7 @@ export class CotizacionComponent implements OnInit {
         tamZ.value = valorZ;
         dimensionZ = valorZ;
         //alert("area: "+e.data.area);
-        dimensionPopUp.value = '(' + valorX + ', ' + valorY + ', ' + valorZ + ')';
+        dimensionPopUp.value = valorX + 'mm, ' + valorY + 'mm, ' + valorZ + 'mm';
       }
     }
   }
