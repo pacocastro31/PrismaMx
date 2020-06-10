@@ -41,11 +41,7 @@
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
   }
-.btn.btn-primary {
-  height: 55px !important;
-  width: 100% !important;
-}
 
-.card {
-  box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15) !important;
-}
+  .disabled {
+    background: #ccc;
+  }

@@ -42,6 +42,9 @@ import { FaqsDetailComponent } from './admin/faqs/faqs-detail/faqs-detail.compon
 import { FaqsListComponent } from './admin/faqs/faqs-list/faqs-list.component';
 import { AboutUsComponent } from './admin/aboutUs/about-us/about-us.component';
 import { ContactUsAdminComponent } from './admin/contactUs/contact-us-admin/contact-us-admin.component';
+import { InventarioComponent } from './inventario/inventario-create/inventario.component';
+import { InventarioListaComponent } from './inventario/inventario-lista/inventario-lista.component';
+import { InventarioDetailComponent } from './inventario/inventario-detail/inventario-detail.component';
 
 
 
@@ -78,6 +81,9 @@ import { ContactUsAdminComponent } from './admin/contactUs/contact-us-admin/cont
 		FaqsListComponent,
 		AboutUsComponent,
 		ContactUsAdminComponent,
+		InventarioComponent,
+		InventarioListaComponent,
+		InventarioDetailComponent,
 	],
 	imports: [
 		BrowserModule,

@@ -13,7 +13,6 @@ export class PreciosComponent implements OnInit {
 
   info: any;
   prices: Prices = new Prices();
-  submitted = false;
 
   constructor(private priceServices: PreciosService) { }
 
@@ -26,6 +25,12 @@ export class PreciosComponent implements OnInit {
       this.save()
     }
     this.updatePrices()
+  }
+
+  showSnackbar(){
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
   }
 
   save(){
@@ -69,7 +74,6 @@ export class PreciosComponent implements OnInit {
   }
 
   updatePrices(){
-    this.submitted = true;
     if(this.info[0].title != this.prices.title){
       this.priceServices.updatePrices(this.info[0].key, {title: this.prices.title}).catch(err => console.log(err));
     }
@@ -122,9 +126,4 @@ export class PreciosComponent implements OnInit {
       this.priceServices.updatePrices(this.info[0].key, {linkCta3: this.prices.linkCta3}).catch(err => console.log(err));
     }
   }
-
-  availForm(){
-    this.submitted = false;
-  }
-
 }

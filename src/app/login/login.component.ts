@@ -17,12 +17,17 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    if(this.usuario != "admin" && this.password != "admin"){
-      alert("Usuario y/o Contraseña incorrecto")
+    if(this.usuario != "admin" || this.password != "admin"){
+      this.showSnackbar()
     } else{
       localStorage.setItem("admin", this.usuario)
       this.router.navigate(['admin']);
     }
   }
 
+  showSnackbar(){
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
 }
