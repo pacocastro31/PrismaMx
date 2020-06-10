@@ -14,15 +14,15 @@
             <div class="row">
               <div class="col-6">
                 <ul class="list-unstyled">
-                  <li><a href="#">Servicios</a></li>
-                  <li><a href="#">Precios</a></li>
-                  <li><a href="#">Preguntas Frecuentes</a></li>
+                  <li><a href="/home#services-section">Servicios</a></li>
+                  <li><a href="/home#pricing-section">Precios</a></li>
+                  <li><a href="/home#faq-section">Preguntas Frecuentes</a></li>
                 </ul>
               </div>
               <div class="col-6">
                 <ul class="list-unstyled">
-                  <li><a href="#">Contacto</a></li>
-                  <li><a href="#">Cotizar</a></li>
+                  <li><a href="/home#contact-section">Contacto</a></li>
+                  <li><a href="/cotizacion">Cotizar</a></li>
                   <li><a href="#">Términos y Condiciones</a></li>
                 </ul>
               </div>
@@ -31,9 +31,11 @@
         </div>
       </div>
       <div class="col-md-2 ml-auto">
-          <h2 class="footer-heading mb-4">Sigue nuestras Redes</h2>
-            <a href="https://www.facebook.com/Prismai3D/" class="smoothscroll pl-0 pr-3"><span class="icon-facebook"></span></a>
-            <a href="https://www.instagram.com/prismai3d/" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+        <h2 class="footer-heading mb-4">Sigue nuestras Redes</h2>
+          <div *ngFor="let gral of info">
+            <a href="{{gral.facebook}}" class="smoothscroll pl-0 pr-3"><span class="icon-facebook"></span></a>
+            <a href="{{gral.instagram}}" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+          </div>
       </div>
     </div>
     <div class="row pt-5 mt-5 text-center">

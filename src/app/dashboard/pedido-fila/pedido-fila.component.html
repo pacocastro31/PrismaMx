@@ -101,7 +101,7 @@
         <label for="cantidad">Cantidad</label>
         <input class="form-control" type="number" name="cantidad" [(ngModel)]="pedido.cantidad" readonly>
       </div>
-      <button type="button" class="btn btn-info descarga mt-2">Descargar Recibo de Pago</button>
+      <button type="button" *ngIf = 'tienePago' class="btn btn-info descarga mt-2" (click) = 'openPago()'>Ver Recibo de Pago</button>
     </div>
   </div>
 </div>

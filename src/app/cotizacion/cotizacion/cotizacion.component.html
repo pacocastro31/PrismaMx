@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="col-12 mb-2">
-          <h4>Medidas por Eje (cm)</h4>
+          <h4>Medidas por Eje (mm)</h4>
         </div>
         <div class="col-12">
           <div class="row">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-9">
                   <div class="form-group">
-                    <input id= "tamX" class="form-control" type="number" value="">
+                    <input id= "tamX" class="form-control" type="number" value="" readonly style="cursor: pointer;">
                   </div>
                 </div>
               </div>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="col-9">
                   <div class="form-group">
-                    <input  id= "tamY" class="form-control" type="number" value="">
+                    <input  id= "tamY" class="form-control" type="number" value="" readonly style="cursor: pointer;">
                   </div>
                 </div>
               </div>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="col-9">
                   <div class="form-group">
-                    <input id="tamZ"class="form-control" type="number" value="">
+                    <input id="tamZ"class="form-control" type="number" value="" readonly style="cursor: pointer;">
                   </div>
                 </div>
               </div>
@@ -94,7 +94,7 @@
               <div class="form-group">
                 <label for="material">Material</label>
                 <select id="materialLb" name= "material" class="form-control" (change)="selectChangeHandler($event)" required [(ngModel)]="cotizacion.material" placeholder="PLA">
-                  <option *ngFor="let inventario of inventarios" value="{{inventario.material}}">{{inventario.material}}</option>
+                  <option *ngFor="let material of materiales" value="{{material}}">{{material}}</option>
                 </select>
               </div>
             </div>
@@ -102,7 +102,7 @@
               <div class="form-group">
                 <label for="color">Color</label>
                 <select id="colorLb" name= "color" class="form-control" (change)="selectColorHandler($event)" required [(ngModel)]="cotizacion.color" placeholder="Sin Definir">
-                  <option *ngFor="let inventario of inventarios" value="{{inventario.color}}">{{inventario.color}}</option>
+                  <option *ngFor="let color of colores" value="{{color}}">{{color}}</option>
                 </select>
               </div>
             </div>
@@ -184,7 +184,7 @@
           </div>
           <div class="col-6">
             <div class="form-group">
-              <label for="dimensiones">Dimensiones</label>
+              <label for="dimensiones">Dimensiones (x,y,z)</label>
               <input class="form-control" id="dimensionPopUp" type="text" readonly>
             </div>
             <div class="form-group">
