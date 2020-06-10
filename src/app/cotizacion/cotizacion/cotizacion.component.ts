@@ -51,11 +51,14 @@ export class CotizacionComponent implements OnInit {
   id : string = "";
   file: any;
   nombreArchivo : string = "";
+  inventariosAux = [];
+  materiales = [];
+  colores = [];
 
 
   cotizacion: cotizacion = new cotizacion();
 
-  inventarios: any
+  inventarios = []
 
   getValues(event: any){
     this.userName = event.target.value;
@@ -201,6 +204,15 @@ export class CotizacionComponent implements OnInit {
     this.userName = event.target.value;
   }
 
+  llenaColor(){
+    this.inventarios.forEach(p => {
+      if(this.selectedMaterial == p.material){
+        this.colores.push(p.color)
+      }
+    });
+    console.log(this.colores)
+  }
+
   selectChangeHandler (event: any){
     var material = (<HTMLSelectElement>document.getElementById("materialLb")).value;
     var etiqueta = (<HTMLSelectElement>document.getElementById("materialModal"))
@@ -208,7 +220,8 @@ export class CotizacionComponent implements OnInit {
       this.selectedMaterial = event.target.value;
       etiqueta.value = event.target.value;
       materialFormula = etiqueta.value;
-      
+      this.colores = []
+      this.llenaColor()
     }
     else{
       this.selectedMaterial = "";
@@ -357,7 +370,7 @@ export class CotizacionComponent implements OnInit {
         tamZ.value = valorZ;
         dimensionZ = valorZ;
         //alert("area: "+e.data.area);
-        dimensionPopUp.value = '(' + valorX + ', ' + valorY + ', ' + valorZ + ')';
+        dimensionPopUp.value = valorX + 'mm, ' + valorY + 'mm, ' + valorZ + 'mm';
       }
     }
   }
@@ -370,8 +383,16 @@ export class CotizacionComponent implements OnInit {
           )
         )
     ).subscribe(Cinfo => {
-      this.inventarios = Cinfo;
-      console.log(this.inventarios);
+      this.inventarios = Cinfo
+      this.llenarMateriales()
+    });
+  }
+
+  llenarMateriales(){
+    this.inventarios.forEach(p => {
+      if (!this.materiales.includes(p.material)){
+        this.materiales.push(p.material);
+      }
     });
   }
 
