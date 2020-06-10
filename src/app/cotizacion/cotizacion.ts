@@ -11,7 +11,11 @@ export class cotizacion {
     status:string;
     id:string;
     precioReal:string;
-    fecha:string;
+    ano: any;
+    mes: any;
+    dia: any;
     tieneImagen: boolean;
     urlImagen: string;
+    nombreArchivo:string;
+    urlPago: string;
 }

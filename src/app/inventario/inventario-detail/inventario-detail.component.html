@@ -1,37 +1,39 @@
 <div *ngIf="inventario">
     <div class="card-body">
       <div class="row">
-        
         <div class="col-lg-2">
           <div class="form-group">
             <label for="fondo">Material</label><br>
-            <label class="" type="text">{{ inventario.material }}</label>
-          </div>
-        </div>
-        
-        <div class="col-lg-2">
-          <div class="form-group">
-            <label for="titulo">Color</label><br>
-            <label class="" type="text">{{ inventario.color }}</label>
+            <input class="form-control" type="text" placeholder="{{ inventario.material }}" readonly>
           </div>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-lg-2">
+          <div class="form-group">
+            <label for="titulo">Color</label><br>
+            <input class="form-control" type="text" placeholder="{{ inventario.color }}" readonly>
+          </div>
+        </div>
+
+        <div class="col-lg-2">
           <div class="form-group">
             <label for="precioMinuto">Precio por minuto</label>
             <input class="form-control" type="text" value="{{ inventario.precioMinuto }}" name="precioMinuto" [(ngModel)]="inventario.precioMinuto">
           </div>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-lg-2">
           <div class="form-group">
             <label for="rollos">Rollos</label>
             <input class="form-control" type="text" value="{{ inventario.rollos }}" name="rollos" [(ngModel)]="inventario.rollos">
           </div>
         </div>
-        
-        <div class="col-lg-1">
-          <button type="submit" class="btn btn-primary" (click)="update()">Actualizar</button>
+
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label class="text-white">Masa CEO</label>
+            <button type="submit" class="btn btn-primary" (click)="update()">Actualizar</button>
+          </div>
         </div>
 
         <div class="col-lg-1">
@@ -39,9 +41,8 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        
+
       </div>
     </div>
     <div id="snackbar">Guardado</div>
   </div>
-  
