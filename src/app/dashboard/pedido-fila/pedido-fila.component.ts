@@ -5,6 +5,7 @@ import { AngularFireStorage } from "@angular/fire/storage";
 import { map, finalize } from "rxjs/operators";
 import { Observable } from "rxjs";
 import * as firebase from 'firebase';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 
 @Component({
   selector: 'app-pedido-fila',
@@ -26,11 +27,14 @@ export class PedidoFilaComponent implements OnInit {
   tieneImagen: boolean = false;
   imgFile: any = null
   subiendo: boolean = false;
-
+  entregado = true;
   nombreArch = ""
   fecha: any;
 
   ngOnInit(): void {
+    if(this.pedido.status == 'entregado'){
+      this.entregado = false
+    }
     this.fecha = String(this.pedido.dia) + "-" + String(this.pedido.mes) + "-" + String(this.pedido.ano)
     this.status = this.pedido.status;
     this.valorReal = this.pedido.precioReal
@@ -42,13 +46,12 @@ export class PedidoFilaComponent implements OnInit {
   }
 
   updateInfo(){
-    location.reload()
     if(this.imgFile != null){
       this.subiendo = true;
       this.uploadFile();
     } else{
       this.subiendo = true;
-      this.cotizacionService.updatePedido(this.pedido.key, {precioReal: this.valorReal, status: this.status}).catch(err => console.log(err));
+      this.update({precioReal: this.valorReal, status: this.status});
     }
   }
 
@@ -65,10 +68,8 @@ export class PedidoFilaComponent implements OnInit {
             if (url) {
               this.fb = url;
             }
-            this.cotizacionService.updatePedido(this.pedido.key, {precioReal: this.valorReal, status: this.pedido.status, tieneImagen: true,
-              urlImagen: this.fb
-            }).catch(err => console.log(err)).finally( 
-            );
+            this.update({precioReal: this.valorReal, status: this.pedido.status, tieneImagen: true,
+              urlImagen: this.fb})
             console.log(this.fb);
           });
         })
@@ -78,6 +79,45 @@ export class PedidoFilaComponent implements OnInit {
           console.log(url);
         }
       });
+  }
+
+  update(obj){
+    this.cotizacionService.updatePedido(this.pedido.key, obj).catch(err => console.log(err)).finally( );
+    this.enviaEmail();
+  }
+
+  enviaEmail(){
+    console.log("asd");
+    console.log(this.pedido.mail)
+    var templateParams = {
+      to_name_value: this.pedido.mail,
+      from_name: 'prismai3d@gmail.com',
+      message_html: 'Su pedido con código: '+ this.pedido.id + ' ha pasado del estado ' + this.getStatus(this.pedido.status) + ' al estado ' + this.getStatus(this.status)
+    };
+    emailjs.init("user_YVQlRv5P0X8LNqc4AXTo9");
+    emailjs.send('gmail', 'template_3y8KxQsG', templateParams)
+    .then(function(response) {
+      console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+      console.log('FAILED...', error);
+    });
+  }
+
+  getStatus(status){
+    switch (status) {
+      case 'pendiente':
+        return'Cotizando';
+      case "espera":
+        return 'A espera de pago';
+      case "revision":
+        return 'En revisión';
+      case "produccion":
+        return 'En producción';
+      case "listo":
+        return 'Listo';
+      default:
+        return 'Entregado'
+    }
   }
 
   changeFile(event){
@@ -99,7 +139,6 @@ export class PedidoFilaComponent implements OnInit {
   }
 
   downloadFile(){
-    console.log("aaajnjnjnjnaa");
     const filePath = `RoomsImages/`+ this.pedido.id + '.stl';
     const fileRef = this.storage.ref(filePath);
     fileRef.getDownloadURL().subscribe(url => {
