@@ -1,6 +1,6 @@
 <div [hidden]="!admin2">
 <app-navbar-admin></app-navbar-admin>
-
+<br>
 <div class="container">
 
   <div class="row mb-4">
@@ -17,14 +17,18 @@
     <div class="card-body">
       <div class="row">
         <div class="col-2">
-          <p class="card-title text-left">Datos de</p>
+          <div class="form-group">
+              <p class="card-title text-left">Año</p>
+            <select class="form-control filtro">
+              <option *ngFor="let item of items">{{item.ano}}</option>
+            </select>
+          </div>
         </div>
         <div class="col-2">
           <div class="form-group">
+              <p class="card-title text-left">Mes</p>
             <select class="form-control filtro">
-              <option value="Semana">Semana</option>
-              <option value="Mes">Mes</option>
-              <option value="Anio">Año</option>
+              <option *ngFor="let item of items">{{item.ano}}</option>
             </select>
           </div>
         </div>
@@ -63,7 +67,7 @@
     <div class="card-header">
      <h3>Pedidos Activos</h3>
     </div>
-    <app-pedido></app-pedido>
+    <app-pedido [pedidos] = "pedidos"></app-pedido>
   </div>
 
 </div>
