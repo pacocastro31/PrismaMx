@@ -50,7 +50,7 @@
     <div class="col-4">
       <div class="form-group bg-secondary imagen-modelo"  alt="Responsive image" style="background-image:'';">
         <div *ngIf="tieneImagen">
-          <span><img class="img-fluid" [src]='img'></span>
+          <a href='' target="_blank"><img src='{{img}}' class="imagen"></a>
         </div>
       </div>
       <div class="form-group">
@@ -68,17 +68,24 @@
     <div class="col-4">
       <div class="form-group">
         <label for="archivo">Archivo</label>
-        <input class="form-control" type="number" placeholder="Nombre de archivo" readonly>
+        <input class="form-control" type="text" [(ngModel)]="nombreArch" readonly>
       </div>
       <div class="form-group">
         <label for="material">Material</label>
         <input class="form-control" type="text"  readonly required [(ngModel)]="pedido.material">
       </div>
+      <div *ngIf="subiendo">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-grow text-warning" style="width: 5rem; height: 5rem; position: absolute;" role="status">
+            <span class="sr-only" >Loading...</span>
+          </div>
+        </div>
+      </div>
       <div class="form-group">
         <label for="calidad">Calidad</label>
         <input class="form-control" type="text" [(ngModel)]="pedido.calidad" readonly>
       </div>
-      <button type="button" class="btn btn-info mt-2 descarga">Descargar Modelo</button>
+      <button type="button" class="btn btn-info mt-2 descarga" (click)="downloadFile()">Descargar Modelo</button>
     </div>
     <div class="col-4">
       <div class="form-group">
