@@ -51,11 +51,13 @@ export class CotizacionComponent implements OnInit {
   id : string = "";
   file: any;
   nombreArchivo : string = "";
+  inventariosAux = [];
+  materiales = [];
 
 
   cotizacion: cotizacion = new cotizacion();
 
-  inventarios: any
+  inventarios = []
 
   getValues(event: any){
     this.userName = event.target.value;
@@ -370,8 +372,16 @@ export class CotizacionComponent implements OnInit {
           )
         )
     ).subscribe(Cinfo => {
-      this.inventarios = Cinfo;
-      console.log(this.inventarios);
+      this.inventarios = Cinfo
+      this.llenarMateriales()
+    });
+  }
+
+  llenarMateriales(){
+    this.inventarios.forEach(p => {
+      if (!this.materiales.includes(p.material)){
+        this.materiales.push(p.material);
+      }
     });
   }
 
