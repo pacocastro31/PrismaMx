@@ -94,11 +94,7 @@
               <div class="form-group">
                 <label for="material">Material</label>
                 <select id="materialLb" name= "material" class="form-control" (change)="selectChangeHandler($event)" required [(ngModel)]="cotizacion.material" placeholder="PLA">
-                  <option  value="PLA">PLA</option>
-                  <option  value="ABS">ABS</option>
-                  <option  value="PetG">PetG</option>
-                  <option  value="PLA Wood">PLA Wood</option>
-                  <option  value="PLA Flexible">PLA Flexible</option>
+                  <option *ngFor="let inventario of inventarios" value="{{inventario.material}}">{{inventario.material}}</option>
                 </select>
               </div>
             </div>
@@ -106,9 +102,7 @@
               <div class="form-group">
                 <label for="color">Color</label>
                 <select id="colorLb" name= "color" class="form-control" (change)="selectColorHandler($event)" required [(ngModel)]="cotizacion.color" placeholder="Sin Definir">
-                  <option  value="Rojo">Rojo</option>
-                  <option  value="Verde">Verde</option>
-                  <option  value="Morado">Morado</option>
+                  <option *ngFor="let inventario of inventarios" value="{{inventario.color}}">{{inventario.color}}</option>
                 </select>
               </div>
             </div>
