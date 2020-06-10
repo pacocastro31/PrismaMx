@@ -21,6 +21,11 @@ var materialFormula = "";
 var rellenoFormula = "";
 var cantidadFormula = "";
 var formulaResultado;
+var dimensionX = 0;
+var dimensionY = 0;
+var dimensionZ = 0;
+
+
 @Component({
   selector: 'app-cotizacion',
   templateUrl: './cotizacion.component.html',
@@ -78,7 +83,6 @@ export class CotizacionComponent implements OnInit {
    
 
     if(name != "" && mail != "") {
-  
       this.generateDate();
       this.upLoadInfo();
       this.sendEmail($);
@@ -292,7 +296,7 @@ export class CotizacionComponent implements OnInit {
             if (url) {
               this.fb = url;
             }
-            this.cotizacionService.createCotizacion(this.cotizacion, this.id,this.dia,this.mes,this.ano,this.resultadoPrecio,this.tamanioX);
+            this.cotizacionService.createCotizacion(this.cotizacion, this.id,this.dia,this.mes,this.ano,this.resultadoPrecio, dimensionX, dimensionY, dimensionZ);
             console.log(this.fb);
           });
         })
@@ -322,6 +326,9 @@ export class CotizacionComponent implements OnInit {
     var tamX = (<HTMLSelectElement>document.getElementById("tamX"));
     var tamY = (<HTMLSelectElement>document.getElementById("tamY"));
     var tamZ = (<HTMLSelectElement>document.getElementById("tamZ"));
+
+    var dimensionPopUp = (<HTMLSelectElement>document.getElementById("dimensionPopUp"));
+
     if ((e.origin=="https://www.viewstl.com")&&(e.data.msg_type)) {
       if (e.data.msg_type=='info') {
         //alert("Model filename: "+e.data.filename);
@@ -329,14 +336,17 @@ export class CotizacionComponent implements OnInit {
         //alert("x: "+e.data.x);
         valorX = e.data.x;
         tamX.value = valorX;
-        this.tamanioX = valorX;
+        dimensionX = valorX;
         //alert("y: "+e.data.y);
         valorY = e.data.y;
         tamY.value = valorY;
+        dimensionY = valorY;
         //alert("z: "+e.data.z);
         valorZ = e.data.z;
         tamZ.value = valorZ;
+        dimensionZ = valorZ;
         //alert("area: "+e.data.area);
+        dimensionPopUp.value = '(' + valorX + ', ' + valorY + ', ' + valorZ + ')';
       }
     }
   }
