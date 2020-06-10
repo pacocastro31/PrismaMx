@@ -32,6 +32,7 @@ export class PedidoFilaComponent implements OnInit {
   nombreArch = ""
   fecha: any;
   tienePago = false;
+  dimensionFinal: String;
 
   ngOnInit(): void {
     if(this.pedido.status == 'entregado'){
@@ -40,6 +41,7 @@ export class PedidoFilaComponent implements OnInit {
     if(this.pedido.urlPago){
       this.tienePago = true;
     }
+    this.dimensionFinal = String(this.pedido.valX.toFixed(2)) + 'mm, ' + String(this.pedido.valY.toFixed(2)) + 'mm, ' + String(this.pedido.valZ.toFixed(2)) + 'mm.' 
     this.fecha = String(this.pedido.dia) + "-" + String(this.pedido.mes) + "-" + String(this.pedido.ano)
     this.status = this.pedido.status;
     this.valorReal = this.pedido.precioReal

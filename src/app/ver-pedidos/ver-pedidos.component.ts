@@ -28,9 +28,11 @@ export class VerPedidosComponent implements OnInit {
   tieneImagen = false;
   img: string;
   mensaje: string;
+  dimensionFinal: string
 
   ngOnInit(): void {
-
+    console.log(this.dimensionFinal);
+    console.log("un mensaje cualquiera");
   }
 
   getPedidos(){
@@ -56,6 +58,7 @@ export class VerPedidosComponent implements OnInit {
         this.tieneImagen = p.tieneImagen
         this.img = p.urlImagen
         this.pedido = p;
+        this.dimensionFinal = String(this.pedido.valX.toFixed(2)) + 'mm, ' + String(this.pedido.valY.toFixed(2)) + 'mm, ' + String(this.pedido.valZ.toFixed(2)) + 'mm.' 
         this.fecha = String(this.pedido.dia) + "-" + String(this.pedido.mes) + "-" + String(this.pedido.ano)
         this.getStatus();
         this.nombreArchivo = this.idPedido + '.stl'
