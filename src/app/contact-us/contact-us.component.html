@@ -13,25 +13,25 @@
         <form action="#" method="post">
           <div class="form-group row">
             <div class="col-md-6 mb-4 mb-lg-0">
-              <input type="text" class="form-control" placeholder="{{contact.placeHolderNombre}}">
+              <input type="text" class="form-control" placeholder="{{contact.placeHolderNombre}}" [(ngModel)]="nombre" [ngModelOptions]="{standalone: true}">
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="{{contact.placeHolderApellido}}">
+              <input type="text" class="form-control" placeholder="{{contact.placeHolderApellido}}" [(ngModel)]="apellido" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
           <div class="form-group row">
             <div class="col-md-12">
-              <input type="text" class="form-control" placeholder="{{contact.placeHolderCorreo}}">
+              <input type="text" class="form-control" placeholder="{{contact.placeHolderCorreo}}" [(ngModel)]="correo" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
           <div class="form-group row">
             <div class="col-md-12">
-              <textarea name="" id="" class="form-control" placeholder="{{contact.placeHolderMensaje}}" cols="30" rows="10"></textarea>
+              <textarea name="" id="" class="form-control" placeholder="{{contact.placeHolderMensaje}}" [(ngModel)]="mensaje" [ngModelOptions]="{standalone: true}" cols="30" rows="10"></textarea>
             </div>
           </div>
           <div class="form-group row">
             <div class="col-md-6 ml-auto">
-              <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5" value="Enviar Mensaje">
+              <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5" (click) = "enviarCorreo()" placeholder="Enviar Mensaje">
             </div>
           </div>
         </form>
@@ -39,7 +39,7 @@
       <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
         <h2 class="text-black">{{contact.tituloDescripcion}}</h2>
         <p>{{contact.descripcion}}</p>
-        <p><a href="#" class="btn btn-primary text-white">{{contact.cta}}</a></p>
+        <p><a href="#" class="btn btn-primary text-white" (click) = 'enviarCorreo()' >{{contact.cta}}</a></p>
       </div>
     </div>
   </div>

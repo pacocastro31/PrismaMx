@@ -3,6 +3,7 @@ import { map } from 'rxjs/operators';
 
 import { ContactUsInfo } from '../admin/contactUs/contactUs'
 import { ContactUsService } from '../admin/contactUs/contact-us.service'
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 
 @Component({
   selector: 'app-contact-us',
@@ -12,6 +13,10 @@ import { ContactUsService } from '../admin/contactUs/contact-us.service'
 export class ContactUsComponent implements OnInit {
 
   info: any;
+  nombre =  "";
+  apellido =  "";
+  correo = "";
+  mensaje = "";
 
   constructor(private contactUsService: ContactUsService) { }
 
@@ -28,6 +33,34 @@ export class ContactUsComponent implements OnInit {
         )
     ).subscribe(Cinfo => {
       this.info = Cinfo;
+    });
+  }
+
+  enviarCorreo(){
+    var templateParams = {
+      to_name_value: 'prismai3d@gmail.com',
+      from_name: this.correo,
+      message_html: 'El cliente '+ this.nombre + ' ' + this.apellido + ' envía el siguiente mensaje: ' + this.mensaje
+    };
+    emailjs.init("user_YVQlRv5P0X8LNqc4AXTo9");
+    emailjs.send('gmail', 'template_3y8KxQsG', templateParams)
+    .then(function(response) {
+      console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+      console.log('FAILED...', error);
+    });
+
+    var templateParams = {
+      to_name_value: this.correo,
+      from_name: "prismai3d@gmail.com",
+      message_html:  this.nombre + ' ' + this.apellido + ' has enviado el siguiente mensaje a Prisma Impresiones 3D: ' + this.mensaje
+    };
+    emailjs.init("user_YVQlRv5P0X8LNqc4AXTo9");
+    emailjs.send('gmail', 'template_3y8KxQsG', templateParams)
+    .then(function(response) {
+      console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+      console.log('FAILED...', error);
     });
   }
 
