@@ -13,6 +13,14 @@ declare var $: any;
 var datos
 var imagen = 0;
 var idResultado ;
+var valorX;
+var valorY;
+var valorZ;
+var calidadFormula = "";
+var materialFormula = "";
+var rellenoFormula = "";
+var cantidadFormula = "";
+var formulaResultado;
 @Component({
   selector: 'app-cotizacion',
   templateUrl: './cotizacion.component.html',
@@ -30,6 +38,8 @@ export class CotizacionComponent implements OnInit {
   dia = 0;
   mes = 0;
   ano = 0;
+  tamanioX:any;
+  resultadoPrecio : any;
   id : string = "";
   file: any;
   nombreArchivo : string = "";
@@ -43,7 +53,9 @@ export class CotizacionComponent implements OnInit {
   }
   verificaImagen(){
     var name = (<HTMLInputElement>document.getElementById("file")).value;
+    var precioCalculado =(<HTMLInputElement>document.getElementById("priceFile"));
     if(imagen != 0){
+      this.formula();
       $("#myModal1").modal('show');
       //console.log(name);
 
@@ -60,7 +72,7 @@ export class CotizacionComponent implements OnInit {
     var templateParams = {
       to_name_value: mail,
       from_name: 'noe0479@gmail.com',
-      message_html: idResultado
+      message_html: 'Hola Gracias '+ name + ' por confiar en Prisma para hacer tus ideas realidad. Este es el Id de tu pedido: ' + idResultado + ' Ingresalo en la siguiente pagina para dar seguimiento a tu orden'
     };
     datos = templateParams
    
@@ -70,6 +82,7 @@ export class CotizacionComponent implements OnInit {
       this.generateDate();
       this.upLoadInfo();
       this.sendEmail($);
+      
 
       $("#myModal3").modal('show');
       //alert("Si");
@@ -77,10 +90,6 @@ export class CotizacionComponent implements OnInit {
     else{
       alert("Favor de llenar los campos de nombre y/o mail");
     }
-
-
-
-
 
   }
 
@@ -105,6 +114,65 @@ export class CotizacionComponent implements OnInit {
    
   }
 
+  formula(){
+    const num = 2700;
+    var calidadReal;
+    var rellenoReal;
+    var cantidadReal
+    var materialReal;
+    //PLA 0.95 ABS 1.05 PetG 1.60 PLA WOOD 1.30
+
+    if(rellenoFormula == ""){
+      rellenoFormula = "20";
+    }
+    if(cantidadFormula == ""){
+      cantidadFormula = "1";
+    }
+    if(calidadFormula == ""){
+      calidadFormula = "Normal";
+    }
+    
+    rellenoReal = parseInt(rellenoFormula)/100;
+    cantidadReal = parseInt(cantidadFormula);
+
+    if(calidadFormula == "Normal"){
+        calidadReal = 0.2;
+    }
+    else if (calidadFormula == "Baja"){
+        calidadReal = 0.3;
+    }
+    else if (calidadFormula == "Alta"){
+      calidadReal = 0.15;
+    }
+    else if(calidadFormula == "Ultra"){
+      calidadReal = 0.05;
+    }
+    ///HABILITAR CUANDO SE TRAIGAN LOS DATOS DE LA BASE, YA ESTA PERO HACE FALTA UN PULL"
+    /*
+    if(materialFormula == "PLA"){
+      materialReal = 0.95;
+    }
+    else if(materialFormula == "ABS"){
+      materialReal = 1.05;
+    }
+    else if(materialFormula =="PetG"){
+      materialReal = 1.60;
+    }
+    else if (materialFormula == "PLA WOOD"){
+      materialReal = 1.30;
+    }*/
+
+    //console.log("aqui");
+    //console.log(calidadReal);
+    //console.log(rellenoReal);
+    //console.log(cantidadReal);
+    //falta multiplicar por precio del material del cliente
+
+    formulaResultado = ((((valorZ - 8 * calidadReal) / calidadReal) * ((6 * valorX + 6 * valorY) + (((valorY - 2.4)/0.4) * rellenoReal * (valorX - 2.4) + valorY / 0.4 * 8 * valorX)))/ num) * cantidadReal;
+    console.log(formulaResultado);
+    this.resultadoPrecio = formulaResultado.toFixed(2);
+  }
+
 
   public sendEmail(e: Event) {
     emailjs.init("user_YVQlRv5P0X8LNqc4AXTo9");
@@ -115,7 +183,6 @@ export class CotizacionComponent implements OnInit {
       console.log('FAILED...', error);
     });
   }
-
 
   getValueMail(event:any){
     this.userMail = event.target.value;
@@ -131,6 +198,8 @@ export class CotizacionComponent implements OnInit {
     if(material != ""){
       this.selectedMaterial = event.target.value;
       etiqueta.value = event.target.value;
+      materialFormula = etiqueta.value;
+      
     }
     else{
       this.selectedMaterial = "";
@@ -158,6 +227,8 @@ export class CotizacionComponent implements OnInit {
     if(calidad != ""){
       this.selectedQuality = event.target.value;
       etiqueta.value = event.target.value;
+      calidadFormula = etiqueta.value;
+      console.log(calidadFormula);
     }
     else{
       this.selectedQuality = "";
@@ -176,12 +247,15 @@ export class CotizacionComponent implements OnInit {
     if(relleno != ""){
       this.selectedFill = event.target.value;
       etiqueta.value = event.target.value;
+      rellenoFormula = etiqueta.value;
     }
     else{
       this.selectedFill = "";
+     
     }
     //console.log(relleno);
   }
+
 
   selectQuantityHandler(event: any){
     var cantidad = (<HTMLSelectElement>document.getElementById("cantidadLB")).value;
@@ -189,6 +263,7 @@ export class CotizacionComponent implements OnInit {
     if(cantidad != ""){
       this.selectedQuantity = event.target.value;
       etiqueta.value = event.target.value;
+      cantidadFormula = event.target.value
     }
     else{
       this.selectedQuantity = "";
@@ -217,7 +292,7 @@ export class CotizacionComponent implements OnInit {
             if (url) {
               this.fb = url;
             }
-            this.cotizacionService.createCotizacion(this.cotizacion, this.id,this.dia,this.mes,this.ano);
+            this.cotizacionService.createCotizacion(this.cotizacion, this.id,this.dia,this.mes,this.ano,this.resultadoPrecio,this.tamanioX);
             console.log(this.fb);
           });
         })
@@ -244,14 +319,24 @@ export class CotizacionComponent implements OnInit {
   }
 
   receiveMessage(e) {
+    var tamX = (<HTMLSelectElement>document.getElementById("tamX"));
+    var tamY = (<HTMLSelectElement>document.getElementById("tamY"));
+    var tamZ = (<HTMLSelectElement>document.getElementById("tamZ"));
     if ((e.origin=="https://www.viewstl.com")&&(e.data.msg_type)) {
       if (e.data.msg_type=='info') {
-        alert("Model filename: "+e.data.filename);
-        alert("Volume: "+e.data.volume);
-        alert("x: "+e.data.x);
-        alert("y: "+e.data.y);
-        alert("z: "+e.data.z);
-        alert("area: "+e.data.area);
+        //alert("Model filename: "+e.data.filename);
+        //alert("Volume: "+e.data.volume);
+        //alert("x: "+e.data.x);
+        valorX = e.data.x;
+        tamX.value = valorX;
+        this.tamanioX = valorX;
+        //alert("y: "+e.data.y);
+        valorY = e.data.y;
+        tamY.value = valorY;
+        //alert("z: "+e.data.z);
+        valorZ = e.data.z;
+        tamZ.value = valorZ;
+        //alert("area: "+e.data.area);
       }
     }
   }

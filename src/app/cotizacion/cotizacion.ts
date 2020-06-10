@@ -18,4 +18,7 @@ export class cotizacion {
     urlImagen: string;
     nombreArchivo:string;
     urlPago: string;
+    valX : any;
+    valY: any;
+    valZ : any;
 }

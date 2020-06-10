@@ -14,7 +14,7 @@ export class CotizacionService {
 		this.cotizacionesInfoRef = db.list(this.dbPath);
   }
 
-  createCotizacion(info: cotizacion, id: string, dia: any, mes: any, ano: any ): void {
+  createCotizacion(info: cotizacion, id: string, dia: any, mes: any, ano: any,precio:any,tamanioX:any ): void {
     var color = (<HTMLSelectElement>document.getElementById("colorLb")).value; 
     var material = (<HTMLSelectElement>document.getElementById("materialLb")).value; 
     var calidad = (<HTMLSelectElement>document.getElementById("calidadLb")).value; 
@@ -40,7 +40,8 @@ export class CotizacionService {
     info.dia = dia;
     info.ano = ano;
     info.status = "pendiente";
-    info.precio = "500";
+    info.precio = precio;
+    info.valX = tamanioX;
     info.precioReal = "0";
     this.cotizacionesInfoRef.push(info);
     console.log("Se guardo")
