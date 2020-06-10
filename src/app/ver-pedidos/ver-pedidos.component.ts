@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { CotizacionService } from '../cotizacion/cotizacion.service';
+import { AngularFireStorage } from "@angular/fire/storage";
+import { map, finalize } from 'rxjs/operators';
+import { Observable, interval } from 'rxjs';
+
 
 @Component({
   selector: 'app-ver-pedidos',
@@ -7,9 +12,118 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerPedidosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cotizacionService: CotizacionService, private storage: AngularFireStorage) { }
+
+  pedidoExiste = false
+  idPedido: any
+  pedidos = []
+  pedido: any;
+  fecha: any;
+  status: String;
+  downloadURL: Observable<string>;
+  nombreArchivo: String;
+  imgFile: any;
+  showPago: boolean = false;
+  subiendo = false;
+  tieneImagen = false;
+  img: string;
+  mensaje: string;
 
   ngOnInit(): void {
+
   }
 
+  getPedidos(){
+    this.cotizacionService.getPedidos().snapshotChanges().pipe(
+      map(changes=>
+        changes.map(c =>
+            ({key: c.payload.key, ...c.payload.val() })
+          )
+        )
+    ).subscribe(pedidos => {
+      this.pedidos = pedidos;
+      this.filterPedidos();
+    });
+  }
+
+  filterPedidos(){
+    console.log(this.idPedido)
+    for (let p of this.pedidos) {
+      if (p.id == this.idPedido) {
+        if (p.status == 'espera'){
+          this.showPago = true;
+        }
+        this.tieneImagen = p.tieneImagen
+        this.img = p.urlImagen
+        this.pedido = p;
+        this.fecha = String(this.pedido.dia) + "-" + String(this.pedido.mes) + "-" + String(this.pedido.ano)
+        this.getStatus();
+        this.nombreArchivo = this.idPedido + '.stl'
+        this.pedidoExiste = true;
+        break;
+      }
+    }
+  }
+
+  getStatus(){
+    switch (this.pedido.status) {
+      case 'pendiente':
+        this.status = 'Cotizando';
+        this.mensaje = 'El modelo está siendo cotizado por nuestro equipo. Se le enviará un correo con el precio real de la impresión.';
+        break;
+      case "espera":
+        this.status = 'A espera de pago';
+        this.mensaje = 'Su pedido se encuentra en espera de pago. Suba una foto de su recibo de pago y seleccione Confirmar Pago para continuar el proceso de producción.';
+        break;
+      case "revision":
+        this.status = 'En revisión';
+        this.mensaje = 'El pago está siendo revisado por nuestro equipo. En cuanto esté confirmado, se iniciará la producción de la pieza.';
+        break;
+      case "produccion":
+        this.status = 'En producción';
+        this.mensaje = 'Su pieza está siendo impresa por nuestro equipo.'
+        break;
+      case "listo":
+        this.status = 'Listo';
+        this.mensaje = 'Su pieza está lista. Nuestro equipo le contactará en breve por correo para definir los detalles de la entrega.'
+        break;
+      default:
+        this.status = 'Entregado'
+        this.mensaje = 'El pedido ha sido entregado. ¡Gracias por confiar en nosotros!'
+        break;
+    }
+  }
+  
+  changeFile(event){
+    this.imgFile = event.target.files[0];
+  }
+
+  uploadFile(){
+    this.subiendo = true
+    const filePath = `Pedidos/`+ this.pedido.id;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(`Pagos/`+ this.pedido.id, this.imgFile);
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe(url => {
+            this.cotizacionService.updatePedido(this.pedido.key, {
+              urlPago: url,
+              status: 'revision'
+            }).catch(err => console.log(err)).finally( () => {
+              this.showPago = false;
+              this.subiendo = false;
+              this.mensaje = 'El pago está siendo revisado por nuestro equipo. En cuanto esté confirmado, se iniciará la producción de la pieza.';
+            })
+          });
+        })
+      )
+      .subscribe(url => {
+        if (url) {
+          console.log(url);
+        }
+      });
+  }
 }

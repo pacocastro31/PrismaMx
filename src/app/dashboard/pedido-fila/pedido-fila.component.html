@@ -8,7 +8,7 @@
         </div>
         <div class=col-2>
           <h6>Fecha:</h6>
-          <span>{{pedido.fecha}}</span>
+          <span [ngModel]="fecha">{{fecha}}</span>
         </div>
         <div class=col-2>
           <h6>Cliente:</h6>
@@ -20,12 +20,12 @@
         </div>
         <div class=col-2>
           <h6>Precio Real:</h6>
-          <input [(ngModel)] = "valorReal" type="email"  class="form-control input-pedidos" id="exampleInputEmail1" aria-describedby="emailHelp" value="0">
+          <input [(ngModel)] = "valorReal" name="valorReal" type="email"  class="form-control input-pedidos" id="exampleInputEmail1" aria-describedby="emailHelp" value="0">
         </div>
         <div class="col-2">
           <h6>Estado:</h6>
           <div class="form-group">
-            <select id="material" [(ngModel)]= "status" class="form-control input-status">
+            <select id="material" [(ngModel)]= "status" name="status" class="form-control input-status">
               <option value = "pendiente">Cotizando</option>
               <option value = "espera">A espera de pago</option>
               <option value = "revision">En revisión</option>
@@ -54,7 +54,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="exampleInputFile">Subir Imagen de Modelo</label>
+        <label for="image">Subir Imagen de Modelo</label>
         <input type="file" #modelPhoto
         (change)="changeFile($event)"
         name="image"
@@ -62,17 +62,17 @@
       </div>
       <div class="form-group">
         <label for="dimensiones">Dimensiones</label>
-        <input class="form-control" type="number" placeholder="Dimensiones especificadas" readonly>
+        <input class="form-control" type="number" name="dimensiones" placeholder="Dimensiones especificadas" readonly>
       </div>
     </div>
     <div class="col-4">
       <div class="form-group">
         <label for="archivo">Archivo</label>
-        <input class="form-control" type="text" [(ngModel)]="nombreArch" readonly>
+        <input class="form-control" name="archivo" type="textng" [(ngModel)]="nombreArch" readonly>
       </div>
       <div class="form-group">
         <label for="material">Material</label>
-        <input class="form-control" type="text"  readonly required [(ngModel)]="pedido.material">
+        <input class="form-control" type="text" name="material"  readonly required [(ngModel)]="pedido.material">
       </div>
       <div *ngIf="subiendo">
         <div class="d-flex justify-content-center">
@@ -83,22 +83,22 @@
       </div>
       <div class="form-group">
         <label for="calidad">Calidad</label>
-        <input class="form-control" type="text" [(ngModel)]="pedido.calidad" readonly>
+        <input class="form-control" type="text" name="calidad" [(ngModel)]="pedido.calidad" readonly>
       </div>
       <button type="button" class="btn btn-info mt-2 descarga" (click)="downloadFile()">Descargar Modelo</button>
     </div>
     <div class="col-4">
       <div class="form-group">
         <label for="color">Color</label>
-        <input class="form-control" type="text"  readonly required [(ngModel)]="pedido.color">
+        <input class="form-control" type="text" name="color" readonly required [(ngModel)]="pedido.color">
       </div>
       <div class="form-group">
         <label for="relleno">Porcentaje de Relleno</label>
-        <input class="form-control" type="text" [(ngModel)]="pedido.relleno" readonly>
+        <input class="form-control" type="text" name="relleno" [(ngModel)]="pedido.relleno" readonly>
       </div>
       <div class="form-group">
         <label for="cantidad">Cantidad</label>
-        <input class="form-control" type="number"  [(ngModel)]="pedido.cantidad" readonly>
+        <input class="form-control" type="number" name="cantidad" [(ngModel)]="pedido.cantidad" readonly>
       </div>
       <button type="button" class="btn btn-info descarga mt-2">Descargar Recibo de Pago</button>
     </div>

@@ -29,149 +29,159 @@
       <h3>Ingresa el código de tu pedido</h3>
     </div>
     <div class="col-9">
-      <input type="text" class="form-control" id="codigoPedido" placeholder="123-456-789"/>
+      <input type="text" class="form-control" id="codigoPedido" [(ngModel)]="idPedido" />
     </div>
     <div class="col-3">
-      <button type="submit" class="btn btn-primary" style="width: 100%">Confirmar</button>
+      <button type="submit" class="btn btn-primary" (click)="getPedidos()" style="width: 100%">Confirmar</button>
     </div>
   </div>
 
-  <div class="pedido card mt-5 mb-5">
 
-    <div class="card-header bg-secondary">
-      <div class="row text-white p-2 header-pedido">
-        <div class=col-2>
-          <h6>Pedido:</h6>
-          <span>111-789-034</span>
-        </div>
-        <div class=col-2>
-          <h6>Fecha:</h6>
-          <span>20-04-2020</span>
-        </div>
-        <div class=col-2>
-          <h6>Cliente:</h6>
-          <span>Juan Pérez</span>
-        </div>
-        <div class=col-2>
-          <h6>Precio Estimado:</h6>
-          <span>$600.00 MXN</span>
-        </div>
-        <div class=col-2>
-          <h6>Precio Real:</h6>
-          <span>$537.00 MXN</span>
-        </div>
-        <div class="col-2">
-          <h6>Estado:</h6>
-          <span>A espera de pago</span>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="card-body">
-      <div class="row">
-
-        <div class="col-12 bg-white pt-4 pb-4 pl-5 pr-5">
-          <div class="row text-center bg-secondary header-pedido">
-            <div class="col-2 p-2 ">
-              <span>Cotizando</span>
-            </div>
-            <div class="col-2 p-2 bg-primary text-white">
-              <strong>A espera de pago</strong>
-            </div>
-            <div class="col-2 p-2">
-              <span>En revisión</span>
-            </div>
-            <div class="col-2 p-2">
-              <span>En producción</span>
-            </div>
-            <div class="col-2 p-2">
-              <span>Listo</span>
-            </div>
-            <div class="col-2 p-2">
-              <span>Entregado</span>
-            </div>
+  <div *ngIf = "pedidoExiste">
+    <div class="pedido card mt-5 mb-5">
+      <div class="card-header bg-secondary">
+        <div class="row text-white p-2 header-pedido">
+          <div class=col-2>
+            <h6>Pedido:</h6>
+            <span>{{pedido.id}}</span>
+          </div>
+          <div class=col-2>
+            <h6>Fecha:</h6>
+            <span>{{fecha}}</span>
+          </div>
+          <div class=col-2>
+            <h6>Cliente:</h6>
+            <span>{{pedido.nombre}}</span>
+          </div>
+          <div class=col-2>
+            <h6>Precio Estimado:</h6>
+            <span>${{pedido.precio}} MXN</span>
+          </div>
+          <div class=col-2>
+            <h6>Precio Real:</h6>
+            <span>${{pedido.precioReal}} MXN</span>
+          </div>
+          <div class="col-2">
+            <h6>Estado:</h6>
+            <span>{{status}}</span>
           </div>
         </div>
+      </div>
 
-        <div class="col-12 pl-5 pr-5 pb-4">
-          <p>Su pedido se encuentra en espera de pago. Suba una foto de su recibo de pago y seleccione Confirmar Pago para continuar el proceso de producción.</p>
-        </div>
 
-        <div class="col-4 pl-5">
-          <div class="row">
+      <div class="card-body">
+        <div class="row">
+
+          <div class="col-12 bg-white pt-4 pb-4 pl-5 pr-5">
+            <div class="row text-center bg-secondary header-pedido">
+              <div class="col-2 p-2" id="pendiente">
+                <span>Cotizando</span>
+              </div>
+              <div class="col-2 p-2" id="espera" [ngClass]="{'bg-primary': pedido.status=='espera', 'text-white': pedido.status=='espera'}">
+                <span>A espera de pago</span>
+              </div>
+              <div class="col-2 p-2" id="revision" [ngClass]="{'bg-primary': pedido.status=='revision', 'text-white': pedido.status=='revision'}">
+                <span>En revisión</span>
+              </div>
+              <div class="col-2 p-2" id="produccion" [ngClass]="{'bg-primary': pedido.status=='produccion', 'text-white': pedido.status=='produccion'}">
+                <span>En producción</span>
+              </div>
+              <div class="col-2 p-2" id="listo" [ngClass]="{'bg-primary': pedido.status=='listo', 'text-white': pedido.status=='listo'}">
+                <span>Listo</span>
+              </div>
+              <div class="col-2 p-2" id="entregado" [ngClass]="{'bg-primary': pedido.status=='entregado', 'text-white': pedido.status=='entregado'}">
+                <span>Entregado</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 pl-5 pr-5 pb-4">
+            <p [(ngModel)] = 'mensaje'>{{mensaje}}</p>
+          </div>
+
+          <div class="col-4 pl-5">
+            <div class="row">
+              <div class="col-12">
+                <div *ngIf="tieneImagen">
+                  <a href='' target="_blank"><img src='{{img}}' class="imagen"></a>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="dimensiones">Dimensiones</label>
+                  <input class="form-control" type="text" placeholder="Dimensiones especificadas" readonly>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
             <div class="col-12">
-              <div class="form-group bg-secondary imagen-modelo">
+              <div class="form-group">
+                <label for="nombreArchivo">Archivo</label>
+                <input class="form-control" type="text" placeholder="Nombre de archivo" [(ngModel)] = "nombreArchivo" readonly>
+              </div>
+            </div>
+            <div *ngIf="subiendo">
+              <div class="d-flex justify-content-center">
+                <div class="spinner-grow text-warning" style="width: 5rem; height: 5rem; position: absolute; z-index: 1;" role="status">
+                  <span class="sr-only" >Loading...</span>
+                </div>
               </div>
             </div>
             <div class="col-12">
               <div class="form-group">
-                <label for="dimensiones">Dimensiones</label>
-                <input class="form-control" type="text" placeholder="Dimensiones especificadas" readonly>
+                <label for="material">Material</label>
+                <input class="form-control" type="text" placeholder="Material seleccionado" [(ngModel)] = "pedido.material" readonly>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label for="calidad">Calidad</label>
+                <input class="form-control" type="text" placeholder="Calidad seleccionada" [(ngModel)] = "pedido.calidad" readonly>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 pr-5">
+            <div class="col-12">
+              <div class="form-group">
+                <label for="dimensiones">Color</label>
+                <input class="form-control" type="text" placeholder="Color seleccionado" [(ngModel)] = "pedido.color" readonly>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label for="dimensiones">Porcentaje de relleno</label>
+                <input class="form-control" type="text" placeholder="Relleno especificado" [(ngModel)] = "pedido.relleno" readonly>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label for="dimensiones">Cantidad</label>
+                <input class="form-control" type="text" placeholder="Cantidad seleccionada" [(ngModel)] = "pedido.cantidad" readonly>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-4">
-          <div class="col-12">
-            <div class="form-group">
-              <label for="nombreArchivo">Archivo</label>
-              <input class="form-control" type="text" placeholder="Nombre de archivo" readonly>
+      </div>
+      <div *ngIf = "showPago">
+      <div class="card-footer">
+        <div class="row justify-content-end">
+          <div class="col-4 pt-2">
+            <div class="col-12">
+              <div class="form-group">
+                <input type="file" accept=".png, .jpg, .jpeg" id="recibo" (change) = "changeFile($event)">
+              </div>
             </div>
           </div>
-          <div class="col-12">
-            <div class="form-group">
-              <label for="material">Material</label>
-              <input class="form-control" type="text" placeholder="Material seleccionado" readonly>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="form-group">
-              <label for="calidad">Calidad</label>
-              <input class="form-control" type="text" placeholder="Calidad seleccionada" readonly>
-            </div>
-          </div>
-        </div>
-        <div class="col-4 pr-5">
-          <div class="col-12">
-            <div class="form-group">
-              <label for="dimensiones">Color</label>
-              <input class="form-control" type="text" placeholder="Color seleccionado" readonly>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="form-group">
-              <label for="dimensiones">Porcentaje de relleno</label>
-              <input class="form-control" type="text" placeholder="Relleno especificado" readonly>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="form-group">
-              <label for="dimensiones">Cantidad</label>
-              <input class="form-control" type="text" placeholder="Cantidad seleccionada" readonly>
+          <div class="col-4 pr-5">
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary" (click) = 'uploadFile()'>Confirmar Pago</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="card-footer">
-      <div class="row justify-content-end">
-        <div class="col-4 pt-2">
-          <div class="col-12">
-            <div class="form-group">
-              <input type="file" accept=".png, .jpg, .jpeg" id="recibo">
-            </div>
-          </div>
-        </div>
-        <div class="col-4 pr-5">
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary">Confirmar Pago</button>
-          </div>
-        </div>
-      </div>
     </div>
-
   </div>
-
 </div>
+<br><br><br>
