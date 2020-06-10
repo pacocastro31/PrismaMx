@@ -8,6 +8,9 @@ import{CotizacionService} from "../cotizacion.service";
 import { element } from 'protractor';
 import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 
+import { InventarioInfo } from '../../inventario/inventario'
+import { InventarioService } from '../../inventario/inventario.service'
+
 declare var $: any;
 //var mail = (<HTMLInputElement>document.getElementById("mail")).value;
 var datos
@@ -52,6 +55,7 @@ export class CotizacionComponent implements OnInit {
 
   cotizacion: cotizacion = new cotizacion();
 
+  inventarios: any
 
   getValues(event: any){
     this.userName = event.target.value;
@@ -80,9 +84,10 @@ export class CotizacionComponent implements OnInit {
       message_html: 'Hola Gracias '+ name + ' por confiar en Prisma para hacer tus ideas realidad. Este es el Id de tu pedido: ' + idResultado + ' Ingresalo en la siguiente pagina para dar seguimiento a tu orden'
     };
     datos = templateParams
-   
+
 
     if(name != "" && mail != "") {
+
       this.generateDate();
       this.upLoadInfo();
       this.sendEmail($);
@@ -115,7 +120,7 @@ export class CotizacionComponent implements OnInit {
     this.ano = today.getFullYear();
     this.mes = today.getMonth()+1;
     this.dia = today.getDate();
-   
+
   }
 
   formula(){
@@ -280,8 +285,14 @@ export class CotizacionComponent implements OnInit {
   selectedFile: File = null;
   fb;
   downloadURL: Observable<string>;
-  constructor(private Api: ApiService, private storage: AngularFireStorage, private cotizacionService: CotizacionService) {}
-  ngOnInit() {}
+  constructor(private Api: ApiService,
+  private storage: AngularFireStorage,
+  private cotizacionService: CotizacionService,
+  private inventarioService: InventarioService) {}
+
+  ngOnInit(): void {
+    this.getInfo();
+  }
 
   upLoadInfo(){
     const filePath = `RoomsImages/`+this.id + '.stl';
@@ -349,6 +360,19 @@ export class CotizacionComponent implements OnInit {
         dimensionPopUp.value = '(' + valorX + ', ' + valorY + ', ' + valorZ + ')';
       }
     }
+  }
+
+  getInfo(){
+    this.inventarioService.getInventarioInfo().snapshotChanges().pipe(
+      map(changes=>
+        changes.map(c =>
+            ({key: c.payload.key, ...c.payload.val() })
+          )
+        )
+    ).subscribe(Cinfo => {
+      this.inventarios = Cinfo;
+      console.log(this.inventarios);
+    });
   }
 
 }

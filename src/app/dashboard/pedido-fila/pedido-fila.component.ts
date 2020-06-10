@@ -27,11 +27,14 @@ export class PedidoFilaComponent implements OnInit {
   tieneImagen: boolean = false;
   imgFile: any = null
   subiendo: boolean = false;
-
+  entregado = true;
   nombreArch = ""
   fecha: any;
 
   ngOnInit(): void {
+    if(this.pedido.status == 'entregado'){
+      this.entregado = false
+    }
     this.fecha = String(this.pedido.dia) + "-" + String(this.pedido.mes) + "-" + String(this.pedido.ano)
     this.status = this.pedido.status;
     this.valorReal = this.pedido.precioReal
@@ -136,7 +139,6 @@ export class PedidoFilaComponent implements OnInit {
   }
 
   downloadFile(){
-    console.log("aaajnjnjnjnaa");
     const filePath = `RoomsImages/`+ this.pedido.id + '.stl';
     const fileRef = this.storage.ref(filePath);
     fileRef.getDownloadURL().subscribe(url => {

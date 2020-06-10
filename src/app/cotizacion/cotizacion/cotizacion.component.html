@@ -94,11 +94,7 @@
               <div class="form-group">
                 <label for="material">Material</label>
                 <select id="materialLb" name= "material" class="form-control" (change)="selectChangeHandler($event)" required [(ngModel)]="cotizacion.material" placeholder="PLA">
-                  <option  value="PLA">PLA</option>
-                  <option  value="ABS">ABS</option>
-                  <option  value="PetG">PetG</option>
-                  <option  value="PLA Wood">PLA Wood</option>
-                  <option  value="PLA Flexible">PLA Flexible</option>
+                  <option *ngFor="let inventario of inventarios" value="{{inventario.material}}">{{inventario.material}}</option>
                 </select>
               </div>
             </div>
@@ -106,9 +102,7 @@
               <div class="form-group">
                 <label for="color">Color</label>
                 <select id="colorLb" name= "color" class="form-control" (change)="selectColorHandler($event)" required [(ngModel)]="cotizacion.color" placeholder="Sin Definir">
-                  <option  value="Rojo">Rojo</option>
-                  <option  value="Verde">Verde</option>
-                  <option  value="Morado">Morado</option>
+                  <option *ngFor="let inventario of inventarios" value="{{inventario.color}}">{{inventario.color}}</option>
                 </select>
               </div>
             </div>
@@ -164,7 +158,7 @@
       <div class="modal-body container">
         <div class="row">
           <div class="col-12">
-            <h5 class="text-center">El precio presentado es un aproximado.
+            <h5 class="text-center text-dark">El precio presentado es un aproximado.
               Para cotizar el precio real, favor de ingresar sus datos y
               seleccionar el botón de Cotizar.</h5>
           </div>
@@ -207,7 +201,7 @@
             </div>
           </div>
         </div>
-        <div class="row mt-4 mb-4">
+        <div class="row mt-4">
           <div class="col-6">
             <div class="form-group">
               <label for="nombre">Nombre Completo</label>
@@ -223,14 +217,12 @@
         </div>
       </div>
       <div class="modal-footer">
-        <div class="row">
-          <div class="col-6">
-            <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
-          </div>
-          <div class="col-6">
-            <button type="button" class="btn btn-primary" data-toggle="modal"  data-dismiss="modal"
-            (click)="saveValues()">Cotizar </button>
-          </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-primary" data-toggle="modal"  data-dismiss="modal"
+          (click)="saveValues()">Cotizar </button>
         </div>
       </div>
     </div>
@@ -278,11 +270,9 @@
         </div>
       </div>
 
-      <div class="modal-footer">
-        <div class="row justify-content-center pt-3 pb-3">
-          <div class="col-6">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
-          </div>
+      <div class="modal-footer justify-content-center">
+        <div class="col-6">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
         </div>
       </div>
     </div>

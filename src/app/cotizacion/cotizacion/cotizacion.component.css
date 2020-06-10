@@ -27,3 +27,20 @@
 .card {
   box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15) !important;
 }
+
+.modal-dialog {
+  max-width: 700px !important;
+}
+
+.modal-body {
+  padding: 3rem !important;
+}
+
+.modal-body h5{
+  margin-bottom: 3rem;
+  line-height: 1.5;
+}
+
+.modal-footer {
+  padding: 1rem 3rem;
+}
