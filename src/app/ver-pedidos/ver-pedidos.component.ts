@@ -103,7 +103,7 @@ export class VerPedidosComponent implements OnInit {
 
   uploadFile(){
     this.subiendo = true
-    const filePath = `Pedidos/`+ this.pedido.id;
+    const filePath = `Pagos/`+ this.pedido.id;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(`Pagos/`+ this.pedido.id, this.imgFile);
     task
