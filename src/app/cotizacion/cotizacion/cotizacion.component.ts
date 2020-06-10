@@ -53,6 +53,7 @@ export class CotizacionComponent implements OnInit {
   nombreArchivo : string = "";
   inventariosAux = [];
   materiales = [];
+  colores = [];
 
 
   cotizacion: cotizacion = new cotizacion();
@@ -203,6 +204,15 @@ export class CotizacionComponent implements OnInit {
     this.userName = event.target.value;
   }
 
+  llenaColor(){
+    this.inventarios.forEach(p => {
+      if(this.selectedMaterial == p.material){
+        this.colores.push(p.color)
+      }
+    });
+    console.log(this.colores)
+  }
+
   selectChangeHandler (event: any){
     var material = (<HTMLSelectElement>document.getElementById("materialLb")).value;
     var etiqueta = (<HTMLSelectElement>document.getElementById("materialModal"))
@@ -210,7 +220,8 @@ export class CotizacionComponent implements OnInit {
       this.selectedMaterial = event.target.value;
       etiqueta.value = event.target.value;
       materialFormula = etiqueta.value;
-      
+      this.colores = []
+      this.llenaColor()
     }
     else{
       this.selectedMaterial = "";
