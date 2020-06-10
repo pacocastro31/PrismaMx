@@ -1,5 +1,5 @@
   <div class="card-body">
-    <div class="card mb-4" *ngFor="let pedido of pedidos; let i = index" [attr.data-index]="i">
+    <div class="card mb-1" *ngFor="let pedido of pedidos; let i = index" [attr.data-index]="i">
         <app-pedido-fila [pedido] = "pedido" [index] = "i"></app-pedido-fila>
     </div>
   </div>
