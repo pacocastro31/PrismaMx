@@ -16,5 +16,6 @@ export class cotizacion {
     dia: any;
     tieneImagen: boolean;
     urlImagen: string;
+    nombreArchivo:string;
     urlPago: string;
 }
