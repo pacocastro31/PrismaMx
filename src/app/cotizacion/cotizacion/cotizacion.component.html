@@ -258,7 +258,7 @@
           </div>
           <div class="col-12">
             <div class="form-group">
-              <input class="form-control input-lg" type="text" placeholder="{{id}}" readonly>
+              <input class="form-control input-lg" type="text" value="{{id}}" readonly>
             </div>
           </div>
         </div>
@@ -272,7 +272,7 @@
 
       <div class="modal-footer justify-content-center">
         <div class="col-6">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)='reload()'>OK</button>
         </div>
       </div>
     </div>

@@ -95,11 +95,9 @@ export class PedidoFilaComponent implements OnInit {
   }
 
   enviaEmail(){
-    console.log("asd");
-    console.log(this.pedido.mail)
     var templateParams = {
       to_name_value: this.pedido.mail,
-      from_name: 'prismai3d@gmail.com',
+      from_name: 'Prisma Impresiones 3D',
       message_html: 'Su pedido con código: '+ this.pedido.id + ' ha pasado del estado ' + this.getStatus(this.pedido.status) + ' al estado ' + this.getStatus(this.status)
     };
     emailjs.init("user_YVQlRv5P0X8LNqc4AXTo9");

@@ -134,7 +134,7 @@ export class VerPedidosComponent implements OnInit {
   enviaEmail(){
     var templateParams = {
       to_name_value: 'prismai3d@gmail.com',
-      from_name: 'prismai3d@gmail.com',
+      from_name: 'Prisma Impresiones 3D',
       message_html: 'El cliente '+ this.pedido.nombre + ' ha realizado el pago del pedido ' + this.pedido.id
     };
     emailjs.init("user_YVQlRv5P0X8LNqc4AXTo9");

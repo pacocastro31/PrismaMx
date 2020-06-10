@@ -8,16 +8,16 @@
           <nav class="site-navigation text-right ml-auto " role="navigation">
             <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
               <li [hidden]="!admin2">
-                <a routerLink="/dashboard" class="nav-link">Dashboard</a>
+                <a href="/dashboard" class="nav-link">Dashboard</a>
               </li>
               <li [hidden]="!admin2">
-                <a routerLink="/admin" class="nav-link">Contenido</a>
+                <a href="/admin" class="nav-link">Contenido</a>
               </li>
               <li [hidden]="admin2">
-                <a routerLink="/login" class="nav-link">Log In</a>
+                <a href="/login" class="nav-link">Log In</a>
               </li>
               <li [hidden]="!admin2">
-                <a class="nav-link" (click)="cerrarSesion()">Log Out</a>
+                <a class="nav-link" href="/login" (click)="cerrarSesion()">Log Out</a>
               </li>
             </ul>
           </nav>

@@ -83,7 +83,7 @@ export class CotizacionComponent implements OnInit {
 
     var templateParams = {
       to_name_value: mail,
-      from_name: 'noe0479@gmail.com',
+      from_name: 'Prisma Impresiones 3D',
       message_html: 'Hola Gracias '+ name + ' por confiar en Prisma para hacer tus ideas realidad. Este es el Id de tu pedido: ' + idResultado + ' Ingresalo en la siguiente pagina para dar seguimiento a tu orden'
     };
     datos = templateParams
@@ -316,6 +316,9 @@ export class CotizacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.getInfo();
+  }
+  reload(){
+    location.reload();
   }
 
   upLoadInfo(){
