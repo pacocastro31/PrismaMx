@@ -16,7 +16,6 @@ export class EditContactInfoComponent implements OnInit {
   @Input() contact: ContactInfo;
 
   contactInfo: ContactInfo = new ContactInfo();
-  submitted = false;
   info: any
   selectedImage: any
   downloadURL: Observable<string>;
@@ -30,43 +29,31 @@ export class EditContactInfoComponent implements OnInit {
   }
 
   save() {
-    this.submitted = true;
     this.editContactInfoService.createContactInfo(this.contactInfo);
   }
 
   updateInfo(){
     if(this.info[0].name != this.contactInfo.name){
-      this.submitted = true;
       this.editContactInfoService.updateContactInfo(this.info[0].key, {name: this.contactInfo.name}).catch(err => console.log(err));
     }
     if(this.info[0].phoneNumber != this.contactInfo.phoneNumber){
-      this.submitted = true;
       this.editContactInfoService.updateContactInfo(this.info[0].key, {phoneNumber: this.contactInfo.phoneNumber}).catch(err => console.log(err));
     }
     if(this.info[0].email != this.contactInfo.email){
-      this.submitted = true;
       this.editContactInfoService.updateContactInfo(this.info[0].key, {email: this.contactInfo.email}).catch(err => console.log(err));
     }
     if(this.info[0].facebook != this.contactInfo.facebook){
-      this.submitted = true;
       this.editContactInfoService.updateContactInfo(this.info[0].key, {facebook: this.contactInfo.facebook}).catch(err => console.log(err));
     }
     if(this.info[0].instagram != this.contactInfo.instagram){
-      this.submitted = true;
       this.editContactInfoService.updateContactInfo(this.info[0].key, {instagram: this.contactInfo.instagram}).catch(err => console.log(err));
     }
     if(this.info[0].address != this.contactInfo.address){
-      this.submitted = true;
       this.editContactInfoService.updateContactInfo(this.info[0].key, {address: this.contactInfo.address}).catch(err => console.log(err));
     }
     if(this.info[0].sobreNosotros != this.contactInfo.sobreNosotros){
-      this.submitted = true;
       this.editContactInfoService.updateContactInfo(this.info[0].key, {sobreNosotros: this.contactInfo.sobreNosotros}).catch(err => console.log(err));
     }
-  }
-
-  availForm(){
-    this.submitted = false;
   }
 
   onSubmit() {
@@ -74,6 +61,12 @@ export class EditContactInfoComponent implements OnInit {
       this.save()
     }
     this.updateInfo()
+  }
+
+  showSnackbar(){
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
   }
 
   getContactInfo(){

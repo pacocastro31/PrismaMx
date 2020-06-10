@@ -30,7 +30,6 @@ export class TopbarComponent implements OnInit {
         )
     ).subscribe(Cinfo => {
       this.info = Cinfo;
-      console.log(this.info);
     });
   }
 

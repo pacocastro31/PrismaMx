@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { CotizacionService } from '../../cotizacion/cotizacion.service';
 import { cotizacion } from '../../cotizacion/cotizacion'
@@ -11,22 +11,10 @@ import { cotizacion } from '../../cotizacion/cotizacion'
 export class PedidoComponent implements OnInit {
 
   constructor(private cotizacionService: CotizacionService) { }
-
-  pedidos: any;
+  @Input() pedidos: cotizacion;
 
   ngOnInit(): void {
-    this.getCustomersList();
+
   }
 
-  getCustomersList(){
-    this.cotizacionService.getPedidos().snapshotChanges().pipe(
-      map(changes=>
-        changes.map(c =>
-            ({key: c.payload.key, ...c.payload.val() })
-          )
-        )
-    ).subscribe(pedidos => {
-      this.pedidos = pedidos;
-    });
-  }
 }

@@ -6,6 +6,9 @@ import { SliderService } from '../admin/home-slider/slider.service';
 import { ServicioParte1 } from '../admin/serviciosParte1/serviciosParte1';
 import { ServiciosParte1Service } from '../admin/serviciosParte1/servicios-parte1.service';
 
+import { AboutUsInfo } from '../admin/aboutUs/aboutUs';
+import { AboutUsService } from '../admin/aboutUs/about-us.service';
+
 import { Prices } from '../admin/precios/precios';
 import { PreciosService } from '../admin/precios/precios.service';
 
@@ -52,20 +55,23 @@ export class HomeComponent implements OnInit {
   };
 
   info: any;
-  sliders: any
-  servicios: any
+  sliders: any;
+  servicios: any;
   faqs: any;
+  aboutUs: any;
 
   constructor(private sliderService: SliderService,
   private servicio1Service: ServiciosParte1Service,
   private priceServices: PreciosService,
-  private faqService: FaqsService) { }
+  private faqService: FaqsService,
+  private aboutUsService: AboutUsService) { }
 
   ngOnInit(): void {
     this.getInfoSliders();
     this.getInfoServicios();
     this.getInfoPrices();
     this.getInfo();
+    this.getAboutUsInfo();
   }
 
   getInfoSliders(){
@@ -113,6 +119,18 @@ export class HomeComponent implements OnInit {
         )
     ).subscribe(Cinfo => {
       this.faqs = Cinfo;
+    });
+  }
+
+  getAboutUsInfo(){
+    this.aboutUsService.getAboutUsInfo().snapshotChanges().pipe(
+      map(changes=>
+        changes.map(c =>
+            ({key: c.payload.key, ...c.payload.val() })
+          )
+        )
+    ).subscribe(Cinfo => {
+      this.aboutUs = Cinfo;
     });
   }
 
